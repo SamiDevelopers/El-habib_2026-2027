@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز الحبيب للألحان والدراسات القبطية</title>
+
+    <!-- Firebase SDK (ES Modules via CDN) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"
+      }
+    }
+    </script>
+
+    <style>
+        /* ===== المتغيرات العامة ===== */
+        :root {
+            --navy: #0B1F3A;
+            --wine: #6B0F1A;
+            --gold: #C9A227;
+            --cream: #F5F1E6;
+            --white: #ffffff;
+            --gray-light: #e8e4d9;
+            --gray: #b0a89a;
+            --success: #2e7d32;
+            --danger: #c62828;
+            --warning: #f9a825;
+            --shadow: 0 4px 20px rgba(11, 31, 58, 0.12);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gold-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin: 8px 0 18px 0;
+            border-radius: 4px;
+        }
+
+        /* ===== الهيدر ===== */
+        header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        header .logo .icon {
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        header nav button {
+            background: transparent;
+            border: 1.5px solid rgba(201, 162, 39, 0.5);
+            color: var(--cream);
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        header nav button:hover,
+        header nav button.active {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        /* ===== الحاويات ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* ===== الأزرار ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn-primary { background: var(--wine); color: var(--white); }
+        .btn-primary:hover:not(:disabled) { background: #8a1422; transform: translateY(-2px); }
+        .btn-gold { background: var(--gold); color: var(--navy); }
+        .btn-gold:hover:not(:disabled) { background: #dbb42e; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid var(--navy); color: var(--navy); }
+        .btn-outline:hover { background: var(--navy); color: var(--white); }
+        .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
+        .btn-danger { background: var(--danger); color: var(--white); }
+        .btn-danger:hover { background: #b71c1c; }
+        .btn-success { background: var(--success); color: var(--white); }
+        .btn-success:hover { background: #1b5e20; }
+
+        /* ===== الكروت ===== */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--gold);
+            transition: var(--transition);
+        }
+        .card:hover { box-shadow: 0 8px 28px rgba(11, 31, 58, 0.18); }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .card-title .icon { color: var(--gold); font-size: 1.3rem; }
+
+        /* ===== الشبكات ===== */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+
+        /* ===== الصفحة الرئيسية ===== */
+        .hero {
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: linear-gradient(135deg, rgba(11,31,58,0.03), rgba(201,162,39,0.06));
+            border-radius: var(--radius);
+            margin-bottom: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "☩";
+            position: absolute;
+            font-size: 18rem;
+            color: rgba(201, 162, 39, 0.05);
+            top: -40px; left: -30px;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+        .hero h1 { font-size: 2.4rem; color: var(--navy); font-weight: 800; margin-bottom: 12px; }
+        .hero h1 span { color: var(--wine); }
+        .hero p { font-size: 1.1rem; color: #4a4a4a; max-width: 650px; margin: 0 auto 20px; }
+
+        .section-title { text-align: center; font-size: 1.6rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+        .section-sub { text-align: center; color: #666; margin-bottom: 30px; }
+
+        .vision-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+        .vision-card:hover { border-bottom-color: var(--gold); transform: translateY(-4px); }
+        .vision-card .icon { font-size: 2.4rem; color: var(--gold); margin-bottom: 12px; display: block; }
+        .vision-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; }
+        .vision-card p { font-size: 0.92rem; color: #555; }
+
+        /* ===== تسجيل الدخول ===== */
+        .login-box {
+            max-width: 440px;
+            margin: 40px auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            box-shadow: 0 10px 40px rgba(11, 31, 58, 0.15);
+            border-top: 5px solid var(--gold);
+        }
+        .login-box h2 { text-align: center; color: var(--navy); margin-bottom: 6px; }
+        .login-box .sub { text-align: center; color: #777; font-size: 0.9rem; margin-bottom: 24px; }
+
+        .login-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 22px;
+            background: var(--cream);
+            padding: 5px;
+            border-radius: 30px;
+        }
+        .login-tabs button {
+            flex: 1;
+            padding: 10px 8px;
+            border: none;
+            background: transparent;
+            border-radius: 26px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #666;
+            transition: var(--transition);
+        }
+        .login-tabs button.active {
+            background: var(--navy);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(11,31,58,0.25);
+        }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: var(--navy); }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.8px solid var(--gray-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            background: #fcfaf7;
+            transition: var(--transition);
+            color: var(--navy);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+        }
+        .form-group textarea { resize: vertical; min-height: 70px; }
+        .form-group .hint { font-size: 0.78rem; color: #888; margin-top: 4px; }
+
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--wine); cursor: pointer; }
+        .checkbox-group label { font-size: 0.92rem; cursor: pointer; margin: 0; }
+
+        .error-msg {
+            background: #fdecea;
+            color: var(--danger);
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+            display: none;
+            border-right: 4px solid var(--danger);
+        }
+
+        /* ===== لوحة التحكم ===== */
+        .dashboard-header {
+            background: var(--navy);
+            color: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .dashboard-header::after {
+            content: "☩";
+            position: absolute;
+            font-size: 7rem;
+            color: rgba(201, 162, 39, 0.08);
+            bottom: -20px; left: 10px;
+            transform: rotate(10deg);
+        }
+        .dashboard-header h2 { font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
+        .dashboard-header .info { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9rem; opacity: 0.95; }
+        .dashboard-header .info span { display: flex; align-items: center; gap: 6px; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 18px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--gold);
+            transition: var(--transition);
+        }
+        .stat-card:hover { transform: translateY(-3px); }
+        .stat-card .num { font-size: 1.9rem; font-weight: 800; color: var(--wine); line-height: 1.2; }
+        .stat-card .lbl { font-size: 0.82rem; color: #777; margin-top: 4px; }
+        .stat-card .icon { font-size: 1.4rem; color: var(--gold); margin-bottom: 4px; }
+
+        /* ===== التبويبات ===== */
+        .tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+            background: var(--white);
+            padding: 6px;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .tabs button {
+            padding: 10px 20px;
+            border: none;
+            background: transparent;
+            border-radius: 26px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #666;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .tabs button.active {
+            background: var(--navy);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(11,31,58,0.25);
+        }
+        .tabs button:hover:not(.active) { background: var(--cream); color: var(--navy); }
+
+        .tab-content { animation: fadeIn 0.35s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== الجداول ===== */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            background: var(--white);
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 600px; }
+        table thead { background: var(--navy); color: var(--white); }
+        table thead th { padding: 12px 14px; text-align: right; font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
+        table tbody td { padding: 10px 14px; border-bottom: 1px solid var(--gray-light); vertical-align: middle; }
+        table tbody tr:hover { background: #faf8f4; }
+        table tbody tr:last-child td { border-bottom: none; }
+
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+        .badge-success { background: #e8f5e9; color: var(--success); }
+        .badge-danger { background: #fdecea; color: var(--danger); }
+        .badge-warning { background: #fff8e1; color: #e65100; }
+        .badge-info { background: #e3f2fd; color: #0d47a1; }
+
+        /* ===== شريط التقدم ===== */
+        .progress-bar { height: 8px; background: var(--gray-light); border-radius: 10px; overflow: hidden; margin-top: 6px; }
+        .progress-bar .fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--wine)); border-radius: 10px; transition: width 0.5s ease; }
+
+        /* ===== النوافذ المنبثقة ===== */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 31, 58, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px 26px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-top: 5px solid var(--gold);
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .modal h3 { color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-start; margin-top: 20px; flex-wrap: wrap; }
+
+        /* ===== الفوتر ===== */
+        footer {
+            background: var(--navy);
+            color: rgba(245, 241, 230, 0.7);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            margin-top: auto;
+            border-top: 3px solid var(--gold);
+        }
+        footer .gold { color: var(--gold); }
+
+        /* ===== Toast ===== */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            pointer-events: none;
+        }
+        .toast {
+            background: var(--navy);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            border: 2px solid var(--gold);
+            animation: fadeIn 0.3s ease;
+            pointer-events: auto;
+        }
+        .toast.success { border-color: var(--success); }
+        .toast.error { border-color: var(--danger); }
+
+        /* ===== Loading Indicator ===== */
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(245, 241, 230, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 4000;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .loading-overlay.show { display: flex; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--gray-light);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-overlay p { color: var(--navy); font-weight: 600; }
+
+        /* ===== Firebase Status Badge ===== */
+        .fb-status {
+            position: fixed;
+            top: 70px;
+            left: 12px;
+            z-index: 200;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+        .fb-status.online { background: #e8f5e9; color: var(--success); }
+        .fb-status.offline { background: #fdecea; color: var(--danger); }
+        .fb-status.syncing { background: #fff8e1; color: #e65100; }
+
+        /* ===== متفرقات ===== */
+        .text-center { text-align: center; }
+        .text-muted { color: #777; font-size: 0.88rem; }
+        .mt-1 { margin-top: 8px; }
+        .mt-2 { margin-top: 16px; }
+        .mb-1 { margin-bottom: 8px; }
+        .mb-2 { margin-bottom: 16px; }
+        .mb-3 { margin-bottom: 24px; }
+        .flex { display: flex; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .flex-center { display: flex; align-items: center; gap: 10px; }
+        .gap-1 { gap: 8px; }
+        .gap-2 { gap: 16px; }
+        .hidden { display: none !important; }
+        .w-100 { width: 100%; }
+
+        .empty-state { text-align: center; padding: 40px 20px; color: #999; }
+        .empty-state .icon { font-size: 3rem; color: var(--gray-light); display: block; margin-bottom: 12px; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; align-items: flex-start; padding: 12px 16px; }
+            header nav { width: 100%; }
+            .hero h1 { font-size: 1.7rem; }
+            .container { padding: 16px 14px; }
+            .tabs button { padding: 8px 14px; font-size: 0.8rem; }
+            .login-box { padding: 26px 20px; margin: 20px auto; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.4rem; }
+            .section-title { font-size: 1.3rem; }
+            .tabs { border-radius: 14px; padding: 4px; }
+            .tabs button { flex: 1; text-align: center; padding: 8px 6px; font-size: 0.75rem; border-radius: 10px; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== الهيدر ===== -->
+<header>
+    <div class="logo">
+        <span class="icon">☩</span>
+        <span>مركز الحبيب للألحان والدراسات القبطية</span>
+    </div>
+    <nav id="mainNav">
+        <button data-page="home" class="active">الرئيسية</button>
+        <button data-page="login" id="navLoginBtn">تسجيل الدخول</button>
+        <button data-page="dashboard" id="navDashBtn" class="hidden">لوحة التحكم</button>
+        <button id="navLogoutBtn" class="hidden">خروج</button>
+    </nav>
+</header>
+
+<!-- Firebase Status Indicator -->
+<div class="fb-status syncing" id="fbStatus">⏳ جارٍ الاتصال بـ Firebase...</div>
+
+<!-- ===== الحاوية الرئيسية ===== -->
+<main class="container" id="appContainer"></main>
+
+<!-- ===== الفوتر ===== -->
+<footer>
+    <span class="gold">☩</span> مركز الحبيب للألحان والدراسات القبطية &copy; 2025
+    <span class="gold">☩</span>
+</footer>
+
+<!-- ===== النافذة المنبثقة ===== -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- ===== Toast Container ===== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ===== Loading Overlay ===== -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <p id="loadingText">جارٍ التحميل...</p>
+</div>
+
+<script type="module">
+/* ============================================================
+   مركز الحبيب للألحان والدراسات القبطية - Firebase Edition
+   ============================================================ */
+
+// ============================================================
+// 1. Firebase Initialization
+// ============================================================
+import { initializeApp } from "firebase/app";
+import {
+    getFirestore,
+    collection,
+    doc,
+    getDocs,
+    getDoc,
+    setDoc,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    query,
+    where,
+    onSnapshot,
+    serverTimestamp,
+    writeBatch
+} from "firebase/firestore";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBVz7Afwp3Hzccz-m7UyPvd3pEH29DoJsI",
+    authDomain: "alhabeeb-system.firebaseapp.com",
+    projectId: "alhabeeb-system",
+    storageBucket: "alhabeeb-system.firebasestorage.app",
+    messagingSenderId: "962385291099",
+    appId: "1:962385291099:web:76fad290de32ec609ddc7e",
+    measurementId: "G-TXLHWT4PZB"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+
+// اسماء المجموعات (Collections)
+const COLLECTIONS = {
+    STUDENTS: 'students',
+    SERVANTS: 'servants',
+    ADMINS: 'admins',
+    ATTENDANCE: 'attendance',
+    ASSIGNMENTS: 'assignments',
+    GRADES: 'grades',
+    SETTINGS: 'settings'
+};
+
+// ============================================================
+// 2. إدارة حالة الاتصال بـ Firebase
+// ============================================================
+const ConnectionState = {
+    isOnline: true,
+    listeners: [],
+
+    init() {
+        window.addEventListener('online', () => this.update(true));
+        window.addEventListener('offline', () => this.update(false));
+        this.update(navigator.onLine);
+    },
+
+    update(online) {
+        this.isOnline = online;
+        const badge = document.getElementById('fbStatus');
+        if (!badge) return;
+        if (online) {
+            badge.className = 'fb-status online';
+            badge.textContent = '🟢 متصل بـ Firebase';
+        } else {
+            badge.className = 'fb-status offline';
+            badge.textContent = '🔴 غير متصل - وضع محلي';
+        }
+    },
+
+    setSyncing() {
+        const badge = document.getElementById('fbStatus');
+        if (badge) {
+            badge.className = 'fb-status syncing';
+            badge.textContent = '⏳ جارٍ المزامنة...';
+        }
+    }
+};
+
+// ============================================================
+// 3. طبقة قاعدة البيانات (Database Layer) - Firebase + LocalStorage Cache
+// ============================================================
+const DB = {
+    KEYS: {
+        STUDENTS: 'habib_students_cache',
+        SERVANTS: 'habib_servants_cache',
+        ATTENDANCE: 'habib_attendance_cache',
+        ASSIGNMENTS: 'habib_assignments_cache',
+        GRADES: 'habib_grades_cache',
+        SETTINGS: 'habib_settings_cache',
+        SESSION: 'habib_session'
+    },
+
+    // ============ Cache Helpers ============
+    _cacheGet(key) {
+        try { return JSON.parse(localStorage.getItem(key) || '[]'); }
+        catch { return []; }
+    },
+    _cacheSet(key, data) {
+        try { localStorage.setItem(key, JSON.stringify(data)); }
+        catch (e) { console.warn('Cache write failed:', e); }
+    },
+
+    // ============ Students ============
+    async getStudents() {
+        try {
+            ConnectionState.setSyncing();
+            const snap = await getDocs(collection(db, COLLECTIONS.STUDENTS));
+            const students = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.STUDENTS, students);
+            ConnectionState.update(true);
+            return students;
+        } catch (e) {
+            console.warn('Firebase read failed, using cache:', e);
+            ConnectionState.update(false);
+            return this._cacheGet(this.KEYS.STUDENTS);
+        }
+    },
+
+    async addStudent(student) {
+        // student.id = كود الدارس (نستخدمه كـ document ID لضمان uniqueness)
+        const studentId = student.id;
+        try {
+            await setDoc(doc(db, COLLECTIONS.STUDENTS, studentId), {
+                ...student,
+                createdAt: serverTimestamp(),
+                updatedAt: serverTimestamp()
+            });
+            ConnectionState.update(true);
+        } catch (e) {
+            console.error('Add student failed:', e);
+            ConnectionState.update(false);
+            throw e;
+        }
+        // تحديث الـ cache
+        const cache = this._cacheGet(this.KEYS.STUDENTS);
+        cache.push(student);
+        this._cacheSet(this.KEYS.STUDENTS, cache);
+    },
+
+    async updateStudent(id, updates) {
+        try {
+            await updateDoc(doc(db, COLLECTIONS.STUDENTS, id), {
+                ...updates,
+                updatedAt: serverTimestamp()
+            });
+            ConnectionState.update(true);
+        } catch (e) {
+            console.error('Update student failed:', e);
+            ConnectionState.update(false);
+            throw e;
+        }
+        const cache = this._cacheGet(this.KEYS.STUDENTS);
+        const idx = cache.findIndex(s => s.id === id);
+        if (idx !== -1) { cache[idx] = { ...cache[idx], ...updates }; this._cacheSet(this.KEYS.STUDENTS, cache); }
+    },
+
+    async deleteStudent(id) {
+        try {
+            await deleteDoc(doc(db, COLLECTIONS.STUDENTS, id));
+            ConnectionState.update(true);
+        } catch (e) {
+            console.error('Delete student failed:', e);
+            ConnectionState.update(false);
+            throw e;
+        }
+        const cache = this._cacheGet(this.KEYS.STUDENTS).filter(s => s.id !== id);
+        this._cacheSet(this.KEYS.STUDENTS, cache);
+    },
+
+    async generateStudentCode() {
+        const students = await this.getStudents();
+        const existing = new Set(students.map(s => s.id));
+        let code;
+        do {
+            const L = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+            const n1 = Math.floor(10 + Math.random() * 90);
+            const n2 = Math.floor(10 + Math.random() * 90);
+            const l1 = L[Math.floor(Math.random() * L.length)];
+            const l2 = L[Math.floor(Math.random() * L.length)];
+            code = `DQ${n1}${l1}${l2}${n2}`;
+        } while (existing.has(code));
+        return code;
+    },
+
+    // ============ Servants ============
+    async getServants() {
+        try {
+            ConnectionState.setSyncing();
+            const snap = await getDocs(collection(db, COLLECTIONS.SERVANTS));
+            const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.SERVANTS, data);
+            ConnectionState.update(true);
+            return data;
+        } catch (e) {
+            ConnectionState.update(false);
+            return this._cacheGet(this.KEYS.SERVANTS);
+        }
+    },
+
+    async addServant(servant) {
+        try {
+            await setDoc(doc(db, COLLECTIONS.SERVANTS, servant.id), {
+                ...servant,
+                createdAt: serverTimestamp()
+            });
+            ConnectionState.update(true);
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        const cache = this._cacheGet(this.KEYS.SERVANTS);
+        cache.push(servant);
+        this._cacheSet(this.KEYS.SERVANTS, cache);
+    },
+
+    async updateServant(id, updates) {
+        try {
+            await updateDoc(doc(db, COLLECTIONS.SERVANTS, id), {
+                ...updates,
+                updatedAt: serverTimestamp()
+            });
+            ConnectionState.update(true);
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        const cache = this._cacheGet(this.KEYS.SERVANTS);
+        const idx = cache.findIndex(s => s.id === id);
+        if (idx !== -1) { cache[idx] = { ...cache[idx], ...updates }; this._cacheSet(this.KEYS.SERVANTS, cache); }
+    },
+
+    async deleteServant(id) {
+        try {
+            await deleteDoc(doc(db, COLLECTIONS.SERVANTS, id));
+            ConnectionState.update(true);
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        const cache = this._cacheGet(this.KEYS.SERVANTS).filter(s => s.id !== id);
+        this._cacheSet(this.KEYS.SERVANTS, cache);
+    },
+
+    // ============ Admins ============
+    async getAdmins() {
+        try {
+            const snap = await getDocs(collection(db, COLLECTIONS.ADMINS));
+            return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        } catch (e) {
+            return [];
+        }
+    },
+
+    // ============ Attendance ============
+    async getAttendance() {
+        try {
+            ConnectionState.setSyncing();
+            const snap = await getDocs(collection(db, COLLECTIONS.ATTENDANCE));
+            const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.ATTENDANCE, data);
+            ConnectionState.update(true);
+            return data;
+        } catch (e) {
+            ConnectionState.update(false);
+            return this._cacheGet(this.KEYS.ATTENDANCE);
+        }
+    },
+
+    async saveAttendance(record) {
+        // record = { studentId, week, status, type, date }
+        const docId = `${record.studentId}_W${record.week}_${record.type || 'attendance'}`;
+        try {
+            await setDoc(doc(db, COLLECTIONS.ATTENDANCE, docId), {
+                ...record,
+                date: serverTimestamp()
+            }, { merge: true });
+            ConnectionState.update(true);
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        // cache
+        const cache = this._cacheGet(this.KEYS.ATTENDANCE);
+        const idx = cache.findIndex(a =>
+            a.studentId === record.studentId &&
+            a.week === record.week &&
+            (a.type || 'attendance') === (record.type || 'attendance')
+        );
+        if (idx !== -1) { cache[idx] = { ...cache[idx], ...record }; }
+        else { cache.push(record); }
+        this._cacheSet(this.KEYS.ATTENDANCE, cache);
+    },
+
+    async saveAttendanceBulk(records) {
+        const batch = writeBatch(db);
+        records.forEach(record => {
+            const docId = `${record.studentId}_W${record.week}_${record.type || 'attendance'}`;
+            const ref = doc(db, COLLECTIONS.ATTENDANCE, docId);
+            batch.set(ref, { ...record, date: serverTimestamp() }, { merge: true });
+        });
+        try {
+            await batch.commit();
+            ConnectionState.update(true);
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        // cache
+        const cache = this._cacheGet(this.KEYS.ATTENDANCE);
+        records.forEach(record => {
+            const idx = cache.findIndex(a =>
+                a.studentId === record.studentId &&
+                a.week === record.week &&
+                (a.type || 'attendance') === (record.type || 'attendance')
+            );
+            if (idx !== -1) { cache[idx] = { ...cache[idx], ...record }; }
+            else { cache.push(record); }
+        });
+        this._cacheSet(this.KEYS.ATTENDANCE, cache);
+    },
+
+    // ============ Assignments ============
+    async getAssignments() {
+        try {
+            ConnectionState.setSyncing();
+            const snap = await getDocs(collection(db, COLLECTIONS.ASSIGNMENTS));
+            const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.ASSIGNMENTS, data);
+            ConnectionState.update(true);
+            return data;
+        } catch (e) {
+            ConnectionState.update(false);
+            return this._cacheGet(this.KEYS.ASSIGNMENTS);
+        }
+    },
+
+    async addAssignment(assignment) {
+        try {
+            const ref = await addDoc(collection(db, COLLECTIONS.ASSIGNMENTS), {
+                ...assignment,
+                submittedAt: serverTimestamp()
+            });
+            ConnectionState.update(true);
+            assignment.id = ref.id;
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        const cache = this._cacheGet(this.KEYS.ASSIGNMENTS);
+        cache.push(assignment);
+        this._cacheSet(this.KEYS.ASSIGNMENTS, cache);
+        return assignment;
+    },
+
+    async updateAssignment(id, updates) {
+        try {
+            await updateDoc(doc(db, COLLECTIONS.ASSIGNMENTS, id), {
+                ...updates,
+                evaluatedAt: serverTimestamp()
+            });
+            ConnectionState.update(true);
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        const cache = this._cacheGet(this.KEYS.ASSIGNMENTS);
+        const idx = cache.findIndex(a => a.id === id);
+        if (idx !== -1) { cache[idx] = { ...cache[idx], ...updates }; this._cacheSet(this.KEYS.ASSIGNMENTS, cache); }
+    },
+
+    // ============ Settings ============
+    async getSettings() {
+        try {
+            const snap = await getDoc(doc(db, COLLECTIONS.SETTINGS, 'main'));
+            if (snap.exists()) {
+                const data = snap.data();
+                this._cacheSet(this.KEYS.SETTINGS, data);
+                return data;
+            }
+        } catch (e) {
+            console.warn('Settings read failed, using cache');
+        }
+        // default
+        const cached = this._cacheGet(this.KEYS.SETTINGS);
+        if (cached && cached.termStart) return cached;
+        return {
+            termStart: '2025-09-01',
+            termEnd: '2025-12-31',
+            totalWeeks: 15,
+            currentWeek: 1
+        };
+    },
+
+    async setSettings(data) {
+        try {
+            await setDoc(doc(db, COLLECTIONS.SETTINGS, 'main'), data, { merge: true });
+            ConnectionState.update(true);
+        } catch (e) {
+            ConnectionState.update(false);
+            throw e;
+        }
+        this._cacheSet(this.KEYS.SETTINGS, data);
+    },
+
+    // ============ Session (Local only) ============
+    getSession() {
+        try { return JSON.parse(localStorage.getItem(this.KEYS.SESSION) || 'null'); }
+        catch { return null; }
+    },
+    setSession(data) {
+        localStorage.setItem(this.KEYS.SESSION, JSON.stringify(data));
+    },
+    clearSession() {
+        localStorage.removeItem(this.KEYS.SESSION);
+    },
+
+    // ============ Real-time Listeners ============
+    listenToStudents(callback) {
+        return onSnapshot(collection(db, COLLECTIONS.STUDENTS), snap => {
+            const students = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.STUDENTS, students);
+            callback(students);
+        }, err => console.warn('Students listener error:', err));
+    },
+
+    listenToServants(callback) {
+        return onSnapshot(collection(db, COLLECTIONS.SERVANTS), snap => {
+            const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.SERVANTS, data);
+            callback(data);
+        }, err => console.warn('Servants listener error:', err));
+    },
+
+    listenToAttendance(callback) {
+        return onSnapshot(collection(db, COLLECTIONS.ATTENDANCE), snap => {
+            const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.ATTENDANCE, data);
+            callback(data);
+        }, err => console.warn('Attendance listener error:', err));
+    },
+
+    listenToAssignments(callback) {
+        return onSnapshot(collection(db, COLLECTIONS.ASSIGNMENTS), snap => {
+            const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            this._cacheSet(this.KEYS.ASSIGNMENTS, data);
+            callback(data);
+        }, err => console.warn('Assignments listener error:', err));
+    }
+};
+
+// ============================================================
+// 4. Global Application State (in-memory)
+// ============================================================
+const AppData = {
+    students: [],
+    servants: [],
+    attendance: [],
+    assignments: [],
+    settings: { totalWeeks: 15, currentWeek: 1 },
+    loaded: false,
+
+    async loadAll() {
+        showLoading('جارٍ تحميل البيانات من Firebase...');
+        try {
+            const [students, servants, attendance, assignments, settings] = await Promise.all([
+                DB.getStudents(),
+                DB.getServants(),
+                DB.getAttendance(),
+                DB.getAssignments(),
+                DB.getSettings()
+            ]);
+            this.students = students;
+            this.servants = servants;
+            this.attendance = attendance;
+            this.assignments = assignments;
+            this.settings = settings;
+            this.loaded = true;
+
+            // بدء الاستماع اللحظي
+            this.startRealtimeListeners();
+        } catch (e) {
+            console.error('Load all failed:', e);
+            showToast('⚠️ فشل تحميل البيانات، يتم استخدام النسخة المحلية', 'error');
+        } finally {
+            hideLoading();
+        }
+    },
+
+    startRealtimeListeners() {
+        DB.listenToStudents(data => {
+            this.students = data;
+            if (['dashboard'].includes(State.currentPage)) renderApp();
+        });
+        DB.listenToServants(data => {
+            this.servants = data;
+            if (['dashboard'].includes(State.currentPage)) renderApp();
+        });
+        DB.listenToAttendance(data => {
+            this.attendance = data;
+            if (['dashboard'].includes(State.currentPage)) renderApp();
+        });
+        DB.listenToAssignments(data => {
+            this.assignments = data;
+            if (['dashboard'].includes(State.currentPage)) renderApp();
+        });
+    }
+};
+
+// ============================================================
+// 5. State Management
+// ============================================================
+const State = {
+    currentPage: 'home',
+    currentUser: null,
+    activeTab: {},
+
+    setPage(page) {
+        this.currentPage = page;
+        renderApp();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+
+    setUser(user) {
+        this.currentUser = user;
+        DB.setSession(user);
+        renderApp();
+    },
+
+    logout() {
+        this.currentUser = null;
+        DB.clearSession();
+        this.currentPage = 'home';
+        renderApp();
+        showToast('👋 تم تسجيل الخروج');
+    },
+
+    setTab(tab) {
+        this.activeTab[this.currentPage] = tab;
+        renderApp();
+    },
+
+    getTab() {
+        return this.activeTab[this.currentPage] || null;
+    }
+};
+
+// ============================================================
+// 6. Helpers
+// ============================================================
+const Helpers = {
+    formatDate(dateStr) {
+        if (!dateStr) return '—';
+        try {
+            const d = dateStr.toDate ? dateStr.toDate() : new Date(dateStr);
+            return d.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+        } catch { return '—'; }
+    },
+
+    percentage(part, total) {
+        if (total === 0) return 0;
+        return Math.round((part / total) * 100);
+    },
+
+    attendanceStatus(pct) {
+        if (pct >= 75) return { label: 'جيدة', class: 'badge-success', icon: '✅' };
+        if (pct >= 50) return { label: 'متوسطة', class: 'badge-warning', icon: '⚠️' };
+        return { label: 'ضعيفة', class: 'badge-danger', icon: '❌' };
+    },
+
+    isSubmissionAllowed() {
+        const day = new Date().getDay();
+        return day === 5 || day === 6 || day === 0 || day === 1 || day === 2;
+    },
+
+    getStages() {
+        return [
+            'KG1', 'KG2',
+            'الصف الأول الابتدائي', 'الصف الثاني الابتدائي', 'الصف الثالث الابتدائي',
+            'الصف الرابع الابتدائي', 'الصف الخامس الابتدائي', 'الصف السادس الابتدائي',
+            'الصف الأول الإعدادي', 'الصف الثاني الإعدادي', 'الصف الثالث الإعدادي',
+            'الصف الأول الثانوي', 'الصف الثاني الثانوي', 'الصف الثالث الثانوي',
+            'شباب', 'خريجين', 'أولياء أمور'
+        ];
+    },
+
+    getClassLetters() { return ['A', 'B', 'C', 'D', 'E', 'F']; },
+
+    getClassGroups() {
+        return ['تمهيدي', 'أولى وثانية', 'ثالثة ورابعة', 'خامسة وسادسة', 'إعدادي - ثانوي', 'شباب وخريجين'];
+    },
+
+    getDeaconRanks() { return ['أبصالطس', 'أغنسطس', 'لم يتم الرسامة']; },
+
+    badge(text, type = 'info') {
+        return `<span class="badge badge-${type}">${text}</span>`;
+    },
+
+    icon(type) {
+        const icons = {
+            student: '👨‍🎓', servant: '👨‍🏫', admin: '👨‍💼',
+            attendance: '📋', grades: '📊', assignments: '📝',
+            home: '🏠', profile: '👤', reports: '📈',
+            success: '✅', danger: '❌', warning: '⚠️'
+        };
+        return icons[type] || '📌';
+    }
+};
+
+// ============================================================
+// 7. UI Utilities (Loading & Toast)
+// ============================================================
+function showLoading(text = 'جارٍ التحميل...') {
+    const overlay = document.getElementById('loadingOverlay');
+    document.getElementById('loadingText').textContent = text;
+    overlay.classList.add('show');
+}
+function hideLoading() {
+    document.getElementById('loadingOverlay').classList.remove('show');
+}
+
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    container.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s';
+        setTimeout(() => toast.remove(), 300);
+    }, 2800);
+}
+
+function showModal(html) {
+    document.getElementById('modalContent').innerHTML = html;
+    document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// ============================================================
+// 8. Render Functions
+// ============================================================
+
+// ---------- 8.1 Landing Page ----------
+function renderHome() {
+    return `
+        <section class="hero">
+            <h1>مركز <span>الحبيب</span> للألحان والدراسات القبطية</h1>
+            <p>صرح كنسي أرثوذكسي لتعليم الألحان والطقوس والدراسات القبطية لجميع المراحل العمرية</p>
+            <button class="btn btn-primary" onclick="State.setPage('login')">
+                <span>☩</span> تسجيل الدخول
+            </button>
+        </section>
+
+        <h2 class="section-title">رؤيتنا ورسالتنا</h2>
+        <p class="section-sub">نعمل على تربية أجيال واعية بالطقس القبطي الأرثوذكسي</p>
+
+        <div class="grid-3 mb-3">
+            <div class="vision-card">
+                <span class="icon">👁️</span>
+                <h3>رؤية المركز</h3>
+                <p>أن يكون المركز الرائد في تخريج جيل متمكن من الألحان والطقوس القبطية الأرثوذكسية، حافظاً للتراث الكنسي الأصيل.</p>
+            </div>
+            <div class="vision-card">
+                <span class="icon">📜</span>
+                <h3>رسالة المركز</h3>
+                <p>تقديم تعليم كنسي متكامل يجمع بين العمق الروحي والمعرفة الطقسية، من خلال خدام مكرسين ومناهج مدروسة.</p>
+            </div>
+            <div class="vision-card">
+                <span class="icon">🎯</span>
+                <h3>أهداف المركز</h3>
+                <p>تعليم الألحان القبطية، دراسة الطقوس، حفظ الأجبية والمزامير، تنمية المواهب، وربط الدارسين بالحياة الكنسية.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">الفئات المستهدفة</h2>
+        <p class="section-sub">نخدم جميع المراحل العمرية من التمهيدي حتى الخريجين وأولياء الأمور</p>
+
+        <div class="grid-4">
+            ${['تمهيدي', 'ابتدائي', 'إعدادي', 'ثانوي', 'شباب', 'خريجين', 'أولياء أمور', 'خدام'].map(g =>
+                `<div class="card text-center">
+                    <div style="font-size: 1.6rem; color: var(--gold);">☩</div>
+                    <strong>${g}</strong>
+                </div>`
+            ).join('')}
+        </div>
+    `;
+}
+
+// ---------- 8.2 Login ----------
+function renderLogin() {
+    return `
+        <div class="login-box">
+            <h2>☩ تسجيل الدخول</h2>
+            <p class="sub">أدخل بياناتك للوصول إلى لوحة التحكم</p>
+
+            <div class="login-tabs" id="loginTabs">
+                <button data-role="student" class="active">دارس</button>
+                <button data-role="servant">خادم</button>
+                <button data-role="admin">مسؤول</button>
+            </div>
+
+            <div id="loginFormContainer">${renderStudentLoginForm()}</div>
+            <div class="error-msg" id="loginError"></div>
+        </div>
+    `;
+}
+
+function renderStudentLoginForm() {
+    return `
+        <div class="form-group">
+            <label>كود الدارس</label>
+            <input type="text" id="studentCode" placeholder="مثال: DQ34ZA54" style="text-transform: uppercase;">
+            <div class="hint">أدخل الكود المكون من 8 خانات</div>
+        </div>
+        <button class="btn btn-primary w-100" onclick="handleLogin('student')">دخول</button>
+    `;
+}
+
+function renderServantLoginForm() {
+    return `
+        <div class="form-group">
+            <label>كود الخادم</label>
+            <input type="text" id="servantCode" placeholder="مثال: S001" style="text-transform: uppercase;">
+        </div>
+        <div class="form-group">
+            <label>كلمة المرور</label>
+            <input type="password" id="servantPassword" placeholder="أدخل كلمة المرور">
+        </div>
+        <button class="btn btn-primary w-100" onclick="handleLogin('servant')">دخول</button>
+    `;
+}
+
+function renderAdminLoginForm() {
+    return `
+        <div class="form-group">
+            <label>اسم المستخدم</label>
+            <input type="text" id="adminUsername" placeholder="أدخل اسم المستخدم">
+        </div>
+        <div class="form-group">
+            <label>كلمة المرور</label>
+            <input type="password" id="adminPassword" placeholder="أدخل كلمة المرور">
+        </div>
+        <button class="btn btn-primary w-100" onclick="handleLogin('admin')">دخول</button>
+    `;
+}
+
+// ---------- 8.3 Student Dashboard ----------
+function renderStudentDashboard() {
+    const user = State.currentUser;
+    if (!user || user.type !== 'student') return '';
+    const student = user.data;
+    const activeTab = State.getTab() || 'profile';
+
+    return `
+        <div class="dashboard-header">
+            <h2>${Helpers.icon('student')} مرحباً، ${student.name}</h2>
+            <div class="info">
+                <span>🆔 ${student.id}</span>
+                <span>📚 ${student.stage}</span>
+                <span>🏫 فصل ${student.class}</span>
+            </div>
+        </div>
+
+        <div class="tabs" id="studentTabs">
+            <button data-tab="profile" class="${activeTab === 'profile' ? 'active' : ''}">الملف الشخصي</button>
+            <button data-tab="grades" class="${activeTab === 'grades' ? 'active' : ''}">الدرجات</button>
+            <button data-tab="attendance" class="${activeTab === 'attendance' ? 'active' : ''}">الحضور</button>
+            <button data-tab="assignments" class="${activeTab === 'assignments' ? 'active' : ''}">الواجبات</button>
+        </div>
+
+        <div class="tab-content">${renderStudentTabContent(activeTab, student)}</div>
+    `;
+}
+
+function renderStudentTabContent(tab, student) {
+    switch (tab) {
+        case 'profile': return renderStudentProfile(student);
+        case 'grades': return renderStudentGrades(student);
+        case 'attendance': return renderStudentAttendance(student);
+        case 'assignments': return renderStudentAssignments(student);
+        default: return renderStudentProfile(student);
+    }
+}
+
+function renderStudentProfile(student) {
+    return `
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title"><span class="icon">👤</span> البيانات الأساسية</div>
+                <div class="gold-line"></div>
+                <table style="min-width: auto; box-shadow: none;">
+                    <tr><td><strong>الاسم:</strong></td><td>${student.name}</td></tr>
+                    <tr><td><strong>الكود:</strong></td><td>${student.id}</td></tr>
+                    <tr><td><strong>النوع:</strong></td><td>${student.gender || '—'}</td></tr>
+                    <tr><td><strong>تاريخ الميلاد:</strong></td><td>${Helpers.formatDate(student.birthdate)}</td></tr>
+                </table>
+            </div>
+            <div class="card">
+                <div class="card-title"><span class="icon">📚</span> البيانات الدراسية</div>
+                <div class="gold-line"></div>
+                <table style="min-width: auto; box-shadow: none;">
+                    <tr><td><strong>المرحلة:</strong></td><td>${student.stage}</td></tr>
+                    <tr><td><strong>الفصل:</strong></td><td>${student.class} - ${student.classGroup}</td></tr>
+                    <tr><td><strong>رتبة الشماسية:</strong></td><td>${student.deaconRank || '—'}</td></tr>
+                </table>
+            </div>
+            <div class="card">
+                <div class="card-title"><span class="icon">📞</span> بيانات الاتصال</div>
+                <div class="gold-line"></div>
+                <table style="min-width: auto; box-shadow: none;">
+                    <tr><td><strong>هاتف 1:</strong></td><td>${student.phone1 || '—'}</td></tr>
+                    <tr><td><strong>هاتف 2:</strong></td><td>${student.phone2 || '—'}</td></tr>
+                    <tr><td><strong>العنوان:</strong></td><td>${student.address || '—'}</td></tr>
+                </table>
+            </div>
+            <div class="card">
+                <div class="card-title"><span class="icon">📋</span> حالة الاستمارة</div>
+                <div class="gold-line"></div>
+                <table style="min-width: auto; box-shadow: none;">
+                    <tr><td><strong>تم الاستلام:</strong></td><td>${student.formReceived ? '✅ نعم' : '❌ لا'}</td></tr>
+                    <tr><td><strong>تم الدفع:</strong></td><td>${student.formPaid ? '✅ نعم' : '❌ لا'}</td></tr>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+function renderStudentGrades(student) {
+    const assignments = AppData.assignments.filter(a => a.studentId === student.id);
+    const totalRequired = 10;
+    const evaluated = assignments.filter(a => a.status === 'evaluated').length;
+    const pending = assignments.filter(a => a.status === 'pending').length;
+    const notDone = Math.max(0, totalRequired - assignments.length);
+    const totalScore = assignments
+        .filter(a => a.status === 'evaluated' && a.score !== null)
+        .reduce((sum, a) => sum + a.score, 0);
+    const avg = evaluated > 0 ? (totalScore / evaluated).toFixed(1) : 0;
+
+    return `
+        <div class="stats-grid">
+            <div class="stat-card"><div class="icon">📝</div><div class="num">${totalRequired}</div><div class="lbl">واجبات مطلوبة</div></div>
+            <div class="stat-card"><div class="icon">✅</div><div class="num">${evaluated}</div><div class="lbl">تم التقييم</div></div>
+            <div class="stat-card"><div class="icon">⏳</div><div class="num">${pending}</div><div class="lbl">قيد الانتظار</div></div>
+            <div class="stat-card"><div class="icon">❌</div><div class="num">${notDone}</div><div class="lbl">لم يتم</div></div>
+            <div class="stat-card"><div class="icon">📊</div><div class="num">${totalScore}</div><div class="lbl">المجموع</div></div>
+            <div class="stat-card"><div class="icon">⭐</div><div class="num">${avg}</div><div class="lbl">المتوسط</div></div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-title"><span class="icon">📋</span> تفاصيل الواجبات</div>
+            <div class="gold-line"></div>
+            ${assignments.length === 0 ? '<div class="empty-state"><span class="icon">📭</span>لا توجد واجبات مسجلة بعد</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>#</th><th>النوع</th><th>الحالة</th><th>الدرجة</th><th>ملاحظات</th><th>التاريخ</th></tr></thead>
+                        <tbody>
+                            ${assignments.map((a, i) => `
+                                <tr>
+                                    <td>${i + 1}</td>
+                                    <td>${a.type === 'text' ? '📄 نص' : a.type === 'image' ? '🖼️ صورة' : '🎤 تسجيل'}</td>
+                                    <td>${a.status === 'evaluated' ? Helpers.badge('تم التقييم', 'success') :
+                                          a.status === 'pending' ? Helpers.badge('قيد الانتظار', 'warning') :
+                                          Helpers.badge('لم يتم', 'danger')}</td>
+                                    <td>${a.score !== null ? a.score + '/10' : '—'}</td>
+                                    <td>${a.notes || '—'}</td>
+                                    <td>${Helpers.formatDate(a.submittedAt)}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `}
+        </div>
+    `;
+}
+
+function renderStudentAttendance(student) {
+    const totalWeeks = AppData.settings.totalWeeks || 15;
+    const attendance = AppData.attendance.filter(a => a.studentId === student.id && a.type !== 'visitation');
+    const present = attendance.filter(a => a.status === 'present').length;
+    const absent = attendance.filter(a => a.status === 'absent').length;
+    const pending = Math.max(0, totalWeeks - attendance.length);
+    const pct = Helpers.percentage(present, totalWeeks);
+    const status = Helpers.attendanceStatus(pct);
+
+    const weeks = [];
+    for (let i = 1; i <= totalWeeks; i++) {
+        const record = attendance.find(a => a.week === i);
+        let icon = '⏳';
+        if (record) icon = record.status === 'present' ? '✅' : '❌';
+        weeks.push(`<tr><td>الأسبوع ${i}</td><td>${icon}</td></tr>`);
+    }
+
+    return `
+        <div class="stats-grid">
+            <div class="stat-card"><div class="icon">📅</div><div class="num">${totalWeeks}</div><div class="lbl">إجمالي الأسابيع</div></div>
+            <div class="stat-card"><div class="icon">✅</div><div class="num">${present}</div><div class="lbl">حضور</div></div>
+            <div class="stat-card"><div class="icon">❌</div><div class="num">${absent}</div><div class="lbl">غياب</div></div>
+            <div class="stat-card"><div class="icon">⏳</div><div class="num">${pending}</div><div class="lbl">لم يسجل</div></div>
+            <div class="stat-card"><div class="icon">📊</div><div class="num">${pct}%</div><div class="lbl">النسبة</div></div>
+            <div class="stat-card"><div class="icon">${status.icon}</div><div class="num" style="font-size:1.2rem;">${status.label}</div><div class="lbl">التقييم</div></div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-title"><span class="icon">📅</span> سجل الحضور الأسبوعي</div>
+            <div class="gold-line"></div>
+            <div class="table-wrap">
+                <table><thead><tr><th>الأسبوع</th><th>الحالة</th></tr></thead>
+                <tbody>${weeks.join('')}</tbody></table>
+            </div>
+        </div>
+    `;
+}
+
+function renderStudentAssignments(student) {
+    const assignments = AppData.assignments.filter(a => a.studentId === student.id);
+    const allowed = Helpers.isSubmissionAllowed();
+
+    return `
+        <div class="flex-between mb-2">
+            <h3 style="color: var(--navy);">📝 واجباتي</h3>
+            <button class="btn btn-gold btn-sm" onclick="openAddAssignmentModal('${student.id}')" ${!allowed ? 'disabled' : ''}>
+                + إضافة واجب
+            </button>
+        </div>
+        ${!allowed ? '<div class="error-msg" style="display:block;">⚠️ الإرسال متاح فقط من الجمعة إلى الثلاثاء</div>' : ''}
+
+        ${assignments.length === 0 ? '<div class="empty-state"><span class="icon">📭</span>لا توجد واجبات</div>' : `
+            <div class="grid-2">
+                ${assignments.map(a => `
+                    <div class="card">
+                        <div class="flex-between mb-1">
+                            <strong>${a.type === 'text' ? '📄 نص' : a.type === 'image' ? '🖼️ صورة' : '🎤 تسجيل'}</strong>
+                            ${a.status === 'evaluated' ? Helpers.badge('تم التقييم', 'success') :
+                              a.status === 'pending' ? Helpers.badge('قيد الانتظار', 'warning') :
+                              Helpers.badge('لم يتم', 'danger')}
+                        </div>
+                        <p style="font-size:0.9rem; color:#555;">${a.content || '—'}</p>
+                        ${a.score !== null ? `<p><strong>الدرجة:</strong> ${a.score}/10</p>` : ''}
+                        ${a.notes ? `<p><strong>ملاحظات:</strong> ${a.notes}</p>` : ''}
+                        <p class="text-muted" style="font-size:0.8rem;">${Helpers.formatDate(a.submittedAt)}</p>
+                    </div>
+                `).join('')}
+            </div>
+        `}
+    `;
+}
+
+// ---------- 8.4 Servant Dashboard ----------
+function renderServantDashboard() {
+    const user = State.currentUser;
+    if (!user || user.type !== 'servant') return '';
+    const servant = user.data;
+    const students = AppData.students.filter(s =>
+        servant.classGroup === 'الكل' || s.classGroup === servant.classGroup
+    );
+    const pendingAssignments = AppData.assignments.filter(a => {
+        const student = AppData.students.find(s => s.id === a.studentId);
+        return student && (servant.classGroup === 'الكل' || student.classGroup === servant.classGroup) && a.status === 'pending';
+    }).length;
+    const activeTab = State.getTab() || 'attendance';
+
+    return `
+        <div class="dashboard-header">
+            <h2>${Helpers.icon('servant')} مرحباً، ${servant.name}</h2>
+            <div class="info">
+                <span>🏫 ${servant.classGroup}</span>
+                <span>👥 ${students.length} طالب</span>
+                <span>📝 ${pendingAssignments} واجب منتظر</span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><div class="icon">👥</div><div class="num">${students.length}</div><div class="lbl">عدد الطلاب</div></div>
+            <div class="stat-card"><div class="icon">📝</div><div class="num">${pendingAssignments}</div><div class="lbl">واجبات منتظرة</div></div>
+            <div class="stat-card"><div class="icon">📋</div><div class="num">${AppData.settings.currentWeek || 1}</div><div class="lbl">الأسبوع الحالي</div></div>
+        </div>
+
+        <div class="tabs" id="servantTabs">
+            <button data-tab="attendance" class="${activeTab === 'attendance' ? 'active' : ''}">تسجيل الحضور</button>
+            <button data-tab="assignments" class="${activeTab === 'assignments' ? 'active' : ''}">تقييم الواجبات</button>
+            <button data-tab="grades" class="${activeTab === 'grades' ? 'active' : ''}">إدخال الدرجات</button>
+            <button data-tab="students" class="${activeTab === 'students' ? 'active' : ''}">طلابي</button>
+            <button data-tab="visitation" class="${activeTab === 'visitation' ? 'active' : ''}">الافتقاد</button>
+        </div>
+
+        <div class="tab-content">${renderServantTabContent(activeTab, servant, students)}</div>
+    `;
+}
+
+function renderServantTabContent(tab, servant, students) {
+    switch (tab) {
+        case 'attendance': return renderServantAttendance(servant, students);
+        case 'assignments': return renderServantAssignments(servant, students);
+        case 'grades': return renderServantGrades(servant, students);
+        case 'students': return renderServantStudents(students);
+        case 'visitation': return renderServantVisitation(servant, students);
+        default: return renderServantAttendance(servant, students);
+    }
+}
+
+function renderServantAttendance(servant, students) {
+    const currentWeek = AppData.settings.currentWeek || 1;
+    return `
+        <div class="card mb-2">
+            <div class="flex-between">
+                <div class="card-title"><span class="icon">📋</span> تسجيل حضور الأسبوع ${currentWeek}</div>
+                <button class="btn btn-success btn-sm" onclick="saveBulkAttendance(${currentWeek})">💾 حفظ الحضور</button>
+            </div>
+            <div class="gold-line"></div>
+            ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>#</th><th>اسم الطالب</th><th>الكود</th><th>حاضر</th></tr></thead>
+                        <tbody>
+                            ${students.map((s, i) => {
+                                const record = AppData.attendance.find(a => a.studentId === s.id && a.week === currentWeek && a.type !== 'visitation');
+                                const checked = record && record.status === 'present' ? 'checked' : '';
+                                return `<tr>
+                                    <td>${i + 1}</td>
+                                    <td>${s.name}</td>
+                                    <td>${s.id}</td>
+                                    <td><input type="checkbox" class="attendance-check" data-student="${s.id}" ${checked}
+                                        style="width:20px;height:20px;accent-color:var(--success);cursor:pointer;"></td>
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `}
+        </div>
+    `;
+}
+
+function renderServantAssignments(servant, students) {
+    const assignments = AppData.assignments.filter(a => {
+        const student = AppData.students.find(s => s.id === a.studentId);
+        return student && (servant.classGroup === 'الكل' || student.classGroup === servant.classGroup);
+    });
+
+    return `
+        <div class="card">
+            <div class="card-title"><span class="icon">📝</span> تقييم الواجبات</div>
+            <div class="gold-line"></div>
+            ${assignments.length === 0 ? '<div class="empty-state"><span class="icon">📭</span>لا توجد واجبات للتقييم</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>الطالب</th><th>النوع</th><th>المحتوى</th><th>الحالة</th><th>الدرجة</th><th>ملاحظات</th><th>إجراء</th></tr></thead>
+                        <tbody>
+                            ${assignments.map(a => {
+                                const student = AppData.students.find(s => s.id === a.studentId);
+                                return `<tr>
+                                    <td>${student ? student.name : a.studentId}</td>
+                                    <td>${a.type === 'text' ? '📄' : a.type === 'image' ? '🖼️' : '🎤'}</td>
+                                    <td>${(a.content || '').substring(0, 30)}${(a.content || '').length > 30 ? '...' : ''}</td>
+                                    <td>${a.status === 'evaluated' ? Helpers.badge('تم', 'success') :
+                                          a.status === 'pending' ? Helpers.badge('معلق', 'warning') :
+                                          Helpers.badge('لم يتم', 'danger')}</td>
+                                    <td>${a.score !== null ? a.score + '/10' : '—'}</td>
+                                    <td>${a.notes || '—'}</td>
+                                    <td><button class="btn btn-gold btn-sm" onclick="openEvaluateModal('${a.id}')">تقييم</button></td>
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `}
+        </div>
+    `;
+}
+
+function renderServantGrades(servant, students) {
+    return `
+        <div class="card">
+            <div class="card-title"><span class="icon">📊</span> إدخال الدرجات</div>
+            <div class="gold-line"></div>
+            ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>الطالب</th><th>واجب 1</th><th>واجب 2</th><th>واجب 3</th><th>المجموع</th><th>المتوسط</th></tr></thead>
+                        <tbody>
+                            ${students.map(s => {
+                                const assignments = AppData.assignments.filter(a => a.studentId === s.id && a.status === 'evaluated');
+                                const scores = [0, 1, 2].map(i => assignments[i] ? assignments[i].score : null);
+                                const total = scores.reduce((sum, v) => sum + (v || 0), 0);
+                                const evaluated = scores.filter(v => v !== null).length;
+                                const avg = evaluated > 0 ? (total / evaluated).toFixed(1) : '—';
+                                return `<tr>
+                                    <td>${s.name}</td>
+                                    <td>${scores[0] !== null ? scores[0] : '—'}</td>
+                                    <td>${scores[1] !== null ? scores[1] : '—'}</td>
+                                    <td>${scores[2] !== null ? scores[2] : '—'}</td>
+                                    <td><strong>${total}</strong></td>
+                                    <td><strong>${avg}</strong></td>
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `}
+        </div>
+    `;
+}
+
+function renderServantStudents(students) {
+    return `
+        <div class="card">
+            <div class="card-title"><span class="icon">👥</span> طلابي (${students.length})</div>
+            <div class="gold-line"></div>
+            ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th></tr></thead>
+                        <tbody>
+                            ${students.map((s, i) => `
+                                <tr>
+                                    <td>${i + 1}</td>
+                                    <td>${s.name}</td>
+                                    <td>${s.id}</td>
+                                    <td>${s.stage}</td>
+                                    <td>${s.class}</td>
+                                    <td>${s.phone1 || '—'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `}
+        </div>
+    `;
+}
+
+function renderServantVisitation(servant, students) {
+    const currentWeek = AppData.settings.currentWeek || 1;
+    const visitations = AppData.attendance.filter(a => a.type === 'visitation' && a.week === currentWeek);
+
+    return `
+        <div class="card">
+            <div class="card-title"><span class="icon">🙏</span> الافتقاد - الأسبوع ${currentWeek}</div>
+            <div class="gold-line"></div>
+            <p class="text-muted mb-2">تسجيل الافتقاد أسبوعياً فقط (لا يمكن تعديل الأسابيع السابقة)</p>
+            ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>#</th><th>اسم الطالب</th><th>تم الافتقاد</th></tr></thead>
+                        <tbody>
+                            ${students.map((s, i) => {
+                                const record = visitations.find(v => v.studentId === s.id);
+                                const checked = record ? 'checked' : '';
+                                return `<tr>
+                                    <td>${i + 1}</td>
+                                    <td>${s.name}</td>
+                                    <td><input type="checkbox" class="visitation-check" data-student="${s.id}" ${checked}
+                                        style="width:20px;height:20px;accent-color:var(--wine);cursor:pointer;"></td>
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-success mt-2" onclick="saveVisitation(${currentWeek})">💾 حفظ الافتقاد</button>
+            `}
+        </div>
+    `;
+}
+
+// ---------- 8.5 Admin Dashboard ----------
+function renderAdminDashboard() {
+    const user = State.currentUser;
+    if (!user || user.type !== 'admin') return '';
+
+    const students = AppData.students;
+    const servants = AppData.servants;
+    const attendance = AppData.attendance.filter(a => a.type !== 'visitation');
+    const assignments = AppData.assignments;
+
+    const totalPresent = attendance.filter(a => a.status === 'present').length;
+    const avgAttendance = Helpers.percentage(totalPresent, attendance.length || 1);
+
+    const evaluated = assignments.filter(a => a.status === 'evaluated');
+    const avgGrade = evaluated.length > 0
+        ? (evaluated.reduce((sum, a) => sum + (a.score || 0), 0) / evaluated.length).toFixed(1)
+        : 0;
+
+    const activeTab = State.getTab() || 'students';
+
+    return `
+        <div class="dashboard-header">
+            <h2>${Helpers.icon('admin')} لوحة تحكم مسؤول الخدمة</h2>
+            <div class="info">
+                <span>👥 ${students.length} دارس</span>
+                <span>👨‍🏫 ${servants.length} خادم</span>
+                <span>📅 الأسبوع ${AppData.settings.currentWeek || 1}</span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><div class="icon">👥</div><div class="num">${students.length}</div><div class="lbl">إجمالي الدارسين</div></div>
+            <div class="stat-card"><div class="icon">👨‍🏫</div><div class="num">${servants.length}</div><div class="lbl">إجمالي الخدام</div></div>
+            <div class="stat-card"><div class="icon">📊</div><div class="num">${avgAttendance}%</div><div class="lbl">متوسط الحضور</div></div>
+            <div class="stat-card"><div class="icon">⭐</div><div class="num">${avgGrade}</div><div class="lbl">متوسط الدرجات</div></div>
+        </div>
+
+        <div class="tabs" id="adminTabs">
+            <button data-tab="students" class="${activeTab === 'students' ? 'active' : ''}">إدارة الدارسين</button>
+            <button data-tab="servants" class="${activeTab === 'servants' ? 'active' : ''}">إدارة الخدام</button>
+            <button data-tab="attendance" class="${activeTab === 'attendance' ? 'active' : ''}">الحضور</button>
+            <button data-tab="backup" class="${activeTab === 'backup' ? 'active' : ''}">النسخ الاحتياطي</button>
+            <button data-tab="settings" class="${activeTab === 'settings' ? 'active' : ''}">إعدادات الترم</button>
+        </div>
+
+        <div class="tab-content">${renderAdminTabContent(activeTab, students, servants)}</div>
+    `;
+}
+
+function renderAdminTabContent(tab, students, servants) {
+    switch (tab) {
+        case 'students': return renderAdminStudents(students);
+        case 'servants': return renderAdminServants(servants);
+        case 'attendance': return renderAdminAttendance(students);
+        case 'backup': return renderAdminBackup();
+        case 'settings': return renderAdminSettings();
+        default: return renderAdminStudents(students);
+    }
+}
+
+function renderAdminStudents(students) {
+    return `
+        <div class="card">
+            <div class="flex-between mb-2">
+                <div class="card-title"><span class="icon">👥</span> إدارة الدارسين (${students.length})</div>
+                <button class="btn btn-gold btn-sm" onclick="openAddStudentModal()">+ إضافة دارس</button>
+            </div>
+            <div class="gold-line"></div>
+            ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد دارسين</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th><th>إجراءات</th></tr></thead>
+                        <tbody>
+                            ${students.map((s, i) => `
+                                <tr>
+                                    <td>${i + 1}</td>
+                                    <td>${s.name}</td>
+                                    <td>${s.id}</td>
+                                    <td>${s.stage}</td>
+                                    <td>${s.class}</td>
+                                    <td>${s.phone1 || '—'}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline" onclick="openEditStudentModal('${s.id}')">تعديل</button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteStudentConfirm('${s.id}')">حذف</button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `}
+        </div>
+    `;
+}
+
+function renderAdminServants(servants) {
+    return `
+        <div class="card">
+            <div class="flex-between mb-2">
+                <div class="card-title"><span class="icon">👨‍🏫</span> إدارة الخدام (${servants.length})</div>
+                <button class="btn btn-gold btn-sm" onclick="openAddServantModal()">+ إضافة خادم</button>
+            </div>
+            <div class="gold-line"></div>
+            ${servants.length === 0 ? '<div class="empty-state"><span class="icon">👨‍🏫</span>لا يوجد خدام</div>' : `
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>الفصل</th><th>الدور</th><th>إجراءات</th></tr></thead>
+                        <tbody>
+                            ${servants.map((s, i) => `
+                                <tr>
+                                    <td>${i + 1}</td>
+                                    <td>${s.name}</td>
+                                    <td>${s.code}</td>
+                                    <td>${s.classGroup}</td>
+                                    <td>${s.role}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline" onclick="openEditServantModal('${s.id}')">تعديل</button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteServantConfirm('${s.id}')">حذف</button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `}
+        </div>
+    `;
+}
+
+function renderAdminAttendance(students) {
+    const currentWeek = AppData.settings.currentWeek || 1;
+    const attendance = AppData.attendance.filter(a => a.type !== 'visitation');
+
+    return `
+        <div class="card">
+            <div class="card-title"><span class="icon">📋</span> الحضور - الأسبوع ${currentWeek}</div>
+            <div class="gold-line"></div>
+            <div class="form-group">
+                <label>اختر الأسبوع</label>
+                <select id="adminWeekSelect" onchange="changeAdminWeek(this.value)">
+                    ${Array.from({ length: AppData.settings.totalWeeks || 15 }, (_, i) => i + 1).map(w =>
+                        `<option value="${w}" ${w === currentWeek ? 'selected' : ''}>الأسبوع ${w}</option>`
+                    ).join('')}
+                </select>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>#</th><th>اسم الطالب</th><th>المرحلة</th><th>حاضر</th><th>غائب</th></tr></thead>
+                    <tbody>
+                        ${students.map((s, i) => {
+                            const record = attendance.find(a => a.studentId === s.id && a.week === currentWeek);
+                            const isPresent = record && record.status === 'present';
+                            const isAbsent = record && record.status === 'absent';
+                            return `<tr>
+                                <td>${i + 1}</td>
+                                <td>${s.name}</td>
+                                <td>${s.stage}</td>
+                                <td><input type="radio" name="att_${s.id}" ${isPresent ? 'checked' : ''}
+                                    onchange="adminSetAttendance('${s.id}', ${currentWeek}, 'present')"
+                                    style="accent-color:var(--success);cursor:pointer;"></td>
+                                <td><input type="radio" name="att_${s.id}" ${isAbsent ? 'checked' : ''}
+                                    onchange="adminSetAttendance('${s.id}', ${currentWeek}, 'absent')"
+                                    style="accent-color:var(--danger);cursor:pointer;"></td>
+                            </tr>`;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+function renderAdminBackup() {
+    return `
+        <div class="card">
+            <div class="card-title"><span class="icon">💾</span> النسخ الاحتياطي</div>
+            <div class="gold-line"></div>
+            <p class="text-muted mb-2">تصدير جميع البيانات (Firestore) كملف JSON.</p>
+            <div class="flex gap-2">
+                <button class="btn btn-primary" onclick="exportData()">📤 تصدير JSON</button>
+            </div>
+        </div>
+    `;
+}
+
+function renderAdminSettings() {
+    const settings = AppData.settings;
+    return `
+        <div class="card">
+            <div class="card-title"><span class="icon">⚙️</span> إعدادات الترم</div>
+            <div class="gold-line"></div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>تاريخ بداية الترم</label>
+                    <input type="date" id="settingsStart" value="${settings.termStart || ''}">
+                </div>
+                <div class="form-group">
+                    <label>تاريخ نهاية الترم</label>
+                    <input type="date" id="settingsEnd" value="${settings.termEnd || ''}">
+                </div>
+                <div class="form-group">
+                    <label>عدد الأسابيع</label>
+                    <input type="number" id="settingsWeeks" value="${settings.totalWeeks || 15}" min="1" max="30">
+                </div>
+                <div class="form-group">
+                    <label>الأسبوع الحالي</label>
+                    <input type="number" id="settingsCurrentWeek" value="${settings.currentWeek || 1}" min="1" max="30">
+                </div>
+            </div>
+            <button class="btn btn-primary mt-2" onclick="saveSettings()">💾 حفظ الإعدادات</button>
+        </div>
+    `;
+}
+
+// ============================================================
+// 9. Event Handlers
+// ============================================================
+
+// ---------- Login ----------
+async function handleLogin(role) {
+    const errorEl = document.getElementById('loginError');
+    if (errorEl) errorEl.style.display = 'none';
+
+    try {
+        showLoading('جارٍ التحقق...');
+
+        if (role === 'student') {
+            const code = (document.getElementById('studentCode').value || '').trim().toUpperCase();
+            if (!code) { hideLoading(); showLoginError('الرجاء إدخال كود الدارس'); return; }
+            const student = AppData.students.find(s => s.id === code);
+            if (student) {
+                State.setUser({ type: 'student', data: student });
+                State.setPage('dashboard');
+                showToast('✅ مرحباً بك');
+            } else {
+                showLoginError('كود الدارس غير صحيح');
+            }
+        } else if (role === 'servant') {
+            const code = (document.getElementById('servantCode').value || '').trim().toUpperCase();
+            const password = (document.getElementById('servantPassword').value || '').trim();
+            if (!code || !password) { hideLoading(); showLoginError('الرجاء إدخال الكود وكلمة المرور'); return; }
+            const servant = AppData.servants.find(s => s.code === code && s.password === password);
+            if (servant) {
+                State.setUser({ type: 'servant', data: servant });
+                State.setPage('dashboard');
+                showToast('✅ مرحباً بك');
+            } else {
+                showLoginError('بيانات الدخول غير صحيحة');
+            }
+        } else if (role === 'admin') {
+            const username = (document.getElementById('adminUsername').value || '').trim();
+            const password = (document.getElementById('adminPassword').value || '').trim();
+            if (!username || !password) { hideLoading(); showLoginError('الرجاء إدخال البيانات'); return; }
+            // البحث في Firestore
+            let admins = await DB.getAdmins();
+            if (admins.length === 0) {
+                // إنشاء أدمن افتراضي
+                admins = [{ id: 'admin1', username: 'admin', password: 'admin123', name: 'أمين الخدمة العام' }];
+                try { await setDoc(doc(db, COLLECTIONS.ADMINS, 'admin1'), admins[0]); } catch(e) {}
+            }
+            const admin = admins.find(a => a.username === username && a.password === password);
+            if (admin) {
+                State.setUser({ type: 'admin', data: admin });
+                State.setPage('dashboard');
+                showToast('✅ مرحباً بك');
+            } else {
+                showLoginError('اسم المستخدم أو كلمة المرور غير صحيحة');
+            }
+        }
+    } catch (e) {
+        console.error(e);
+        showLoginError('حدث خطأ، حاول مرة أخرى');
+    } finally {
+        hideLoading();
+    }
+}
+
+function showLoginError(msg) {
+    const el = document.getElementById('loginError');
+    if (el) { el.textContent = msg; el.style.display = 'block'; }
+}
+
+function switchLoginTab(role) {
+    const container = document.getElementById('loginFormContainer');
+    document.querySelectorAll('#loginTabs button').forEach(t => t.classList.remove('active'));
+    document.querySelector(`#loginTabs button[data-role="${role}"]`).classList.add('active');
+    if (role === 'student') container.innerHTML = renderStudentLoginForm();
+    else if (role === 'servant') container.innerHTML = renderServantLoginForm();
+    else if (role === 'admin') container.innerHTML = renderAdminLoginForm();
+    const err = document.getElementById('loginError');
+    if (err) err.style.display = 'none';
+}
+
+// ---------- Attendance ----------
+async function saveBulkAttendance(week) {
+    const checkboxes = document.querySelectorAll('.attendance-check');
+    const records = [];
+    checkboxes.forEach(cb => {
+        records.push({
+            studentId: cb.dataset.student,
+            week,
+            status: cb.checked ? 'present' : 'absent',
+            type: 'attendance'
+        });
+    });
+
+    try {
+        showLoading('جارٍ حفظ الحضور...');
+        await DB.saveAttendanceBulk(records);
+        // تحديث محلي
+        records.forEach(r => {
+            const idx = AppData.attendance.findIndex(a =>
+                a.studentId === r.studentId && a.week === r.week && a.type === 'attendance'
+            );
+            if (idx !== -1) AppData.attendance[idx] = { ...AppData.attendance[idx], ...r };
+            else AppData.attendance.push(r);
+        });
+        showToast('✅ تم حفظ الحضور');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحفظ، تحقق من الاتصال', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+async function saveVisitation(week) {
+    const checkboxes = document.querySelectorAll('.visitation-check');
+    try {
+        showLoading('جارٍ حفظ الافتقاد...');
+        for (const cb of checkboxes) {
+            const studentId = cb.dataset.student;
+            if (cb.checked) {
+                await DB.saveAttendance({ studentId, week, status: 'present', type: 'visitation' });
+                const idx = AppData.attendance.findIndex(a =>
+                    a.studentId === studentId && a.week === week && a.type === 'visitation'
+                );
+                if (idx !== -1) AppData.attendance[idx].status = 'present';
+                else AppData.attendance.push({ studentId, week, status: 'present', type: 'visitation' });
+            } else {
+                // حذف السجل
+                const docId = `${studentId}_W${week}_visitation`;
+                await deleteDoc(doc(db, COLLECTIONS.ATTENDANCE, docId));
+                const idx = AppData.attendance.findIndex(a =>
+                    a.studentId === studentId && a.week === week && a.type === 'visitation'
+                );
+                if (idx !== -1) AppData.attendance.splice(idx, 1);
+            }
+        }
+        showToast('✅ تم حفظ الافتقاد');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحفظ', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+async function adminSetAttendance(studentId, week, status) {
+    try {
+        await DB.saveAttendance({ studentId, week, status, type: 'attendance' });
+        const idx = AppData.attendance.findIndex(a =>
+            a.studentId === studentId && a.week === week && a.type === 'attendance'
+        );
+        if (idx !== -1) AppData.attendance[idx].status = status;
+        else AppData.attendance.push({ studentId, week, status, type: 'attendance' });
+        showToast(`✅ تم التسجيل: ${status === 'present' ? 'حاضر' : 'غائب'}`, 'success');
+    } catch (e) {
+        showToast('❌ فشل التسجيل', 'error');
+    }
+}
+
+async function changeAdminWeek(week) {
+    AppData.settings.currentWeek = parseInt(week);
+    await DB.setSettings(AppData.settings);
+    renderApp();
+}
+
+// ---------- Assignments ----------
+function openAddAssignmentModal(studentId) {
+    if (!Helpers.isSubmissionAllowed()) {
+        showToast('⚠️ الإرسال متاح فقط من الجمعة إلى الثلاثاء', 'error');
+        return;
+    }
+    showModal(`
+        <h3>📝 إضافة واجب جديد</h3>
+        <div class="form-group">
+            <label>نوع الواجب</label>
+            <select id="assignType">
+                <option value="text">📄 نص</option>
+                <option value="image">🖼️ صورة</option>
+                <option value="audio">🎤 تسجيل صوتي</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>المحتوى</label>
+            <textarea id="assignContent" placeholder="اكتب محتوى الواجب هنا..."></textarea>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-gold" onclick="saveAssignment('${studentId}')">📤 إرسال</button>
+            <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
+        </div>
+    `);
+}
+
+async function saveAssignment(studentId) {
+    const type = document.getElementById('assignType').value;
+    const content = document.getElementById('assignContent').value;
+    if (!content && type === 'text') { showToast('الرجاء كتابة محتوى الواجب', 'error'); return; }
+
+    const assignment = {
+        studentId,
+        type,
+        content: content || '',
+        status: 'pending',
+        score: null,
+        notes: ''
+    };
+
+    try {
+        showLoading('جارٍ الإرسال...');
+        const saved = await DB.addAssignment(assignment);
+        AppData.assignments.push(saved);
+        closeModal();
+        showToast('✅ تم إرسال الواجب');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الإرسال', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+function openEvaluateModal(assignmentId) {
+    const a = AppData.assignments.find(x => x.id === assignmentId);
+    if (!a) return;
+    const student = AppData.students.find(s => s.id === a.studentId);
+    showModal(`
+        <h3>📝 تقييم واجب - ${student ? student.name : a.studentId}</h3>
+        <div class="form-group">
+            <label>المحتوى</label>
+            <textarea disabled>${a.content || '—'}</textarea>
+        </div>
+        <div class="form-group">
+            <label>الدرجة (0-10)</label>
+            <input type="number" id="evalScore" min="0" max="10" value="${a.score !== null ? a.score : ''}">
+        </div>
+        <div class="form-group">
+            <label>ملاحظات</label>
+            <textarea id="evalNotes">${a.notes || ''}</textarea>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-primary" onclick="saveEvaluation('${assignmentId}')">💾 حفظ</button>
+            <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
+        </div>
+    `);
+}
+
+async function saveEvaluation(assignmentId) {
+    const score = parseInt(document.getElementById('evalScore').value);
+    const notes = document.getElementById('evalNotes').value;
+    if (isNaN(score) || score < 0 || score > 10) { showToast('أدخل درجة بين 0 و 10', 'error'); return; }
+
+    try {
+        showLoading('جارٍ الحفظ...');
+        await DB.updateAssignment(assignmentId, { score, notes, status: 'evaluated' });
+        const idx = AppData.assignments.findIndex(a => a.id === assignmentId);
+        if (idx !== -1) {
+            AppData.assignments[idx].score = score;
+            AppData.assignments[idx].notes = notes;
+            AppData.assignments[idx].status = 'evaluated';
+        }
+        closeModal();
+        showToast('✅ تم حفظ التقييم');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحفظ', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+// ---------- Students Management ----------
+function openAddStudentModal() {
+    showModal(`
+        <h3>👤 إضافة دارس جديد</h3>
+        <div class="form-group">
+            <label>اسم الدارس بالكامل *</label>
+            <input type="text" id="addStudentName" placeholder="الاسم الرباعي">
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>النوع *</label>
+                <select id="addStudentGender"><option value="ذكر">ذكر</option><option value="أنثى">أنثى</option></select>
+            </div>
+            <div class="form-group">
+                <label>تاريخ الميلاد</label>
+                <input type="date" id="addStudentBirth">
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>المرحلة *</label>
+                <select id="addStudentStage">
+                    ${Helpers.getStages().map(s => `<option value="${s}">${s}</option>`).join('')}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>الفصل داخل المركز</label>
+                <select id="addStudentClassGroup">
+                    ${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}
+                </select>
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>حرف الفصل</label>
+                <select id="addStudentClass">
+                    ${Helpers.getClassLetters().map(l => `<option value="${l}">${l}</option>`).join('')}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>رتبة الشماسية</label>
+                <select id="addStudentDeacon">
+                    ${Helpers.getDeaconRanks().map(r => `<option value="${r}">${r}</option>`).join('')}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>رقم هاتف 1 *</label>
+            <input type="tel" id="addStudentPhone1" placeholder="01xxxxxxxxx">
+        </div>
+        <div class="form-group">
+            <label>رقم هاتف 2</label>
+            <input type="tel" id="addStudentPhone2" placeholder="اختياري">
+        </div>
+        <div class="form-group">
+            <label>العنوان</label>
+            <input type="text" id="addStudentAddress" placeholder="المحافظة - المنطقة">
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="addStudentForm">
+            <label for="addStudentForm">تم استلام الاستمارة</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="addStudentPaid">
+            <label for="addStudentPaid">تم دفع قيمة الاستمارة</label>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-gold" onclick="saveNewStudent()">💾 حفظ</button>
+            <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
+        </div>
+    `);
+}
+
+async function saveNewStudent() {
+    const name = document.getElementById('addStudentName').value.trim();
+    const phone1 = document.getElementById('addStudentPhone1').value.trim();
+    if (!name) { showToast('الرجاء إدخال الاسم', 'error'); return; }
+    if (!phone1) { showToast('الرجاء إدخال الهاتف', 'error'); return; }
+
+    try {
+        showLoading('جارٍ توليد الكود والحفظ...');
+        const code = await DB.generateStudentCode();
+        const student = {
+            id: code,
+            name,
+            type: 'جديد',
+            gender: document.getElementById('addStudentGender').value,
+            birthdate: document.getElementById('addStudentBirth').value,
+            stage: document.getElementById('addStudentStage').value,
+            class: document.getElementById('addStudentClass').value,
+            classGroup: document.getElementById('addStudentClassGroup').value,
+            phone1,
+            phone2: document.getElementById('addStudentPhone2').value.trim(),
+            address: document.getElementById('addStudentAddress').value.trim(),
+            deaconRank: document.getElementById('addStudentDeacon').value,
+            formReceived: document.getElementById('addStudentForm').checked,
+            formPaid: document.getElementById('addStudentPaid').checked,
+            formImage: '',
+            personalImage: ''
+        };
+        await DB.addStudent(student);
+        AppData.students.push(student);
+        closeModal();
+        showToast(`✅ تم إضافة الدارس - الكود: ${code}`);
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحفظ', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+function openEditStudentModal(id) {
+    const s = AppData.students.find(x => x.id === id);
+    if (!s) return;
+    showModal(`
+        <h3>✏️ تعديل بيانات الدارس</h3>
+        <div class="form-group">
+            <label>كود الدارس</label>
+            <input type="text" value="${s.id}" disabled>
+        </div>
+        <div class="form-group">
+            <label>اسم الدارس</label>
+            <input type="text" id="editStudentName" value="${s.name}">
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>المرحلة</label>
+                <select id="editStudentStage">
+                    ${Helpers.getStages().map(st => `<option value="${st}" ${st === s.stage ? 'selected' : ''}>${st}</option>`).join('')}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>الفصل داخل المركز</label>
+                <select id="editStudentClassGroup">
+                    ${Helpers.getClassGroups().map(g => `<option value="${g}" ${g === s.classGroup ? 'selected' : ''}>${g}</option>`).join('')}
+                </select>
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>حرف الفصل</label>
+                <select id="editStudentClass">
+                    ${Helpers.getClassLetters().map(l => `<option value="${l}" ${l === s.class ? 'selected' : ''}>${l}</option>`).join('')}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>رتبة الشماسية</label>
+                <select id="editStudentDeacon">
+                    ${Helpers.getDeaconRanks().map(r => `<option value="${r}" ${r === s.deaconRank ? 'selected' : ''}>${r}</option>`).join('')}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>رقم هاتف 1</label>
+            <input type="tel" id="editStudentPhone1" value="${s.phone1 || ''}">
+        </div>
+        <div class="form-group">
+            <label>رقم هاتف 2</label>
+            <input type="tel" id="editStudentPhone2" value="${s.phone2 || ''}">
+        </div>
+        <div class="form-group">
+            <label>العنوان</label>
+            <input type="text" id="editStudentAddress" value="${s.address || ''}">
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="editStudentForm" ${s.formReceived ? 'checked' : ''}>
+            <label for="editStudentForm">تم استلام الاستمارة</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="editStudentPaid" ${s.formPaid ? 'checked' : ''}>
+            <label for="editStudentPaid">تم دفع قيمة الاستمارة</label>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-gold" onclick="updateStudentData('${s.id}')">💾 حفظ</button>
+            <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
+        </div>
+    `);
+}
+
+async function updateStudentData(id) {
+    const updates = {
+        name: document.getElementById('editStudentName').value.trim(),
+        stage: document.getElementById('editStudentStage').value,
+        class: document.getElementById('editStudentClass').value,
+        classGroup: document.getElementById('editStudentClassGroup').value,
+        deaconRank: document.getElementById('editStudentDeacon').value,
+        phone1: document.getElementById('editStudentPhone1').value.trim(),
+        phone2: document.getElementById('editStudentPhone2').value.trim(),
+        address: document.getElementById('editStudentAddress').value.trim(),
+        formReceived: document.getElementById('editStudentForm').checked,
+        formPaid: document.getElementById('editStudentPaid').checked
+    };
+    if (!updates.name) { showToast('الرجاء إدخال الاسم', 'error'); return; }
+
+    try {
+        showLoading('جارٍ الحفظ...');
+        await DB.updateStudent(id, updates);
+        const idx = AppData.students.findIndex(s => s.id === id);
+        if (idx !== -1) AppData.students[idx] = { ...AppData.students[idx], ...updates };
+        closeModal();
+        showToast('✅ تم التحديث');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل التحديث', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+async function deleteStudentConfirm(id) {
+    if (!confirm('هل أنت متأكد من حذف هذا الدارس؟')) return;
+    try {
+        showLoading('جارٍ الحذف...');
+        await DB.deleteStudent(id);
+        AppData.students = AppData.students.filter(s => s.id !== id);
+        showToast('🗑️ تم الحذف');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحذف', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+// ---------- Servants Management ----------
+function openAddServantModal() {
+    showModal(`
+        <h3>👨‍🏫 إضافة خادم جديد</h3>
+        <div class="form-group">
+            <label>اسم الخادم *</label>
+            <input type="text" id="addServantName">
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>كود الخادم *</label>
+                <input type="text" id="addServantCode" placeholder="S004" style="text-transform: uppercase;">
+            </div>
+            <div class="form-group">
+                <label>كلمة المرور *</label>
+                <input type="text" id="addServantPassword">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>الفصل</label>
+            <select id="addServantClassGroup">
+                <option value="الكل">الكل</option>
+                ${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>الدور</label>
+            <select id="addServantRole">
+                <option value="خادم غياب">خادم غياب</option>
+                <option value="خادم تقييم">خادم تقييم</option>
+                <option value="أمين مرحلة">أمين مرحلة</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>الصلاحيات</label>
+            <div>
+                <label><input type="checkbox" value="attendance" checked> تسجيل الحضور</label><br>
+                <label><input type="checkbox" value="grades"> إدخال الدرجات</label><br>
+                <label><input type="checkbox" value="assignments"> تقييم الواجبات</label><br>
+                <label><input type="checkbox" value="students"> عرض الطلاب</label><br>
+                <label><input type="checkbox" value="reports"> التقارير</label>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-gold" onclick="saveNewServant()">💾 حفظ</button>
+            <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
+        </div>
+    `);
+}
+
+async function saveNewServant() {
+    const name = document.getElementById('addServantName').value.trim();
+    const code = document.getElementById('addServantCode').value.trim().toUpperCase();
+    const password = document.getElementById('addServantPassword').value.trim();
+
+    if (!name || !code || !password) { showToast('أكمل جميع البيانات', 'error'); return; }
+
+    const permissions = [];
+    document.querySelectorAll('#modalContent input[type="checkbox"]:checked').forEach(cb => permissions.push(cb.value));
+
+    const servant = {
+        id: 'SRV' + Date.now(),
+        name, code, password,
+        classGroup: document.getElementById('addServantClassGroup').value,
+        role: document.getElementById('addServantRole').value,
+        permissions
+    };
+
+    try {
+        showLoading('جارٍ الحفظ...');
+        await DB.addServant(servant);
+        AppData.servants.push(servant);
+        closeModal();
+        showToast('✅ تم إضافة الخادم');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحفظ', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+function openEditServantModal(id) {
+    const s = AppData.servants.find(x => x.id === id);
+    if (!s) return;
+    showModal(`
+        <h3>✏️ تعديل بيانات الخادم</h3>
+        <div class="form-group">
+            <label>اسم الخادم</label>
+            <input type="text" id="editServantName" value="${s.name}">
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>كود الخادم</label>
+                <input type="text" id="editServantCode" value="${s.code}" style="text-transform: uppercase;">
+            </div>
+            <div class="form-group">
+                <label>كلمة المرور</label>
+                <input type="text" id="editServantPassword" value="${s.password}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>الفصل</label>
+            <select id="editServantClassGroup">
+                <option value="الكل" ${s.classGroup === 'الكل' ? 'selected' : ''}>الكل</option>
+                ${Helpers.getClassGroups().map(g => `<option value="${g}" ${g === s.classGroup ? 'selected' : ''}>${g}</option>`).join('')}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>الدور</label>
+            <select id="editServantRole">
+                ${['خادم غياب', 'خادم تقييم', 'أمين مرحلة'].map(r =>
+                    `<option value="${r}" ${r === s.role ? 'selected' : ''}>${r}</option>`
+                ).join('')}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>الصلاحيات</label>
+            <div>
+                ${['attendance', 'grades', 'assignments', 'students', 'reports'].map(p => `
+                    <label><input type="checkbox" value="${p}" ${(s.permissions || []).includes(p) ? 'checked' : ''}> ${
+                        p === 'attendance' ? 'تسجيل الحضور' :
+                        p === 'grades' ? 'إدخال الدرجات' :
+                        p === 'assignments' ? 'تقييم الواجبات' :
+                        p === 'students' ? 'عرض الطلاب' : 'التقارير'
+                    }</label><br>
+                `).join('')}
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-gold" onclick="updateServantData('${s.id}')">💾 حفظ</button>
+            <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
+        </div>
+    `);
+}
+
+async function updateServantData(id) {
+    const permissions = [];
+    document.querySelectorAll('#modalContent input[type="checkbox"]:checked').forEach(cb => permissions.push(cb.value));
+
+    const updates = {
+        name: document.getElementById('editServantName').value.trim(),
+        code: document.getElementById('editServantCode').value.trim().toUpperCase(),
+        password: document.getElementById('editServantPassword').value.trim(),
+        classGroup: document.getElementById('editServantClassGroup').value,
+        role: document.getElementById('editServantRole').value,
+        permissions
+    };
+
+    try {
+        showLoading('جارٍ الحفظ...');
+        await DB.updateServant(id, updates);
+        const idx = AppData.servants.findIndex(s => s.id === id);
+        if (idx !== -1) AppData.servants[idx] = { ...AppData.servants[idx], ...updates };
+        closeModal();
+        showToast('✅ تم التحديث');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل التحديث', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+async function deleteServantConfirm(id) {
+    if (!confirm('هل أنت متأكد من حذف هذا الخادم؟')) return;
+    try {
+        showLoading('جارٍ الحذف...');
+        await DB.deleteServant(id);
+        AppData.servants = AppData.servants.filter(s => s.id !== id);
+        showToast('🗑️ تم الحذف');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحذف', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+// ---------- Backup & Settings ----------
+function exportData() {
+    const data = {
+        students: AppData.students,
+        servants: AppData.servants,
+        attendance: AppData.attendance,
+        assignments: AppData.assignments,
+        settings: AppData.settings,
+        exportedAt: new Date().toISOString()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `habib_backup_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('📤 تم التصدير');
+}
+
+async function saveSettings() {
+    const settings = {
+        termStart: document.getElementById('settingsStart').value,
+        termEnd: document.getElementById('settingsEnd').value,
+        totalWeeks: parseInt(document.getElementById('settingsWeeks').value) || 15,
+        currentWeek: parseInt(document.getElementById('settingsCurrentWeek').value) || 1
+    };
+    try {
+        showLoading('جارٍ الحفظ...');
+        await DB.setSettings(settings);
+        AppData.settings = settings;
+        showToast('✅ تم حفظ الإعدادات');
+        renderApp();
+    } catch (e) {
+        showToast('❌ فشل الحفظ', 'error');
+    } finally {
+        hideLoading();
+    }
+}
+
+// ============================================================
+// 10. Main Render
+// ============================================================
+function renderApp() {
+    const app = document.getElementById('appContainer');
+    const navLogin = document.getElementById('navLoginBtn');
+    const navDash = document.getElementById('navDashBtn');
+    const navLogout = document.getElementById('navLogoutBtn');
+
+    const user = State.currentUser;
+    if (user) {
+        navLogin.classList.add('hidden');
+        navDash.classList.remove('hidden');
+        navLogout.classList.remove('hidden');
+        navDash.textContent = user.type === 'student' ? '👨‍🎓 لوحتي' :
+                              user.type === 'servant' ? '👨‍🏫 لوحة الخادم' : '👨‍💼 لوحة التحكم';
+    } else {
+        navLogin.classList.remove('hidden');
+        navDash.classList.add('hidden');
+        navLogout.classList.add('hidden');
+    }
+
+    document.querySelectorAll('#mainNav button[data-page]').forEach(b => b.classList.remove('active'));
+    const activeNav = document.querySelector(`#mainNav button[data-page="${State.currentPage}"]`);
+    if (activeNav) activeNav.classList.add('active');
+
+    switch (State.currentPage) {
+        case 'home': app.innerHTML = renderHome(); break;
+        case 'login':
+            app.innerHTML = renderLogin();
+            document.querySelectorAll('#loginTabs button').forEach(btn => {
+                btn.addEventListener('click', function() { switchLoginTab(this.dataset.role); });
+            });
+            break;
+        case 'dashboard':
+            if (!user) { State.setPage('login'); return; }
+            if (user.type === 'student') {
+                app.innerHTML = renderStudentDashboard();
+                document.querySelectorAll('#studentTabs button').forEach(btn => {
+                    btn.addEventListener('click', function() { State.setTab(this.dataset.tab); });
+                });
+            } else if (user.type === 'servant') {
+                app.innerHTML = renderServantDashboard();
+                document.querySelectorAll('#servantTabs button').forEach(btn => {
+                    btn.addEventListener('click', function() { State.setTab(this.dataset.tab); });
+                });
+            } else if (user.type === 'admin') {
+                app.innerHTML = renderAdminDashboard();
+                document.querySelectorAll('#adminTabs button').forEach(btn => {
+                    btn.addEventListener('click', function() { State.setTab(this.dataset.tab); });
+                });
+            }
+            break;
+        default: app.innerHTML = renderHome();
+    }
+
+    document.querySelectorAll('#mainNav button[data-page]').forEach(btn => {
+        btn.addEventListener('click', function() { State.setPage(this.dataset.page); });
+    });
+}
+
+// ============================================================
+// 11. Initialization
+// ============================================================
+async function init() {
+    // 1. إعداد مراقبة الاتصال
+    ConnectionState.init();
+
+    // 2. استعادة الجلسة
+    const session = DB.getSession();
+    if (session) State.currentUser = session;
+
+    // 3. ربط أحداث التنقل
+    document.getElementById('navLogoutBtn').addEventListener('click', () => State.logout());
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    // 4. تحميل البيانات من Firebase
+    await AppData.loadAll();
+
+    // 5. العرض الأولي
+    renderApp();
+
+    showToast('✅ تم الاتصال بـ Firebase بنجاح');
+}
+
+// تشغيل التطبيق
+document.addEventListener('DOMContentLoaded', init);
+
+// ============================================================
+// 12. Global Exports (للاستخدام في onclick)
+// ============================================================
+window.State = State;
+window.handleLogin = handleLogin;
+window.switchLoginTab = switchLoginTab;
+window.saveBulkAttendance = saveBulkAttendance;
+window.saveVisitation = saveVisitation;
+window.adminSetAttendance = adminSetAttendance;
+window.changeAdminWeek = changeAdminWeek;
+window.openAddAssignmentModal = openAddAssignmentModal;
+window.saveAssignment = saveAssignment;
+window.openEvaluateModal = openEvaluateModal;
+window.saveEvaluation = saveEvaluation;
+window.openAddStudentModal = openAddStudentModal;
+window.saveNewStudent = saveNewStudent;
+window.openEditStudentModal = openEditStudentModal;
+window.updateStudentData = updateStudentData;
+window.deleteStudentConfirm = deleteStudentConfirm;
+window.openAddServantModal = openAddServantModal;
+window.saveNewServant = saveNewServant;
+window.openEditServantModal = openEditServantModal;
+window.updateServantData = updateServantData;
+window.deleteServantConfirm = deleteServantConfirm;
+window.exportData = exportData;
+window.saveSettings = saveSettings;
+window.closeModal = closeModal;
+window.showToast = showToast;
+</script>
+</body>
+</html>
