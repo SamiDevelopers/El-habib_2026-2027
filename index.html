@@ -52,7 +52,6 @@
             margin: 8px 0 18px 0; border-radius: 4px;
         }
 
-        /* ===== الهيدر ===== */
         header {
             background: var(--navy); color: var(--white);
             padding: 14px 24px; display: flex;
@@ -77,7 +76,6 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 24px 20px; width: 100%; flex: 1; }
 
-        /* ===== الأزرار ===== */
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
             gap: 8px; padding: 10px 24px; border-radius: 30px; border: none;
@@ -103,7 +101,6 @@
         }
         .btn-print:hover { background: linear-gradient(135deg, #0d47a1, #002171); transform: translateY(-2px); }
 
-        /* ===== الكروت ===== */
         .card {
             background: var(--white); border-radius: var(--radius);
             padding: 22px 24px; box-shadow: var(--shadow);
@@ -120,7 +117,6 @@
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
 
-        /* ===== الصفحة الرئيسية ===== */
         .hero {
             text-align: center; padding: 50px 20px 40px;
             background: linear-gradient(135deg, rgba(11,31,58,0.03), rgba(201,162,39,0.06));
@@ -149,7 +145,6 @@
         .vision-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 8px; }
         .vision-card p { font-size: 0.92rem; color: #555; }
 
-        /* ===== تسجيل الدخول ===== */
         .login-box {
             max-width: 440px; margin: 40px auto; background: var(--white);
             border-radius: var(--radius); padding: 36px 32px;
@@ -203,7 +198,6 @@
             border-right: 4px solid var(--info);
         }
 
-        /* ===== لوحة التحكم ===== */
         .dashboard-header {
             background: var(--navy); color: var(--white);
             border-radius: var(--radius); padding: 24px 28px; margin-bottom: 24px;
@@ -271,7 +265,6 @@
         .badge-warning { background: #fff8e1; color: #e65100; }
         .badge-info { background: #e3f2fd; color: #0d47a1; }
 
-        /* ===== Modal ===== */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(11, 31, 58, 0.6); backdrop-filter: blur(4px);
@@ -281,7 +274,7 @@
         .modal-overlay.show { display: flex; }
         .modal {
             background: var(--white); border-radius: var(--radius);
-            padding: 28px 26px; max-width: 600px; width: 100%;
+            padding: 28px 26px; max-width: 650px; width: 100%;
             max-height: 90vh; overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             border-top: 5px solid var(--gold);
@@ -291,7 +284,6 @@
         .modal h3 { color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
         .modal-actions { display: flex; gap: 10px; justify-content: flex-start; margin-top: 20px; flex-wrap: wrap; }
 
-        /* ===== الفوتر ===== */
         footer {
             background: var(--navy); color: rgba(245, 241, 230, 0.7);
             text-align: center; padding: 20px; font-size: 0.85rem;
@@ -299,7 +291,6 @@
         }
         footer .gold { color: var(--gold); }
 
-        /* ===== Toast ===== */
         .toast-container {
             position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
             z-index: 3000; display: flex; flex-direction: column;
@@ -316,7 +307,6 @@
         .toast.error { border-color: var(--danger); }
         .toast.info { border-color: var(--info); }
 
-        /* ===== Loading ===== */
         .loading-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(245, 241, 230, 0.9); display: none;
@@ -332,7 +322,6 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .loading-overlay p { color: var(--navy); font-weight: 600; }
 
-        /* ===== Status Badges ===== */
         .fb-status {
             position: fixed; top: 70px; left: 12px; z-index: 200;
             font-size: 0.7rem; padding: 4px 10px; border-radius: 20px;
@@ -343,7 +332,6 @@
         .fb-status.offline { background: #fdecea; color: var(--danger); }
         .fb-status.syncing { background: #fff8e1; color: #e65100; }
 
-        /* ===== Notes Cards ===== */
         .note-card {
             background: #fff8e1; border-right: 4px solid var(--gold);
             border-radius: var(--radius-sm); padding: 12px 16px;
@@ -365,7 +353,6 @@
             align-items: center; flex-wrap: wrap; gap: 6px;
         }
 
-        /* ===== الإشعارات ===== */
         .notification-bell {
             position: relative;
             background: transparent;
@@ -463,7 +450,6 @@
         .notification-item .ni-text { font-size: 0.85rem; color: #555; margin-bottom: 4px; }
         .notification-item .ni-time { font-size: 0.72rem; color: #999; }
 
-        /* ===== Urgent Toast ===== */
         .urgent-toast {
             position: fixed;
             top: 90px;
@@ -481,7 +467,6 @@
         .urgent-toast.subject-toast {
             background: linear-gradient(135deg, #1565c0, #0d47a1);
             box-shadow: 0 10px 40px rgba(21, 101, 192, 0.4);
-            border-right-color: var(--gold);
         }
         @keyframes slideInRight {
             from { opacity: 0; transform: translateX(100%); }
@@ -502,7 +487,6 @@
         }
         .urgent-toast button:hover { background: rgba(255,255,255,0.35); }
 
-        /* ===== Print Actions ===== */
         .print-actions {
             display: flex;
             gap: 10px;
@@ -510,7 +494,42 @@
             margin-bottom: 16px;
         }
 
-        /* ===== متفرقات ===== */
+        /* Role cards */
+        .role-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 10px;
+            border-right: 5px solid var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .role-option:hover {
+            background: #f9f7f2;
+            transform: translateX(-3px);
+        }
+        .role-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--wine);
+            cursor: pointer;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .role-option .role-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .role-option .role-desc {
+            font-size: 0.78rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
         .text-center { text-align: center; }
         .text-muted { color: #777; font-size: 0.88rem; }
         .mt-1 { margin-top: 8px; }
@@ -536,7 +555,6 @@
             border: 2px solid var(--gold);
         }
 
-        /* ===== Print Media ===== */
         @media print {
             body * { visibility: hidden; }
             .print-area, .print-area * { visibility: visible; }
@@ -547,27 +565,19 @@
                 padding: 20px;
                 background: white;
             }
-
             header, footer, .fb-status, .toast-container,
             .notification-bell, .notification-panel, .urgent-toast,
             .tabs, .btn, .modal-overlay, .loading-overlay,
             .print-actions, .stats-grid { display: none !important; }
-
             .print-header { text-align: center; margin-bottom: 20px; border-bottom: 3px solid #C9A227; padding-bottom: 12px; }
             .print-header h1 { font-size: 1.5rem; color: #0B1F3A; margin-bottom: 6px; }
             .print-header p { color: #555; font-size: 0.9rem; }
             .print-meta { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 0.85rem; color: #555; flex-wrap: wrap; gap: 8px; }
-
             table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: auto; }
             table thead { background: #0B1F3A !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             table thead th { padding: 8px 10px; text-align: right; }
             table tbody td { padding: 6px 10px; border: 1px solid #ddd; }
-            table tbody tr:nth-child(even) { background: #f9f9f9; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-
             .print-footer { margin-top: 24px; text-align: center; font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 12px; }
-
-            .note-card { break-inside: avoid; page-break-inside: avoid; }
-            .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
 
         @media (max-width: 768px) {
@@ -632,8 +642,8 @@
 
 <script type="module">
 /* ============================================================
-   مركز الحبيب للألحان والدراسات القبطية - v6.0
-   نظام الأدوار المتعددة + فلترة الفصول + تواريخ الأسابيع
+   مركز الحبيب للألحان والدراسات القبطية - v7.0
+   نظام الصلاحيات المتكامل
    ============================================================ */
 
 import { initializeApp } from "firebase/app";
@@ -1012,6 +1022,12 @@ const DB = {
         const idx = cache.findIndex(a => a.id === id);
         if (idx !== -1) { cache[idx] = { ...cache[idx], ...updates }; this._cacheSet(this.KEYS.ASSIGNMENTS, cache); }
     },
+    async deleteAssignment(id) {
+        try { await deleteDoc(doc(db, COLLECTIONS.ASSIGNMENTS, id)); }
+        catch (e) { throw e; }
+        const cache = this._cacheGet(this.KEYS.ASSIGNMENTS).filter(a => a.id !== id);
+        this._cacheSet(this.KEYS.ASSIGNMENTS, cache);
+    },
 
     async getSettings() {
         try {
@@ -1143,7 +1159,7 @@ const State = {
 };
 
 // ============================================================
-// 8. Helpers
+// 8. Helpers - النظام الكامل
 // ============================================================
 const Helpers = {
     formatDate(dateStr) {
@@ -1183,13 +1199,10 @@ const Helpers = {
     },
     getClassLetters() { return ['A', 'B', 'C', 'D', 'E', 'F']; },
     getClassGroups() { return ['تمهيدي', 'أولى وثانية', 'ثالثة ورابعة', 'خامسة وسادسة', 'إعدادي - ثانوي', 'شباب وخريجين']; },
-    
-    // ✅ رتب الشماسية مع مراعاة النوع
+
     getDeaconRanks(gender) {
         const base = ['أبصالطس', 'أغنسطس', 'لم يتم الرسامة'];
-        if (gender === 'أنثى') {
-            return [...base, 'غير مطلوب'];
-        }
+        if (gender === 'أنثى') return [...base, 'غير مطلوب'];
         return base;
     },
 
@@ -1209,7 +1222,6 @@ const Helpers = {
         return found ? found.label : '📝 عام';
     },
 
-    // ✅ المواد الأربعة
     getSubjects() {
         return [
             { value: 'rituals', label: 'الطقوس الكنسية', icon: '📖' },
@@ -1223,26 +1235,66 @@ const Helpers = {
         const s = this.getSubjects().find(x => x.value === value);
         return s ? `${s.icon} ${s.label}` : '—';
     },
-    getSubjectIcon(value) {
-        const s = this.getSubjects().find(x => x.value === value);
-        return s ? s.icon : '📚';
-    },
 
-    // ✅ الأدوار الإدارية
+    // ============================================================
+    // ✅ نظام الأدوار الإدارية الجديد
+    // ============================================================
     getServantAdminRoles() {
         return [
-            { value: 'class_supervisor', label: 'خادم مسؤول فصل' },
-            { value: 'admin_academic', label: 'خادم إداري ودراسي' },
-            { value: 'admin_only', label: 'خادم إداري' },
-            { value: 'assistant', label: 'خادم مساعد' }
+            {
+                value: 'class_supervisor',
+                label: '👨‍🏫 مسؤول فصل',
+                description: 'يسجل غياب فصله + يرى درجات كل المواد (قراءة فقط) + يعدل مادته فقط + يسجل الافتقاد',
+                color: '#1976d2'
+            },
+            {
+                value: 'subject_teacher',
+                label: '📚 مسؤول مادة دراسية',
+                description: 'يرى ويعدل درجات مادته فقط في كل الفصول المسندة إليه',
+                color: '#7b1fa2'
+            },
+            {
+                value: 'main_control',
+                label: '🎛️ كنترول أساسي',
+                description: 'يرى كل البيانات + يعدل الغياب والدرجات + يعدل بيانات الدارسين (بدون حذف)',
+                color: '#c62828'
+            },
+            {
+                value: 'admin_control',
+                label: '⚙️ خادم إداري كنترول',
+                description: 'يختار الفصول المسؤولة لتسجيل درجاتها أو غيابها أو تعديلها',
+                color: '#e65100'
+            },
+            {
+                value: 'service_manager',
+                label: '👨‍💼 مسؤول الخدمة',
+                description: 'له كل الصلاحيات في النظام بدون استثناء',
+                color: '#2e7d32'
+            },
+            {
+                value: 'father_priest',
+                label: '⛪ الأب الكاهن المسؤول',
+                description: 'له كل الصلاحيات (مشاهدة + إدارة كاملة)',
+                color: '#6B0F1A'
+            },
+            {
+                value: 'assistant',
+                label: '🤝 خادم مساعد',
+                description: 'صلاحيات محدودة (حضور + مشاهدة فقط)',
+                color: '#9e9e9e'
+            }
         ];
     },
     getServantAdminRoleLabel(value) {
         const found = this.getServantAdminRoles().find(r => r.value === value);
         return found ? found.label : '—';
     },
+    getServantAdminRoleColor(value) {
+        const found = this.getServantAdminRoles().find(r => r.value === value);
+        return found ? found.color : '#666';
+    },
 
-    // ============ أدوار الخادم (الجديد) ============
+    // ============ قراءة الأدوار ============
     getServantSubjects(servant) {
         if (!servant || !servant.subjectSpecialty) return [];
         return Array.isArray(servant.subjectSpecialty) ? servant.subjectSpecialty : [servant.subjectSpecialty];
@@ -1254,14 +1306,97 @@ const Helpers = {
     isSubjectTeacher(servant) {
         return this.getServantSubjects(servant).length > 0;
     },
-    isAdmin(servant) {
-        return this.getServantAdminRoles(servant).length > 0;
-    },
     hasAdminRole(servant, role) {
         return this.getServantAdminRoles(servant).includes(role);
     },
     teachesSubject(servant, subjectValue) {
         return this.getServantSubjects(servant).includes(subjectValue);
+    },
+
+    // ============ فحوصات الأدوار ============
+    isMainControl(servant) {
+        return this.hasAdminRole(servant, 'main_control');
+    },
+    isAdminControl(servant) {
+        return this.hasAdminRole(servant, 'admin_control');
+    },
+    isServiceManager(servant) {
+        return this.hasAdminRole(servant, 'service_manager');
+    },
+    isFatherPriest(servant) {
+        return this.hasAdminRole(servant, 'father_priest');
+    },
+    isClassSupervisor(servant) {
+        return this.hasAdminRole(servant, 'class_supervisor');
+    },
+    isSubjectTeacherRole(servant) {
+        return this.hasAdminRole(servant, 'subject_teacher');
+    },
+    isSuperAdmin(servant) {
+        return this.isServiceManager(servant) || this.isFatherPriest(servant);
+    },
+    canViewAllClasses(servant) {
+        return this.isMainControl(servant) ||
+               this.isAdminControl(servant) ||
+               this.isSuperAdmin(servant);
+    },
+
+    // ============ الصلاحيات الفعلية ============
+    canEditAttendance(servant) {
+        return this.isMainControl(servant) ||
+               this.isAdminControl(servant) ||
+               this.isClassSupervisor(servant) ||
+               this.isSuperAdmin(servant);
+    },
+    canEditGrades(servant, subjectValue = null) {
+        // الكنترول والمسؤولون → كل المواد
+        if (this.isMainControl(servant) ||
+            this.isAdminControl(servant) ||
+            this.isSuperAdmin(servant)) return true;
+
+        // مسؤول المادة أو مسؤول الفصل → مادته فقط
+        if (subjectValue && (this.isSubjectTeacherRole(servant) || this.isClassSupervisor(servant))) {
+            return this.getServantSubjects(servant).includes(subjectValue);
+        }
+
+        return false;
+    },
+    canViewAllGrades(servant) {
+        return this.isMainControl(servant) ||
+               this.isAdminControl(servant) ||
+               this.isClassSupervisor(servant) ||
+               this.isSuperAdmin(servant);
+    },
+    canEditStudents(servant) {
+        return this.isMainControl(servant) || this.isSuperAdmin(servant);
+    },
+    canDeleteStudents(servant) {
+        return this.isSuperAdmin(servant);
+    },
+    canDeleteGrades(servant) {
+        return this.isSuperAdmin(servant);
+    },
+    canViewAllData(servant) {
+        return this.isMainControl(servant) ||
+               this.isAdminControl(servant) ||
+               this.isSuperAdmin(servant);
+    },
+    canViewVisitationNotes(servant) {
+        return this.isClassSupervisor(servant) ||
+               this.isMainControl(servant) ||
+               this.isAdminControl(servant) ||
+               this.isSuperAdmin(servant);
+    },
+    canAddVisitationNotes(servant) {
+        return this.isClassSupervisor(servant) ||
+               this.isAdminControl(servant) ||
+               this.isSuperAdmin(servant);
+    },
+    canPrintReports(servant) {
+        return this.isClassSupervisor(servant) ||
+               this.isMainControl(servant) ||
+               this.isAdminControl(servant) ||
+               this.isSuperAdmin(servant);
     },
 
     // ============ تواريخ الأسابيع ============
@@ -1271,8 +1406,8 @@ const Helpers = {
         const start = new Date(settings.termStart);
         const weekDate = new Date(start);
         weekDate.setDate(start.getDate() + (weekNumber - 1) * 7);
-        return weekDate.toLocaleDateString('ar-EG', { 
-            year: 'numeric', month: 'long', day: 'numeric' 
+        return weekDate.toLocaleDateString('ar-EG', {
+            year: 'numeric', month: 'long', day: 'numeric'
         });
     },
     getWeekDateShort(weekNumber) {
@@ -1281,17 +1416,16 @@ const Helpers = {
         const start = new Date(settings.termStart);
         const weekDate = new Date(start);
         weekDate.setDate(start.getDate() + (weekNumber - 1) * 7);
-        return weekDate.toLocaleDateString('ar-EG', { 
-            month: 'long', day: 'numeric' 
+        return weekDate.toLocaleDateString('ar-EG', {
+            month: 'long', day: 'numeric'
         });
     },
 
-    // ============ إحصائيات الفصل ============
+    // ============ الإحصائيات ============
     getClassStatistics(classGroup) {
-        const students = AppData.students.filter(s => 
+        const students = AppData.students.filter(s =>
             classGroup === 'all' || s.classGroup === classGroup
         );
-        
         return {
             total: students.length,
             males: students.filter(s => s.gender === 'ذكر').length,
@@ -1303,24 +1437,21 @@ const Helpers = {
         };
     },
 
-    // ============ إحصائيات الحضور ============
     getAttendanceStats(classGroup = 'all', week = null) {
-        const students = AppData.students.filter(s => 
+        const students = AppData.students.filter(s =>
             classGroup === 'all' || s.classGroup === classGroup
         );
         const studentIds = new Set(students.map(s => s.id));
-        
-        let attendance = AppData.attendance.filter(a => 
+
+        let attendance = AppData.attendance.filter(a =>
             studentIds.has(a.studentId) && a.type !== 'visitation'
         );
-        
-        if (week !== null) {
-            attendance = attendance.filter(a => a.week === week);
-        }
-        
+
+        if (week !== null) attendance = attendance.filter(a => a.week === week);
+
         const present = attendance.filter(a => a.status === 'present').length;
         const absent = attendance.filter(a => a.status === 'absent').length;
-        
+
         return {
             studentsCount: students.length,
             present,
@@ -1328,13 +1459,6 @@ const Helpers = {
             totalRecords: attendance.length,
             percentage: attendance.length > 0 ? Math.round((present / attendance.length) * 100) : 0
         };
-    },
-
-    // ============ هل الخادم مسؤول فصل؟ ============
-    isClassSupervisor(servant) {
-        if (!servant) return false;
-        const roles = this.getServantAdminRoles(servant);
-        return roles.includes('class_supervisor');
     },
 
     generateServantCode() {
@@ -1563,14 +1687,13 @@ const NotificationManager = {
         if (!bell || !dot) return;
 
         const user = State.currentUser;
-        const showBell = user && (user.type === 'admin' ||
-            Helpers.isClassSupervisor(user.data) ||
-            Helpers.isSubjectTeacher(user.data));
+        const showBell = user && user.type === 'admin' ||
+            (user.type === 'servant' && (
+                Helpers.canViewVisitationNotes(user.data) ||
+                Helpers.isSubjectTeacher(user.data)
+            ));
 
-        if (!showBell) {
-            bell.classList.add('hidden');
-            return;
-        }
+        if (!showBell) { bell.classList.add('hidden'); return; }
         bell.classList.remove('hidden');
 
         const total = this.urgentUnreadCount + this.subjectUnreadCount;
@@ -1606,15 +1729,10 @@ const NotificationManager = {
         const panel = document.getElementById('notificationPanel');
         if (!panel) return;
         panel.classList.toggle('show');
-        if (panel.classList.contains('show')) {
-            this.renderPanel();
-        }
+        if (panel.classList.contains('show')) this.renderPanel();
     },
 
-    switchTab(tab) {
-        this.activeTab = tab;
-        this.renderPanel();
-    },
+    switchTab(tab) { this.activeTab = tab; this.renderPanel(); },
 
     getNotificationsForUser() {
         const user = State.currentUser;
@@ -1699,9 +1817,7 @@ const NotificationManager = {
     },
 
     renderUrgentList(urgent) {
-        if (urgent.length === 0) {
-            return '<div class="empty-state"><span class="icon">🔔</span>لا توجد ملاحظات عاجلة</div>';
-        }
+        if (urgent.length === 0) return '<div class="empty-state"><span class="icon">🔔</span>لا توجد ملاحظات عاجلة</div>';
         return urgent.map(n => {
             const st = AppData.students.find(s => s.id === n.studentId);
             return `
@@ -1715,9 +1831,7 @@ const NotificationManager = {
     },
 
     renderSubjectsList(subjects) {
-        if (subjects.length === 0) {
-            return '<div class="empty-state"><span class="icon">📭</span>لا توجد واجبات جديدة في تخصصك</div>';
-        }
+        if (subjects.length === 0) return '<div class="empty-state"><span class="icon">📭</span>لا توجد واجبات جديدة في تخصصك</div>';
         return subjects.map(a => {
             const st = AppData.students.find(s => s.id === a.studentId);
             return `
@@ -1771,7 +1885,7 @@ function viewSubjectAssignment(assignmentId) {
 }
 
 // ============================================================
-// 11. Print Functions
+// 11. Print Functions (مختصرة للتركيز على المهم)
 // ============================================================
 function printStudentVisitationReport(studentId) {
     const student = AppData.students.find(s => s.id === studentId);
@@ -1787,14 +1901,8 @@ function printStudentVisitationReport(studentId) {
 
     const attendance = AppData.attendance.filter(a => a.studentId === studentId && a.type !== 'visitation');
     const present = attendance.filter(a => a.status === 'present').length;
-    const absent = attendance.filter(a => a.status === 'absent').length;
     const totalWeeks = AppData.settings.totalWeeks || 15;
     const pct = totalWeeks > 0 ? Math.round((present / totalWeeks) * 100) : 0;
-
-    const assignments = AppData.assignments.filter(a => a.studentId === studentId);
-    const evaluated = assignments.filter(a => a.status === 'evaluated');
-    const totalScore = evaluated.reduce((s, a) => s + (a.score || 0), 0);
-    const avgScore = evaluated.length > 0 ? (totalScore / evaluated.length).toFixed(1) : '—';
 
     const notesHtml = notes.length === 0
         ? '<p style="text-align:center;color:#999;padding:20px;">لا توجد ملاحظات افتقاد مسجلة</p>'
@@ -1807,7 +1915,6 @@ function printStudentVisitationReport(studentId) {
                 <div class="note-body">${Helpers.escapeHtml(n.text)}</div>
                 <div class="note-footer">
                     <span>👨‍🏫 ${n.servantName || 'خادم'}</span>
-                    <span>🏫 ${n.classGroup || '—'}</span>
                 </div>
             </div>
         `).join('');
@@ -1816,46 +1923,14 @@ function printStudentVisitationReport(studentId) {
         <div class="print-area">
             <div class="print-header">
                 <h1>☩ مركز الحبيب للألحان والدراسات القبطية ☩</h1>
-                <p>تقرير الافتقاد الشامل للدارس</p>
+                <p>تقرير الافتقاد - ${student.name}</p>
             </div>
             <div class="print-meta">
-                <span><strong>الدارس:</strong> ${student.name}</span>
                 <span><strong>الكود:</strong> ${student.id}</span>
+                <span><strong>الفصل:</strong> ${student.classGroup}</span>
+                <span><strong>الحضور:</strong> ${present}/${totalWeeks} (${pct}%)</span>
             </div>
-            <div class="print-meta">
-                <span><strong>المرحلة:</strong> ${student.stage}</span>
-                <span><strong>الفصل:</strong> ${student.class} - ${student.classGroup}</span>
-            </div>
-            <div class="print-meta">
-                <span><strong>التاريخ:</strong> ${new Date().toLocaleDateString('ar-EG')}</span>
-                <span><strong>عدد الملاحظات:</strong> ${notes.length}</span>
-            </div>
-
-            <h3 style="margin: 20px 0 10px; color: #0B1F3A; border-bottom: 2px solid #C9A227; padding-bottom: 6px;">
-                📊 ملخص الأداء
-            </h3>
-            <table style="min-width:auto;">
-                <thead>
-                    <tr><th>الحضور</th><th>الغياب</th><th>النسبة</th><th>متوسط الدرجات</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>${present} / ${totalWeeks}</td>
-                        <td>${absent}</td>
-                        <td>${pct}%</td>
-                        <td>${avgScore} / 10</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3 style="margin: 20px 0 10px; color: #0B1F3A; border-bottom: 2px solid #C9A227; padding-bottom: 6px;">
-                📔 ملاحظات الافتقاد
-            </h3>
             ${notesHtml}
-
-            <div class="print-footer">
-                تم إنشاء التقرير بتاريخ ${new Date().toLocaleString('ar-EG')} — مركز الحبيب للألحان
-            </div>
         </div>
     `;
     openPrintWindow(html, `تقرير_${student.name}`);
@@ -1873,77 +1948,36 @@ function printAllVisitationReports() {
                 const db_ = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt);
                 return da - db_;
             });
-
-        const attendance = AppData.attendance.filter(a => a.studentId === student.id && a.type !== 'visitation');
-        const present = attendance.filter(a => a.status === 'present').length;
-        const totalWeeks = AppData.settings.totalWeeks || 15;
-        const pct = totalWeeks > 0 ? Math.round((present / totalWeeks) * 100) : 0;
-
         const notesHtml = notes.length === 0
             ? '<p style="text-align:center;color:#999;padding:10px;">لا توجد ملاحظات</p>'
             : notes.map(n => `
-                <div class="note-card" style="margin-bottom:8px;padding:8px 12px;">
+                <div class="note-card" style="margin-bottom:8px;">
                     <div class="note-header" style="font-size:0.8rem;">
                         <span><strong>الأسبوع ${n.week}</strong> - ${Helpers.getCategoryLabel(n.category)}</span>
-                        <span>${Helpers.formatDate(n.createdAt)}</span>
                     </div>
                     <div class="note-body" style="font-size:0.85rem;">${Helpers.escapeHtml(n.text)}</div>
-                    <div class="note-footer" style="font-size:0.72rem;">
-                        <span>👨‍🏫 ${n.servantName || 'خادم'}</span>
-                    </div>
                 </div>
             `).join('');
-
         return `
-            <div class="print-area" style="page-break-after:always;margin-bottom:30px;">
-                <div class="print-header">
-                    <h1 style="font-size:1.3rem;">☩ تقرير افتقاد: ${student.name}</h1>
-                </div>
-                <div class="print-meta">
-                    <span><strong>الكود:</strong> ${student.id}</span>
-                    <span><strong>المرحلة:</strong> ${student.stage}</span>
-                    <span><strong>الفصل:</strong> ${student.classGroup}</span>
-                </div>
-                <div class="print-meta">
-                    <span><strong>الحضور:</strong> ${present}/${totalWeeks} (${pct}%)</span>
-                    <span><strong>عدد الملاحظات:</strong> ${notes.length}</span>
-                </div>
-                <h4 style="margin:12px 0 8px;color:#0B1F3A;">📔 الملاحظات:</h4>
+            <div class="print-area" style="page-break-after:always;">
+                <h2>${student.name} (${student.id})</h2>
+                <p>الفصل: ${student.classGroup}</p>
                 ${notesHtml}
             </div>
         `;
     }).join('');
 
-    openPrintWindow(pages, 'تقارير_الافتقاد_الشاملة');
+    openPrintWindow(pages, 'تقارير_الافتقاد');
 }
 
 function openPrintWindow(contentHtml, title) {
     const win = window.open('', '_blank');
     if (!win) { showToast('❌ يرجى السماح بالنوافذ المنبثقة', 'error'); return; }
-
     const styles = document.querySelector('style').innerHTML;
-
     win.document.write(`
-        <!DOCTYPE html>
-        <html lang="ar" dir="rtl">
-        <head>
-            <meta charset="UTF-8">
-            <title>${title}</title>
-            <style>
-                ${styles}
-                body { background: white; padding: 0; margin: 0; }
-                .print-area { display: block !important; position: relative !important; }
-            </style>
-        </head>
-        <body>
-            ${contentHtml}
-            <script>
-                window.onload = function() {
-                    setTimeout(() => { window.print(); }, 400);
-                };
-            <\/script>
-        </body>
-        </html>
+        <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>${title}</title>
+        <style>${styles} body { background: white; } .print-area { display: block !important; position: relative !important; }</style>
+        </head><body>${contentHtml}<script>window.onload=function(){setTimeout(()=>window.print(),400);}<\/script></body></html>
     `);
     win.document.close();
 }
@@ -1952,66 +1986,37 @@ function printClassList(classGroup) {
     const students = AppData.students
         .filter(s => classGroup === 'الكل' || s.classGroup === classGroup)
         .sort((a, b) => a.name.localeCompare(b.name, 'ar'));
-
-    if (students.length === 0) { showToast('لا يوجد دارسين في هذا الفصل', 'error'); return; }
+    if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
 
     const stats = Helpers.getClassStatistics(classGroup);
-
     const rows = students.map((s, i) => `
         <tr>
-            <td>${i + 1}</td>
-            <td>${s.name}</td>
-            <td>${s.id}</td>
-            <td>${s.gender || '—'}</td>
-            <td>${s.stage}</td>
-            <td>${s.class}</td>
-            <td>${s.phone1 || '—'}</td>
-            <td>${s.deaconRank || '—'}</td>
-            <td>${s.formReceived ? '✅' : '❌'}</td>
+            <td>${i + 1}</td><td>${s.name}</td><td>${s.id}</td>
+            <td>${s.gender || '—'}</td><td>${s.stage}</td><td>${s.class}</td>
+            <td>${s.phone1 || '—'}</td><td>${s.deaconRank || '—'}</td>
         </tr>
     `).join('');
 
     const html = `
         <div class="print-area">
             <div class="print-header">
-                <h1>☩ مركز الحبيب للألحان والدراسات القبطية ☩</h1>
-                <p>قائمة دارسي فصل: ${classGroup}</p>
+                <h1>☩ قائمة دارسي ${classGroup} ☩</h1>
             </div>
             <div class="print-meta">
-                <span><strong>إجمالي الدارسين:</strong> ${stats.total}</span>
-                <span><strong>ذكور:</strong> ${stats.males} • <strong>إناث:</strong> ${stats.females}</span>
-                <span><strong>أبصالطس:</strong> ${stats.absaltus} • <strong>أغنسطس:</strong> ${stats.aghnostos}</span>
-                <span><strong>التاريخ:</strong> ${new Date().toLocaleDateString('ar-EG')}</span>
+                <span>إجمالي: ${stats.total} • ذكور: ${stats.males} • إناث: ${stats.females}</span>
+                <span>أبصالطس: ${stats.absaltus} • أغنسطس: ${stats.aghnostos}</span>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>الاسم</th>
-                        <th>الكود</th>
-                        <th>النوع</th>
-                        <th>المرحلة</th>
-                        <th>الفصل</th>
-                        <th>الهاتف</th>
-                        <th>الرتبة</th>
-                        <th>الاستمارة</th>
-                    </tr>
-                </thead>
-                <tbody>${rows}</tbody>
-            </table>
-            <div class="print-footer">
-                تم إنشاء القائمة بتاريخ ${new Date().toLocaleString('ar-EG')} — مركز الحبيب
-            </div>
+            <table><thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th><th>الرتبة</th></tr></thead>
+            <tbody>${rows}</tbody></table>
         </div>
     `;
-    openPrintWindow(html, `قائمة_فصل_${classGroup}`);
+    openPrintWindow(html, `قائمة_${classGroup}`);
 }
 
 function printClassAttendanceReport(classGroup, week = null) {
     const students = AppData.students
         .filter(s => classGroup === 'الكل' || s.classGroup === classGroup)
         .sort((a, b) => a.name.localeCompare(b.name, 'ar'));
-
     if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
 
     const totalWeeks = AppData.settings.totalWeeks || 15;
@@ -2019,95 +2024,44 @@ function printClassAttendanceReport(classGroup, week = null) {
     if (week === null) {
         const weeks = Array.from({ length: totalWeeks }, (_, i) => i + 1);
         const headerCols = weeks.map(w => `<th>أ${w}</th>`).join('');
-
         const rows = students.map((s, i) => {
             const attendance = AppData.attendance.filter(a => a.studentId === s.id && a.type !== 'visitation');
             const cells = weeks.map(w => {
                 const rec = attendance.find(a => a.week === w);
                 if (!rec) return '<td style="text-align:center;color:#ccc;">—</td>';
-                return rec.status === 'present'
-                    ? '<td style="text-align:center;color:#2e7d32;font-weight:bold;">✅</td>'
-                    : '<td style="text-align:center;color:#c62828;font-weight:bold;">❌</td>';
+                return rec.status === 'present' ? '<td style="text-align:center;">✅</td>' : '<td style="text-align:center;">❌</td>';
             }).join('');
             const present = attendance.filter(a => a.status === 'present').length;
             const pct = Math.round((present / totalWeeks) * 100);
-            return `<tr>
-                <td>${i + 1}</td>
-                <td>${s.name}</td>
-                ${cells}
-                <td style="text-align:center;font-weight:bold;">${present}/${totalWeeks}</td>
-                <td style="text-align:center;font-weight:bold;">${pct}%</td>
-            </tr>`;
+            return `<tr><td>${i + 1}</td><td>${s.name}</td>${cells}<td>${present}/${totalWeeks}</td><td>${pct}%</td></tr>`;
         }).join('');
 
         const html = `
             <div class="print-area">
-                <div class="print-header">
-                    <h1>☩ كشف الحضور الشامل - ${classGroup} ☩</h1>
-                </div>
-                <div class="print-meta">
-                    <span><strong>الفصل:</strong> ${classGroup}</span>
-                    <span><strong>عدد الدارسين:</strong> ${students.length}</span>
-                    <span><strong>التاريخ:</strong> ${new Date().toLocaleDateString('ar-EG')}</span>
-                </div>
+                <div class="print-header"><h1>☩ كشف الحضور الشامل - ${classGroup} ☩</h1></div>
                 <table style="font-size:0.72rem;">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>الاسم</th>
-                            ${headerCols}
-                            <th>الحضور</th>
-                            <th>%</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>#</th><th>الاسم</th>${headerCols}<th>الحضور</th><th>%</th></tr></thead>
                     <tbody>${rows}</tbody>
                 </table>
-                <div class="print-footer">
-                    أ = الأسبوع • ✅ = حاضر • ❌ = غائب • — = لم يُسجَّل
-                </div>
             </div>
         `;
-        openPrintWindow(html, `كشف_الحضور_${classGroup}`);
+        openPrintWindow(html, `حضور_${classGroup}`);
     } else {
         const weekDate = Helpers.getWeekDate(week);
-        const weekStudents = students.map((s, i) => {
+        const rows = students.map((s, i) => {
             const rec = AppData.attendance.find(a => a.studentId === s.id && a.week === week && a.type !== 'visitation');
-            const status = !rec ? 'لم يسجل' : (rec.status === 'present' ? '✅ حاضر' : '❌ غائب');
-            return `<tr>
-                <td>${i + 1}</td>
-                <td>${s.name}</td>
-                <td>${s.id}</td>
-                <td>${s.class}</td>
-                <td style="text-align:center;">${status}</td>
-            </tr>`;
+            const status = !rec ? '—' : (rec.status === 'present' ? '✅' : '❌');
+            return `<tr><td>${i + 1}</td><td>${s.name}</td><td>${s.class}</td><td>${status}</td></tr>`;
         }).join('');
-
-        const present = students.filter(s => {
-            const rec = AppData.attendance.find(a => a.studentId === s.id && a.week === week && a.type !== 'visitation');
-            return rec && rec.status === 'present';
-        }).length;
 
         const html = `
             <div class="print-area">
-                <div class="print-header">
-                    <h1>☩ كشف حضور الأسبوع ${week} - ${classGroup} ☩</h1>
-                    <p>${weekDate}</p>
-                </div>
-                <div class="print-meta">
-                    <span><strong>الفصل:</strong> ${classGroup}</span>
-                    <span><strong>الأسبوع:</strong> ${week}</span>
-                    <span><strong>التاريخ:</strong> ${weekDate}</span>
-                    <span><strong>الحضور:</strong> ${present}/${students.length}</span>
-                </div>
-                <table>
-                    <thead>
-                        <tr><th>#</th><th>الاسم</th><th>الكود</th><th>الفصل</th><th>الحالة</th></tr>
-                    </thead>
-                    <tbody>${weekStudents}</tbody>
-                </table>
+                <div class="print-header"><h1>☩ حضور الأسبوع ${week} - ${classGroup} ☩</h1><p>${weekDate}</p></div>
+                <table><thead><tr><th>#</th><th>الاسم</th><th>الفصل</th><th>الحالة</th></tr></thead>
+                <tbody>${rows}</tbody></table>
             </div>
         `;
-        openPrintWindow(html, `كشف_حضور_${classGroup}_أسبوع_${week}`);
+        openPrintWindow(html, `حضور_${classGroup}_أسبوع_${week}`);
     }
 }
 
@@ -2115,16 +2069,12 @@ function printClassGradesReport(classGroup, subjectFilter = 'all') {
     const students = AppData.students
         .filter(s => classGroup === 'الكل' || s.classGroup === classGroup)
         .sort((a, b) => a.name.localeCompare(b.name, 'ar'));
-
     if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
 
     const rows = students.map((s, i) => {
         let assignments = AppData.assignments
             .filter(a => a.studentId === s.id && a.status === 'evaluated');
-
-        if (subjectFilter !== 'all') {
-            assignments = assignments.filter(a => a.subject === subjectFilter);
-        }
+        if (subjectFilter !== 'all') assignments = assignments.filter(a => a.subject === subjectFilter);
 
         const bySubject = {};
         assignments.forEach(a => {
@@ -2134,120 +2084,61 @@ function printClassGradesReport(classGroup, subjectFilter = 'all') {
 
         const subjectCells = Helpers.getSubjects().map(sub => {
             const scores = bySubject[sub.value] || [];
-            if (scores.length === 0) return '<td style="text-align:center;color:#ccc;">—</td>';
-            const avg = (scores.reduce((s, v) => s + v, 0) / scores.length).toFixed(1);
-            return `<td style="text-align:center;">${avg}</td>`;
+            if (scores.length === 0) return '<td>—</td>';
+            return `<td>${(scores.reduce((s, v) => s + v, 0) / scores.length).toFixed(1)}</td>`;
         }).join('');
 
         const allScores = assignments.map(a => a.score || 0);
         const total = allScores.reduce((s, v) => s + v, 0);
         const avg = allScores.length > 0 ? (total / allScores.length).toFixed(1) : '—';
 
-        return `<tr>
-            <td>${i + 1}</td>
-            <td>${s.name}</td>
-            <td>${s.id}</td>
-            ${subjectCells}
-            <td style="text-align:center;font-weight:bold;">${total}</td>
-            <td style="text-align:center;font-weight:bold;">${avg}</td>
-        </tr>`;
+        return `<tr><td>${i + 1}</td><td>${s.name}</td><td>${s.id}</td>${subjectCells}<td>${total}</td><td>${avg}</td></tr>`;
     }).join('');
-
-    const subjectTitle = subjectFilter === 'all'
-        ? 'جميع المواد'
-        : Helpers.getSubjectLabel(subjectFilter);
 
     const html = `
         <div class="print-area">
-            <div class="print-header">
-                <h1>☩ كشف التقييمات - ${classGroup} ☩</h1>
-                <p>${subjectTitle}</p>
-            </div>
-            <div class="print-meta">
-                <span><strong>الفصل:</strong> ${classGroup}</span>
-                <span><strong>عدد الدارسين:</strong> ${students.length}</span>
-                <span><strong>التاريخ:</strong> ${new Date().toLocaleDateString('ar-EG')}</span>
-            </div>
+            <div class="print-header"><h1>☩ كشف التقييمات - ${classGroup} ☩</h1></div>
             <table style="font-size:0.75rem;">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>الاسم</th>
-                        <th>الكود</th>
-                        <th>📖 الطقوس</th>
-                        <th>📜 المحفوظات</th>
-                        <th>🔤 القبطية</th>
-                        <th>🎵 الألحان</th>
-                        <th>المجموع</th>
-                        <th>المتوسط</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>📖</th><th>📜</th><th>🔤</th><th>🎵</th><th>المجموع</th><th>المتوسط</th></tr></thead>
                 <tbody>${rows}</tbody>
             </table>
-            <div class="print-footer">
-                الدرجات من 10 — تم إنشاء الكشف بتاريخ ${new Date().toLocaleString('ar-EG')}
-            </div>
         </div>
     `;
-    openPrintWindow(html, `كشف_التقييمات_${classGroup}`);
+    openPrintWindow(html, `تقييمات_${classGroup}`);
 }
 
 function printClassNotesReport(classGroup) {
     const students = AppData.students.filter(s => s.classGroup === classGroup);
     if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
-
     const studentIds = new Set(students.map(s => s.id));
-    const notes = AppData.visitationNotes
-        .filter(n => studentIds.has(n.studentId))
-        .sort((a, b) => {
-            const da = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt);
-            const db_ = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt);
-            return da - db_;
-        });
+    const notes = AppData.visitationNotes.filter(n => studentIds.has(n.studentId));
 
     const byStudent = {};
     students.forEach(s => { byStudent[s.id] = { student: s, notes: [] }; });
-    notes.forEach(n => {
-        if (byStudent[n.studentId]) byStudent[n.studentId].notes.push(n);
-    });
+    notes.forEach(n => { if (byStudent[n.studentId]) byStudent[n.studentId].notes.push(n); });
 
-    const sections = Object.values(byStudent)
-        .filter(item => item.notes.length > 0)
-        .map(item => `
-            <div style="margin-bottom:20px;page-break-inside:avoid;">
-                <h4 style="color:#0B1F3A;border-bottom:2px solid #C9A227;padding-bottom:4px;margin-bottom:8px;">
-                    👤 ${item.student.name} (${item.student.id})
-                </h4>
-                ${item.notes.map(n => `
-                    <div class="note-card" style="margin-bottom:6px;">
-                        <div class="note-header" style="font-size:0.78rem;">
-                            <span><strong>أسبوع ${n.week}</strong> • ${Helpers.getCategoryLabel(n.category)}</span>
-                            <span>${Helpers.formatDate(n.createdAt)}</span>
-                        </div>
-                        <div class="note-body" style="font-size:0.88rem;">${Helpers.escapeHtml(n.text)}</div>
-                        <div class="note-footer" style="font-size:0.72rem;">
-                            <span>👨‍🏫 ${n.servantName || 'خادم'}</span>
-                        </div>
+    const sections = Object.values(byStudent).filter(i => i.notes.length > 0).map(item => `
+        <div style="margin-bottom:20px;">
+            <h4>${item.student.name} (${item.student.id})</h4>
+            ${item.notes.map(n => `
+                <div class="note-card">
+                    <div class="note-header">
+                        <span>أسبوع ${n.week} - ${Helpers.getCategoryLabel(n.category)}</span>
+                        <span>${Helpers.formatDate(n.createdAt)}</span>
                     </div>
-                `).join('')}
-            </div>
-        `).join('');
+                    <div class="note-body">${Helpers.escapeHtml(n.text)}</div>
+                </div>
+            `).join('')}
+        </div>
+    `).join('');
 
     const html = `
         <div class="print-area">
-            <div class="print-header">
-                <h1>☩ تقرير ملاحظات الافتقاد - ${classGroup} ☩</h1>
-            </div>
-            <div class="print-meta">
-                <span><strong>الفصل:</strong> ${classGroup}</span>
-                <span><strong>عدد الدارسين:</strong> ${students.length}</span>
-                <span><strong>عدد الملاحظات:</strong> ${notes.length}</span>
-                <span><strong>التاريخ:</strong> ${new Date().toLocaleDateString('ar-EG')}</span>
-            </div>
-            ${sections || '<p style="text-align:center;color:#999;padding:40px;">لا توجد ملاحظات في هذا الفصل</p>'}
+            <div class="print-header"><h1>☩ ملاحظات ${classGroup} ☩</h1></div>
+            ${sections || '<p>لا توجد ملاحظات</p>'}
         </div>
     `;
-    openPrintWindow(html, `ملاحظات_افتقاد_${classGroup}`);
+    openPrintWindow(html, `ملاحظات_${classGroup}`);
 }
 
 function printWeekReportAll() {
@@ -2258,46 +2149,16 @@ function printWeekReportAll() {
     const sections = classGroups.map(cg => {
         const students = AppData.students.filter(s => s.classGroup === cg);
         if (students.length === 0) return '';
-
         const rows = students.map((s, i) => {
             const rec = AppData.attendance.find(a => a.studentId === s.id && a.week === week && a.type !== 'visitation');
-            const status = !rec ? 'لم يسجل' : (rec.status === 'present' ? '✅ حاضر' : '❌ غائب');
-            return `<tr>
-                <td>${i + 1}</td>
-                <td>${s.name}</td>
-                <td>${s.id}</td>
-                <td>${s.class}</td>
-                <td style="text-align:center;">${status}</td>
-            </tr>`;
+            const status = !rec ? '—' : (rec.status === 'present' ? '✅' : '❌');
+            return `<tr><td>${i + 1}</td><td>${s.name}</td><td>${s.class}</td><td>${status}</td></tr>`;
         }).join('');
-
-        return `
-            <div style="page-break-after:always;margin-bottom:20px;">
-                <h3 style="color:#0B1F3A;text-align:center;margin-bottom:10px;">📋 فصل: ${cg}</h3>
-                <table>
-                    <thead>
-                        <tr><th>#</th><th>الاسم</th><th>الكود</th><th>الفصل</th><th>الحالة</th></tr>
-                    </thead>
-                    <tbody>${rows}</tbody>
-                </table>
-            </div>
-        `;
+        return `<div style="page-break-after:always;"><h3>${cg}</h3><table><thead><tr><th>#</th><th>الاسم</th><th>الفصل</th><th>الحالة</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     }).join('');
 
-    const html = `
-        <div class="print-area">
-            <div class="print-header">
-                <h1>☩ كشف حضور الأسبوع ${week} - كل الفصول ☩</h1>
-                <p>${weekDate}</p>
-            </div>
-            <div class="print-meta">
-                <span><strong>الأسبوع:</strong> ${week}</span>
-                <span><strong>التاريخ:</strong> ${weekDate}</span>
-            </div>
-            ${sections}
-        </div>
-    `;
-    openPrintWindow(html, `حضور_الأسبوع_${week}_كل_الفصول`);
+    const html = `<div class="print-area"><div class="print-header"><h1>☩ حضور الأسبوع ${week} - كل الفصول ☩</h1><p>${weekDate}</p></div>${sections}</div>`;
+    openPrintWindow(html, `حضور_أسبوع_${week}`);
 }
 
 function printWeekReport(classGroup) {
@@ -2318,10 +2179,8 @@ function renderHome() {
                 <span>☩</span> تسجيل الدخول
             </button>
         </section>
-
         <h2 class="section-title">رؤيتنا ورسالتنا</h2>
         <p class="section-sub">نعمل على تربية أجيال واعية بالطقس القبطي الأرثوذكسي</p>
-
         <div class="grid-3 mb-3">
             <div class="vision-card">
                 <span class="icon">👁️</span>
@@ -2338,15 +2197,6 @@ function renderHome() {
                 <h3>أهداف المركز</h3>
                 <p>تعليم الألحان القبطية، دراسة الطقوس، حفظ الأجبية والمزامير، وتنمية المواهب.</p>
             </div>
-        </div>
-
-        <h2 class="section-title">الفئات المستهدفة</h2>
-        <p class="section-sub">نخدم جميع المراحل العمرية</p>
-
-        <div class="grid-4">
-            ${['تمهيدي', 'ابتدائي', 'إعدادي', 'ثانوي', 'شباب', 'خريجين', 'أولياء أمور', 'خدام'].map(g =>
-                `<div class="card text-center"><div style="font-size: 1.6rem; color: var(--gold);">☩</div><strong>${g}</strong></div>`
-            ).join('')}
         </div>
     `;
 }
@@ -2371,7 +2221,6 @@ function renderStudentLoginForm() {
         <div class="form-group">
             <label>كود الدارس</label>
             <input type="text" id="studentCode" placeholder="مثال: DQ34ZA54" style="text-transform: uppercase;">
-            <div class="hint">أدخل الكود المكون من 8 خانات</div>
         </div>
         <button class="btn btn-primary w-100" onclick="handleLogin('student')">دخول</button>
     `;
@@ -2380,7 +2229,7 @@ function renderServantLoginForm() {
     return `
         <div class="form-group">
             <label>كود الخادم</label>
-            <input type="text" id="servantCode" placeholder="مثال: SRV34ZA54" style="text-transform: uppercase;">
+            <input type="text" id="servantCode" placeholder="SRV34ZA54" style="text-transform: uppercase;">
         </div>
         <div class="form-group">
             <label>كلمة المرور</label>
@@ -2393,16 +2242,17 @@ function renderAdminLoginForm() {
     return `
         <div class="form-group">
             <label>اسم المستخدم</label>
-            <input type="text" id="adminUsername" placeholder="أدخل اسم المستخدم">
+            <input type="text" id="adminUsername" placeholder="admin">
         </div>
         <div class="form-group">
             <label>كلمة المرور</label>
-            <input type="password" id="adminPassword" placeholder="أدخل كلمة المرور">
+            <input type="password" id="adminPassword" placeholder="كلمة المرور">
         </div>
         <button class="btn btn-primary w-100" onclick="handleLogin('admin')">دخول</button>
     `;
 }
 
+// ---------- Student Dashboard ----------
 function renderStudentDashboard() {
     const user = State.currentUser;
     if (!user || user.type !== 'student') return '';
@@ -2444,7 +2294,7 @@ function renderStudentProfile(student) {
             <div class="card">
                 <div class="card-title"><span class="icon">👤</span> البيانات الأساسية</div>
                 <div class="gold-line"></div>
-                <table style="min-width: auto; box-shadow: none;">
+                <table style="min-width:auto;box-shadow:none;">
                     <tr><td><strong>الاسم:</strong></td><td>${student.name}</td></tr>
                     <tr><td><strong>الكود:</strong></td><td>${student.id}</td></tr>
                     <tr><td><strong>النوع:</strong></td><td>${student.gender || '—'}</td></tr>
@@ -2454,7 +2304,7 @@ function renderStudentProfile(student) {
             <div class="card">
                 <div class="card-title"><span class="icon">📚</span> البيانات الدراسية</div>
                 <div class="gold-line"></div>
-                <table style="min-width: auto; box-shadow: none;">
+                <table style="min-width:auto;box-shadow:none;">
                     <tr><td><strong>المرحلة:</strong></td><td>${student.stage}</td></tr>
                     <tr><td><strong>الفصل:</strong></td><td>${student.class} - ${student.classGroup}</td></tr>
                     <tr><td><strong>رتبة الشماسية:</strong></td><td>${student.deaconRank || '—'}</td></tr>
@@ -2463,7 +2313,7 @@ function renderStudentProfile(student) {
             <div class="card">
                 <div class="card-title"><span class="icon">📞</span> بيانات الاتصال</div>
                 <div class="gold-line"></div>
-                <table style="min-width: auto; box-shadow: none;">
+                <table style="min-width:auto;box-shadow:none;">
                     <tr><td><strong>هاتف 1:</strong></td><td>${student.phone1 || '—'}</td></tr>
                     <tr><td><strong>هاتف 2:</strong></td><td>${student.phone2 || '—'}</td></tr>
                     <tr><td><strong>العنوان:</strong></td><td>${student.address || '—'}</td></tr>
@@ -2472,12 +2322,11 @@ function renderStudentProfile(student) {
             <div class="card">
                 <div class="card-title"><span class="icon">📋</span> الاستمارة والصور</div>
                 <div class="gold-line"></div>
-                <table style="min-width: auto; box-shadow: none;">
-                    <tr><td><strong>تم الاستلام:</strong></td><td>${student.formReceived ? '✅ نعم' : '❌ لا'}</td></tr>
-                    <tr><td><strong>تم الدفع:</strong></td><td>${student.formPaid ? '✅ نعم' : '❌ لا'}</td></tr>
+                <table style="min-width:auto;box-shadow:none;">
+                    <tr><td><strong>تم الاستلام:</strong></td><td>${student.formReceived ? '✅' : '❌'}</td></tr>
+                    <tr><td><strong>تم الدفع:</strong></td><td>${student.formPaid ? '✅' : '❌'}</td></tr>
                 </table>
-                ${student.personalPhotoUrl ? `<p class="mt-2"><strong>الصورة الشخصية:</strong></p><img src="${student.personalPhotoUrl}" class="file-preview" alt="صورة شخصية">` : ''}
-                ${student.formPhotoUrl ? `<p class="mt-2"><strong>صورة الاستمارة:</strong></p><img src="${student.formPhotoUrl}" class="file-preview" alt="صورة الاستمارة">` : ''}
+                ${student.personalPhotoUrl ? `<p class="mt-2"><strong>الصورة:</strong></p><img src="${student.personalPhotoUrl}" class="file-preview">` : ''}
             </div>
         </div>
     `;
@@ -2485,63 +2334,34 @@ function renderStudentProfile(student) {
 
 function renderStudentGrades(student) {
     const assignments = AppData.assignments.filter(a => a.studentId === student.id);
-
     const bySubject = {};
     Helpers.getSubjects().forEach(sub => {
         bySubject[sub.value] = {
             subject: sub,
             all: assignments.filter(a => a.subject === sub.value),
-            evaluated: assignments.filter(a => a.subject === sub.value && a.status === 'evaluated'),
-            pending: assignments.filter(a => a.subject === sub.value && a.status === 'pending')
+            evaluated: assignments.filter(a => a.subject === sub.value && a.status === 'evaluated')
         };
     });
-
     const totalEvaluated = assignments.filter(a => a.status === 'evaluated').length;
-    const totalPending = assignments.filter(a => a.status === 'pending').length;
-    const totalScore = assignments
-        .filter(a => a.status === 'evaluated' && a.score !== null)
-        .reduce((s, a) => s + a.score, 0);
+    const totalScore = assignments.filter(a => a.status === 'evaluated' && a.score !== null).reduce((s, a) => s + a.score, 0);
     const avg = totalEvaluated > 0 ? (totalScore / totalEvaluated).toFixed(1) : 0;
 
     return `
         <div class="stats-grid">
             <div class="stat-card"><div class="icon">📝</div><div class="num">${assignments.length}</div><div class="lbl">إجمالي الواجبات</div></div>
             <div class="stat-card"><div class="icon">✅</div><div class="num">${totalEvaluated}</div><div class="lbl">تم التقييم</div></div>
-            <div class="stat-card"><div class="icon">⏳</div><div class="num">${totalPending}</div><div class="lbl">قيد الانتظار</div></div>
             <div class="stat-card"><div class="icon">📊</div><div class="num">${totalScore}</div><div class="lbl">المجموع</div></div>
             <div class="stat-card"><div class="icon">⭐</div><div class="num">${avg}</div><div class="lbl">المتوسط</div></div>
         </div>
-
-        <h3 style="color:var(--navy);margin:20px 0 12px;">📚 الدرجات حسب المادة</h3>
         <div class="grid-2">
             ${Object.values(bySubject).map(item => {
                 const subjectScore = item.evaluated.reduce((s, a) => s + (a.score || 0), 0);
                 const subjectAvg = item.evaluated.length > 0 ? (subjectScore / item.evaluated.length).toFixed(1) : '—';
                 return `
-                    <div class="card" style="border-right-color: var(--gold);">
-                        <div class="card-title">
-                            <span class="icon">${item.subject.icon}</span>
-                            ${item.subject.label}
-                        </div>
+                    <div class="card">
+                        <div class="card-title"><span class="icon">${item.subject.icon}</span> ${item.subject.label}</div>
                         <div class="gold-line"></div>
-                        <div class="grid-2" style="gap:10px;">
-                            <div>
-                                <div class="text-muted" style="font-size:0.8rem;">الواجبات</div>
-                                <div style="font-size:1.2rem;font-weight:700;">${item.all.length}</div>
-                            </div>
-                            <div>
-                                <div class="text-muted" style="font-size:0.8rem;">تم التقييم</div>
-                                <div style="font-size:1.2rem;font-weight:700;color:var(--success);">${item.evaluated.length}</div>
-                            </div>
-                            <div>
-                                <div class="text-muted" style="font-size:0.8rem;">قيد الانتظار</div>
-                                <div style="font-size:1.2rem;font-weight:700;color:var(--warning);">${item.pending.length}</div>
-                            </div>
-                            <div>
-                                <div class="text-muted" style="font-size:0.8rem;">المتوسط</div>
-                                <div style="font-size:1.2rem;font-weight:700;color:var(--wine);">${subjectAvg}</div>
-                            </div>
-                        </div>
+                        <p>الواجبات: ${item.all.length} • تم التقييم: ${item.evaluated.length} • المتوسط: <strong>${subjectAvg}</strong></p>
                     </div>
                 `;
             }).join('')}
@@ -2554,7 +2374,6 @@ function renderStudentAttendance(student) {
     const attendance = AppData.attendance.filter(a => a.studentId === student.id && a.type !== 'visitation');
     const present = attendance.filter(a => a.status === 'present').length;
     const absent = attendance.filter(a => a.status === 'absent').length;
-    const pending = Math.max(0, totalWeeks - attendance.length);
     const pct = Helpers.percentage(present, totalWeeks);
     const status = Helpers.attendanceStatus(pct);
 
@@ -2572,12 +2391,10 @@ function renderStudentAttendance(student) {
             <div class="stat-card"><div class="icon">📅</div><div class="num">${totalWeeks}</div><div class="lbl">إجمالي الأسابيع</div></div>
             <div class="stat-card"><div class="icon">✅</div><div class="num">${present}</div><div class="lbl">حضور</div></div>
             <div class="stat-card"><div class="icon">❌</div><div class="num">${absent}</div><div class="lbl">غياب</div></div>
-            <div class="stat-card"><div class="icon">⏳</div><div class="num">${pending}</div><div class="lbl">لم يسجل</div></div>
             <div class="stat-card"><div class="icon">📊</div><div class="num">${pct}%</div><div class="lbl">النسبة</div></div>
-            <div class="stat-card"><div class="icon">${status.icon}</div><div class="num" style="font-size:1.2rem;">${status.label}</div><div class="lbl">التقييم</div></div>
         </div>
         <div class="card mt-2">
-            <div class="card-title"><span class="icon">📅</span> سجل الحضور الأسبوعي</div>
+            <div class="card-title"><span class="icon">📅</span> سجل الحضور</div>
             <div class="gold-line"></div>
             <div class="table-wrap">
                 <table><thead><tr><th>الأسبوع</th><th>التاريخ</th><th>الحالة</th></tr></thead>
@@ -2591,57 +2408,36 @@ function renderStudentAssignments(student) {
     const assignments = AppData.assignments.filter(a => a.studentId === student.id);
     const allowed = Helpers.isSubmissionAllowed();
 
-    const grouped = {};
-    Helpers.getSubjects().forEach(s => { grouped[s.value] = []; });
-    assignments.forEach(a => {
-        if (!grouped[a.subject]) grouped[a.subject] = [];
-        grouped[a.subject].push(a);
-    });
-
     return `
         <div class="flex-between mb-2">
-            <h3 style="color: var(--navy);">📝 واجباتي</h3>
+            <h3>📝 واجباتي</h3>
             <button class="btn btn-gold btn-sm" onclick="openAddAssignmentModal('${student.id}')" ${!allowed ? 'disabled' : ''}>
                 + إضافة واجب
             </button>
         </div>
-        ${!allowed ? '<div class="error-msg" style="display:block;">⚠️ الإرسال متاح فقط من الجمعة إلى الثلاثاء</div>' : ''}
-
+        ${!allowed ? '<div class="error-msg" style="display:block;">⚠️ الإرسال متاح من الجمعة إلى الثلاثاء فقط</div>' : ''}
         ${assignments.length === 0 ? '<div class="empty-state"><span class="icon">📭</span>لا توجد واجبات</div>' : `
-            ${Helpers.getSubjects().map(sub => {
-                const list = grouped[sub.value] || [];
-                if (list.length === 0) return '';
-                return `
-                    <div class="card mb-2">
-                        <div class="card-title">
-                            <span class="icon">${sub.icon}</span> ${sub.label} (${list.length})
+            <div class="grid-2">
+                ${assignments.map(a => `
+                    <div class="card">
+                        <div class="flex-between mb-1">
+                            <strong>${Helpers.getSubjectLabel(a.subject)}</strong>
+                            ${a.status === 'evaluated' ? Helpers.badge('تم التقييم', 'success') :
+                              a.status === 'pending' ? Helpers.badge('قيد الانتظار', 'warning') :
+                              Helpers.badge('لم يتم', 'danger')}
                         </div>
-                        <div class="gold-line"></div>
-                        <div class="grid-2">
-                            ${list.map(a => `
-                                <div class="card" style="border-right-color: var(--wine);">
-                                    <div class="flex-between mb-1">
-                                        <strong>${a.type === 'text' ? '📄 نص' : a.type === 'image' ? '🖼️ صورة' : '🎤 تسجيل'}</strong>
-                                        ${a.status === 'evaluated' ? Helpers.badge('تم التقييم', 'success') :
-                                          a.status === 'pending' ? Helpers.badge('قيد الانتظار', 'warning') :
-                                          Helpers.badge('لم يتم', 'danger')}
-                                    </div>
-                                    <p style="font-size:0.9rem; color:#555;">${Helpers.escapeHtml(a.content) || '—'}</p>
-                                    ${a.fileUrl ? `<a href="${a.fileUrl}" target="_blank" class="btn btn-outline btn-sm mt-1">📎 عرض المرفق</a>` : ''}
-                                    ${a.score !== null ? `<p class="mt-1"><strong>الدرجة:</strong> ${a.score}/10</p>` : ''}
-                                    ${a.notes ? `<p><strong>ملاحظات:</strong> ${a.notes}</p>` : ''}
-                                    <p class="text-muted" style="font-size:0.8rem;">${Helpers.formatDate(a.submittedAt)}</p>
-                                </div>
-                            `).join('')}
-                        </div>
+                        <p style="font-size:0.9rem;">${Helpers.escapeHtml(a.content) || '—'}</p>
+                        ${a.fileUrl ? `<a href="${a.fileUrl}" target="_blank" class="btn btn-outline btn-sm mt-1">📎 عرض</a>` : ''}
+                        ${a.score !== null ? `<p class="mt-1"><strong>الدرجة:</strong> ${a.score}/10</p>` : ''}
+                        ${a.notes ? `<p><strong>ملاحظات:</strong> ${a.notes}</p>` : ''}
                     </div>
-                `;
-            }).join('')}
+                `).join('')}
+            </div>
         `}
     `;
 }
 
-// ---------- Servant Dashboard (v6 - Dynamic) ----------
+// ---------- Servant Dashboard (نظام الأدوار الجديد) ----------
 function renderServantDashboard() {
     const user = State.currentUser;
     if (!user || user.type !== 'servant') return '';
@@ -2649,63 +2445,87 @@ function renderServantDashboard() {
     const servant = user.data;
     const subjects = Helpers.getServantSubjects(servant);
     const adminRoles = Helpers.getServantAdminRoles(servant);
-    const isAdmin = adminRoles.length > 0;
-    const isTeacher = subjects.length > 0;
+    const isSuperAdmin = Helpers.isSuperAdmin(servant);
+    const isMainControl = Helpers.isMainControl(servant);
+    const isAdminControl = Helpers.isAdminControl(servant);
+    const isClassSupervisor = Helpers.isClassSupervisor(servant);
+    const isSubjectTeacher = Helpers.isSubjectTeacher(servant);
 
-    const isControlAdmin = servant.classGroup === 'الكل' || adminRoles.includes('admin_academic');
+    // تحديد الفصول المتاحة
+    let students;
+    if (isSuperAdmin || isMainControl || isAdminControl || servant.classGroup === 'الكل') {
+        students = AppData.students;
+    } else {
+        students = AppData.students.filter(s => s.classGroup === servant.classGroup);
+    }
 
-    const students = AppData.students.filter(s => 
-        isControlAdmin || servant.classGroup === 'الكل' || s.classGroup === servant.classGroup
-    );
-
+    // بناء التبويبات
     const availableTabs = [];
 
-    // تبويب الحضور
-    if (isAdmin || servant.classGroup !== 'الكل') {
+    // الحضور
+    if (Helpers.canEditAttendance(servant)) {
         availableTabs.push({ key: 'attendance', label: 'تسجيل الحضور', icon: '📋' });
     }
 
-    // تبويبات المواد
-    subjects.forEach(subjectValue => {
-        const subject = Helpers.getSubjects().find(s => s.value === subjectValue);
-        if (subject) {
-            availableTabs.push({ 
-                key: `subject_${subjectValue}`, 
-                label: `تقييم ${subject.label}`, 
-                icon: subject.icon 
-            });
-        }
-    });
+    // مواد التخصص (لو مدرس)
+    if (isSubjectTeacher) {
+        subjects.forEach(subjectValue => {
+            const subject = Helpers.getSubjects().find(s => s.value === subjectValue);
+            if (subject) {
+                availableTabs.push({
+                    key: `subject_${subjectValue}`,
+                    label: `تقييم ${subject.label}`,
+                    icon: subject.icon
+                });
+            }
+        });
+    }
 
-    // تبويب النظرة العامة
-    if (isAdmin && (adminRoles.includes('class_supervisor') || adminRoles.includes('admin_academic'))) {
+    // نظرة عامة على الدرجات (لمسؤول الفصل / الكنترول)
+    if (Helpers.canViewAllGrades(servant)) {
         availableTabs.push({ key: 'grades_overview', label: 'نظرة عامة على الدرجات', icon: '📊' });
     }
 
-    availableTabs.push({ key: 'students', label: 'طلابي', icon: '👥' });
+    // الطلاب
+    if (students.length > 0 || Helpers.canViewAllData(servant)) {
+        availableTabs.push({ key: 'students', label: 'الطلاب', icon: '👥' });
+    }
 
-    if (isAdmin) {
+    // الافتقاد
+    if (Helpers.canAddVisitationNotes(servant)) {
         availableTabs.push({ key: 'visitation', label: 'الافتقاد', icon: '🙏' });
     }
 
-    if (isAdmin && adminRoles.includes('class_supervisor')) {
+    // التقارير
+    if (Helpers.canPrintReports(servant)) {
         availableTabs.push({ key: 'reports', label: 'التقارير', icon: '🖨️' });
     }
 
+    // الحساب
     availableTabs.push({ key: 'account', label: 'حسابي', icon: '🔑' });
 
-    const activeTab = State.getTab() || availableTabs[0]?.key || 'attendance';
+    const activeTab = State.getTab() || availableTabs[0]?.key || 'account';
 
     return `
         <div class="dashboard-header">
             <h2>${Helpers.icon('servant')} مرحباً، ${servant.name}</h2>
             <div class="info">
                 <span>🏫 ${servant.classGroup}</span>
-                <span>👥 ${students.length} طالب</span>
-                ${isTeacher ? `<span>📚 ${subjects.length} مادة</span>` : ''}
-                ${isAdmin ? `<span>⚙️ ${adminRoles.length} دور إداري</span>` : ''}
+                <span>👥 ${students.length} دارس</span>
+                ${subjects.length > 0 ? `<span>📚 ${subjects.length} مادة</span>` : ''}
+                ${adminRoles.length > 0 ? `<span>⚙️ ${adminRoles.length} دور</span>` : ''}
             </div>
         </div>
+
+        ${adminRoles.length > 0 ? `
+            <div class="info-msg" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                <strong>🎯 أدوارك:</strong>
+                ${adminRoles.map(r => {
+                    const role = Helpers.getServantAdminRoles().find(x => x.value === r);
+                    return role ? `<span class="badge" style="background:${role.color};color:white;">${role.label}</span>` : '';
+                }).join('')}
+            </div>
+        ` : ''}
 
         <div class="stats-grid">
             <div class="stat-card">
@@ -2713,24 +2533,22 @@ function renderServantDashboard() {
                 <div class="num">${students.length}</div>
                 <div class="lbl">عدد الطلاب</div>
             </div>
-            ${isTeacher ? `
+            ${isSubjectTeacher ? `
                 <div class="stat-card">
                     <div class="icon">📚</div>
                     <div class="num">${subjects.length}</div>
-                    <div class="lbl">المواد المسندة</div>
-                </div>
-            ` : ''}
-            ${isAdmin ? `
-                <div class="stat-card">
-                    <div class="icon">⚙️</div>
-                    <div class="num">${adminRoles.length}</div>
-                    <div class="lbl">الأدوار الإدارية</div>
+                    <div class="lbl">المواد</div>
                 </div>
             ` : ''}
             <div class="stat-card">
                 <div class="icon">📅</div>
                 <div class="num">${AppData.settings.currentWeek || 1}</div>
                 <div class="lbl">الأسبوع الحالي</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">📊</div>
+                <div class="num">${AppData.settings.totalWeeks || 15}</div>
+                <div class="lbl">إجمالي الأسابيع</div>
             </div>
         </div>
 
@@ -2751,62 +2569,49 @@ function renderServantTabContent(tab, servant, students) {
         const subjectValue = tab.replace('subject_', '');
         return renderSubjectEvaluationTab(servant, students, subjectValue);
     }
-    
+
     switch (tab) {
         case 'attendance': return renderServantAttendance(servant, students);
         case 'grades_overview': return renderGradesOverview(servant, students);
-        case 'students': return renderServantStudents(students);
+        case 'students': return renderServantStudents(servant, students);
         case 'visitation': return renderServantVisitation(servant, students);
         case 'reports': return renderClassReportsTab(servant, students);
         case 'account': return renderServantAccount(servant);
-        default: return renderServantAttendance(servant, students);
+        default: return renderServantAccount(servant);
     }
 }
 
 function renderSubjectEvaluationTab(servant, students, subjectValue) {
     const subject = Helpers.getSubjects().find(s => s.value === subjectValue);
     if (!subject) return '<div class="empty-state">المادة غير موجودة</div>';
-    
+
     const studentIds = new Set(students.map(s => s.id));
-    
-    const assignments = AppData.assignments.filter(a => 
+    const assignments = AppData.assignments.filter(a =>
         studentIds.has(a.studentId) && a.subject === subjectValue
     );
-    
+
     const pending = assignments.filter(a => a.status === 'pending').length;
     const evaluated = assignments.filter(a => a.status === 'evaluated').length;
-    
+
+    // ✅ هل يمكنه التعديل؟
+    const canEdit = Helpers.canEditGrades(servant, subjectValue);
+
     return `
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="icon">${subject.icon}</div>
-                <div class="num">${assignments.length}</div>
-                <div class="lbl">إجمالي الواجبات</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon">⏳</div>
-                <div class="num">${pending}</div>
-                <div class="lbl">قيد الانتظار</div>
-            </div>
-            <div class="stat-card">
-                <div class="icon">✅</div>
-                <div class="num">${evaluated}</div>
-                <div class="lbl">تم التقييم</div>
-            </div>
+            <div class="stat-card"><div class="icon">${subject.icon}</div><div class="num">${assignments.length}</div><div class="lbl">إجمالي الواجبات</div></div>
+            <div class="stat-card"><div class="icon">⏳</div><div class="num">${pending}</div><div class="lbl">قيد الانتظار</div></div>
+            <div class="stat-card"><div class="icon">✅</div><div class="num">${evaluated}</div><div class="lbl">تم التقييم</div></div>
         </div>
-        
+
+        ${!canEdit ? `
+            <div class="info-msg">👁️ عرض فقط — لا يمكنك تعديل درجات هذه المادة</div>
+        ` : ''}
+
         <div class="card">
-            <div class="card-title">
-                <span class="icon">${subject.icon}</span>
-                تقييم واجبات ${subject.label} (${assignments.length})
-            </div>
+            <div class="card-title"><span class="icon">${subject.icon}</span> تقييم واجبات ${subject.label} (${assignments.length})</div>
             <div class="gold-line"></div>
-            
             ${assignments.length === 0 ? `
-                <div class="empty-state">
-                    <span class="icon">📭</span>
-                    لا توجد واجبات في هذه المادة
-                </div>
+                <div class="empty-state"><span class="icon">📭</span>لا توجد واجبات في هذه المادة</div>
             ` : `
                 <div class="table-wrap">
                     <table>
@@ -2817,7 +2622,7 @@ function renderSubjectEvaluationTab(servant, students, subjectValue) {
                                 <th>المحتوى</th>
                                 <th>الحالة</th>
                                 <th>الدرجة</th>
-                                <th>إجراء</th>
+                                ${canEdit ? '<th>إجراء</th>' : ''}
                             </tr>
                         </thead>
                         <tbody>
@@ -2831,11 +2636,7 @@ function renderSubjectEvaluationTab(servant, students, subjectValue) {
                                           a.status === 'pending' ? Helpers.badge('معلق', 'warning') :
                                           Helpers.badge('لم يتم', 'danger')}</td>
                                     <td>${a.score !== null ? a.score + '/10' : '—'}</td>
-                                    <td>
-                                        <button class="btn btn-gold btn-sm" onclick="openEvaluateModal('${a.id}')">
-                                            تقييم
-                                        </button>
-                                    </td>
+                                    ${canEdit ? `<td><button class="btn btn-gold btn-sm" onclick="openEvaluateModal('${a.id}')">تقييم</button></td>` : ''}
                                 </tr>`;
                             }).join('')}
                         </tbody>
@@ -2848,15 +2649,16 @@ function renderSubjectEvaluationTab(servant, students, subjectValue) {
 
 function renderGradesOverview(servant, students) {
     const subjects = Helpers.getSubjects();
-    
+    const canEdit = Helpers.canEditGrades(servant);
+
     return `
         <div class="card">
             <div class="card-title"><span class="icon">📊</span> نظرة عامة على الدرجات</div>
             <div class="gold-line"></div>
-            
-            ${students.length === 0 ? `
-                <div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>
-            ` : `
+            ${!canEdit ? `
+                <div class="info-msg">👁️ عرض فقط لدرجات المواد التي لا تدرسها</div>
+            ` : ''}
+            ${students.length === 0 ? '<div class="empty-state">لا يوجد طلاب</div>' : `
                 <div class="table-wrap">
                     <table>
                         <thead>
@@ -2871,20 +2673,16 @@ function renderGradesOverview(servant, students) {
                             ${students.map(s => {
                                 const allScores = [];
                                 const subjectCells = subjects.map(sub => {
-                                    const assignments = AppData.assignments.filter(a => 
-                                        a.studentId === s.id && 
-                                        a.subject === sub.value && 
-                                        a.status === 'evaluated'
+                                    const assignments = AppData.assignments.filter(a =>
+                                        a.studentId === s.id && a.subject === sub.value && a.status === 'evaluated'
                                     );
                                     if (assignments.length === 0) return '<td>—</td>';
                                     const avg = (assignments.reduce((sum, a) => sum + (a.score || 0), 0) / assignments.length).toFixed(1);
                                     allScores.push(...assignments.map(a => a.score || 0));
                                     return `<td>${avg}</td>`;
                                 }).join('');
-                                
                                 const total = allScores.reduce((sum, v) => sum + v, 0);
                                 const avg = allScores.length > 0 ? (total / allScores.length).toFixed(1) : '—';
-                                
                                 return `<tr>
                                     <td>${s.name}</td>
                                     ${subjectCells}
@@ -2903,20 +2701,20 @@ function renderGradesOverview(servant, students) {
 function renderServantAttendance(servant, students) {
     const currentWeek = AppData.settings.currentWeek || 1;
     const weekDate = Helpers.getWeekDate(currentWeek);
+    const canEdit = Helpers.canEditAttendance(servant);
+
     return `
         <div class="card mb-2">
             <div class="flex-between">
-                <div class="card-title">
-                    <span class="icon">📋</span> 
-                    تسجيل حضور الأسبوع ${currentWeek} - ${weekDate}
-                </div>
-                <button class="btn btn-success btn-sm" onclick="saveBulkAttendance(${currentWeek})">💾 حفظ الحضور</button>
+                <div class="card-title"><span class="icon">📋</span> تسجيل حضور الأسبوع ${currentWeek} - ${weekDate}</div>
+                ${canEdit ? `<button class="btn btn-success btn-sm" onclick="saveBulkAttendance(${currentWeek})">💾 حفظ</button>` : ''}
             </div>
             <div class="gold-line"></div>
+            ${!canEdit ? '<div class="info-msg">👁️ عرض فقط</div>' : ''}
             ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>' : `
                 <div class="table-wrap">
                     <table>
-                        <thead><tr><th>#</th><th>اسم الطالب</th><th>الكود</th><th>حاضر</th></tr></thead>
+                        <thead><tr><th>#</th><th>الطالب</th><th>الفصل</th><th>حاضر</th></tr></thead>
                         <tbody>
                             ${students.map((s, i) => {
                                 const record = AppData.attendance.find(a => a.studentId === s.id && a.week === currentWeek && a.type !== 'visitation');
@@ -2924,8 +2722,8 @@ function renderServantAttendance(servant, students) {
                                 return `<tr>
                                     <td>${i + 1}</td>
                                     <td>${s.name}</td>
-                                    <td>${s.id}</td>
-                                    <td><input type="checkbox" class="attendance-check" data-student="${s.id}" ${checked}
+                                    <td>${s.classGroup}</td>
+                                    <td><input type="checkbox" class="attendance-check" data-student="${s.id}" ${checked} ${!canEdit ? 'disabled' : ''}
                                         style="width:20px;height:20px;accent-color:var(--success);cursor:pointer;"></td>
                                 </tr>`;
                             }).join('')}
@@ -2937,10 +2735,10 @@ function renderServantAttendance(servant, students) {
     `;
 }
 
-function renderServantStudents(students) {
+function renderServantStudents(servant, students) {
     return `
         <div class="card">
-            <div class="card-title"><span class="icon">👥</span> طلابي (${students.length})</div>
+            <div class="card-title"><span class="icon">👥</span> الطلاب (${students.length})</div>
             <div class="gold-line"></div>
             ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>' : `
                 <div class="table-wrap">
@@ -2953,7 +2751,7 @@ function renderServantStudents(students) {
                                     <td>${s.name}</td>
                                     <td>${s.id}</td>
                                     <td>${s.stage}</td>
-                                    <td>${s.class}</td>
+                                    <td>${s.classGroup}</td>
                                     <td>${s.phone1 || '—'}</td>
                                 </tr>
                             `).join('')}
@@ -2967,18 +2765,20 @@ function renderServantStudents(students) {
 
 function renderServantVisitation(servant, students) {
     const currentWeek = AppData.settings.currentWeek || 1;
+    const weekDate = Helpers.getWeekDate(currentWeek);
     const visitations = AppData.attendance.filter(a => a.type === 'visitation' && a.week === currentWeek);
     const notes = AppData.visitationNotes.filter(n => n.week === currentWeek);
+    const canAdd = Helpers.canAddVisitationNotes(servant);
 
     return `
         <div class="card mb-2">
-            <div class="card-title"><span class="icon">🙏</span> الافتقاد - الأسبوع ${currentWeek}</div>
+            <div class="card-title"><span class="icon">🙏</span> الافتقاد - الأسبوع ${currentWeek} (${weekDate})</div>
             <div class="gold-line"></div>
-            <p class="text-muted mb-2">تسجيل الافتقاد + كتابة ملاحظات لكل طالب</p>
+            ${!canAdd ? '<div class="info-msg">👁️ عرض فقط</div>' : ''}
             ${students.length === 0 ? '<div class="empty-state"><span class="icon">👥</span>لا يوجد طلاب</div>' : `
                 <div class="table-wrap">
                     <table>
-                        <thead><tr><th>#</th><th>اسم الطالب</th><th>تم الافتقاد</th><th>ملاحظات</th></tr></thead>
+                        <thead><tr><th>#</th><th>الطالب</th><th>تم الافتقاد</th><th>ملاحظات</th></tr></thead>
                         <tbody>
                             ${students.map((s, i) => {
                                 const record = visitations.find(v => v.studentId === s.id);
@@ -2989,12 +2789,12 @@ function renderServantVisitation(servant, students) {
                                 return `<tr>
                                     <td>${i + 1}</td>
                                     <td>${s.name}</td>
-                                    <td><input type="checkbox" class="visitation-check" data-student="${s.id}" ${checked}
-                                        style="width:20px;height:20px;accent-color:var(--wine);cursor:pointer;"></td>
+                                    <td><input type="checkbox" class="visitation-check" data-student="${s.id}" ${checked} ${!canAdd ? 'disabled' : ''}
+                                        style="width:20px;height:20px;accent-color:var(--wine);"></td>
                                     <td>
                                         <button class="btn btn-sm ${hasNotes ? 'btn-info' : 'btn-outline'}"
                                             onclick="openVisitationNotesModal('${s.id}', '${safeName}', ${currentWeek})">
-                                            📔 ${hasNotes ? `عرض (${studentNotes.length})` : 'إضافة'}
+                                            📔 ${hasNotes ? `عرض (${studentNotes.length})` : (canAdd ? 'إضافة' : 'عرض')}
                                         </button>
                                     </td>
                                 </tr>`;
@@ -3002,31 +2802,23 @@ function renderServantVisitation(servant, students) {
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-success mt-2" onclick="saveVisitation(${currentWeek})">💾 حفظ الافتقاد</button>
+                ${canAdd ? `<button class="btn btn-success mt-2" onclick="saveVisitation(${currentWeek})">💾 حفظ الافتقاد</button>` : ''}
             `}
         </div>
+    `;
+}
 
+function renderClassReportsTab(servant, students) {
+    return `
         <div class="card">
-            <div class="card-title"><span class="icon">📔</span> ملاحظات هذا الأسبوع (${notes.length})</div>
+            <div class="card-title"><span class="icon">🖨️</span> التقارير والطباعة</div>
             <div class="gold-line"></div>
-            ${notes.length === 0 ? '<div class="empty-state"><span class="icon">📝</span>لا توجد ملاحظات لهذا الأسبوع</div>' : `
-                ${notes.map(n => {
-                    const student = AppData.students.find(s => s.id === n.studentId);
-                    return `
-                        <div class="note-card">
-                            <div class="note-header">
-                                <strong>${student ? student.name : n.studentId}</strong>
-                                ${Helpers.badge(Helpers.getCategoryLabel(n.category), 'info')}
-                            </div>
-                            <div class="note-body">${Helpers.escapeHtml(n.text)}</div>
-                            <div class="note-footer">
-                                <span>👨‍🏫 ${n.servantName || 'خادم'}</span>
-                                <span>📅 ${Helpers.formatDateTime(n.createdAt)}</span>
-                            </div>
-                        </div>
-                    `;
-                }).join('')}
-            `}
+            <div class="grid-2">
+                <button class="btn btn-print" onclick="printClassList('${servant.classGroup}')">🖨️ قائمة الفصل</button>
+                <button class="btn btn-print" onclick="printClassAttendanceReport('${servant.classGroup}', null)">🖨️ كشف الحضور</button>
+                <button class="btn btn-print" onclick="printClassGradesReport('${servant.classGroup}', 'all')">🖨️ كشف التقييمات</button>
+                <button class="btn btn-print" onclick="printClassNotesReport('${servant.classGroup}')">🖨️ ملاحظات الافتقاد</button>
+            </div>
         </div>
     `;
 }
@@ -3034,7 +2826,7 @@ function renderServantVisitation(servant, students) {
 function renderServantAccount(servant) {
     const subjects = Helpers.getServantSubjects(servant);
     const roles = Helpers.getServantAdminRoles(servant);
-    
+
     return `
         <div class="grid-2">
             <div class="card">
@@ -3054,33 +2846,17 @@ function renderServantAccount(servant) {
                 <div class="gold-line"></div>
                 <div class="form-group">
                     <label>كلمة المرور الحالية</label>
-                    <input type="password" id="currentPassword" placeholder="أدخل كلمة المرور الحالية">
+                    <input type="password" id="currentPassword">
                 </div>
                 <div class="form-group">
                     <label>كلمة المرور الجديدة</label>
-                    <input type="password" id="newPassword" placeholder="4 أحرف على الأقل">
+                    <input type="password" id="newPassword">
                 </div>
                 <div class="form-group">
                     <label>تأكيد كلمة المرور</label>
-                    <input type="password" id="confirmPassword" placeholder="أعد كتابة كلمة المرور">
+                    <input type="password" id="confirmPassword">
                 </div>
-                <button class="btn btn-primary" onclick="changeServantPassword('${servant.id}')">🔑 تغيير كلمة المرور</button>
-            </div>
-        </div>
-    `;
-}
-
-function renderClassReportsTab(servant, students) {
-    return `
-        <div class="card">
-            <div class="card-title"><span class="icon">🖨️</span> تقارير الفصل: ${servant.classGroup}</div>
-            <div class="gold-line"></div>
-            <p class="text-muted mb-2">اختر التقرير المطلوب طباعته</p>
-            <div class="grid-2">
-                <button class="btn btn-print" onclick="printClassList('${servant.classGroup}')">🖨️ طباعة قائمة الفصل</button>
-                <button class="btn btn-print" onclick="printClassAttendanceReport('${servant.classGroup}', null)">🖨️ كشف الحضور الشامل</button>
-                <button class="btn btn-print" onclick="printClassGradesReport('${servant.classGroup}')">🖨️ كشف التقييمات</button>
-                <button class="btn btn-print" onclick="printClassNotesReport('${servant.classGroup}')">🖨️ ملاحظات الافتقاد</button>
+                <button class="btn btn-primary" onclick="changeServantPassword('${servant.id}')">🔑 تغيير</button>
             </div>
         </div>
     `;
@@ -3093,48 +2869,25 @@ function renderAdminDashboard() {
 
     const students = AppData.students;
     const servants = AppData.servants;
-    const attendance = AppData.attendance.filter(a => a.type !== 'visitation');
-    const assignments = AppData.assignments;
-
-    const totalPresent = attendance.filter(a => a.status === 'present').length;
-    const avgAttendance = Helpers.percentage(totalPresent, attendance.length || 1);
-
-    const evaluated = assignments.filter(a => a.status === 'evaluated');
-    const avgGrade = evaluated.length > 0
-        ? (evaluated.reduce((sum, a) => sum + (a.score || 0), 0) / evaluated.length).toFixed(1)
-        : 0;
-
     const activeTab = State.getTab() || 'students';
 
     return `
         <div class="dashboard-header">
-            <h2>${Helpers.icon('admin')} لوحة تحكم مسؤول الخدمة</h2>
+            <h2>${Helpers.icon('admin')} لوحة تحكم المسؤول</h2>
             <div class="info">
                 <span>👥 ${students.length} دارس</span>
                 <span>👨‍🏫 ${servants.length} خادم</span>
                 <span>📔 ${AppData.visitationNotes.length} ملاحظة</span>
-                <span>📝 ${assignments.length} واجب</span>
             </div>
         </div>
-
-        <div class="stats-grid">
-            <div class="stat-card"><div class="icon">👥</div><div class="num">${students.length}</div><div class="lbl">إجمالي الدارسين</div></div>
-            <div class="stat-card"><div class="icon">👨‍🏫</div><div class="num">${servants.length}</div><div class="lbl">إجمالي الخدام</div></div>
-            <div class="stat-card"><div class="icon">📊</div><div class="num">${avgAttendance}%</div><div class="lbl">متوسط الحضور</div></div>
-            <div class="stat-card"><div class="icon">⭐</div><div class="num">${avgGrade}</div><div class="lbl">متوسط الدرجات</div></div>
-        </div>
-
         <div class="tabs" id="adminTabs">
             <button data-tab="students" class="${activeTab === 'students' ? 'active' : ''}">إدارة الدارسين</button>
             <button data-tab="servants" class="${activeTab === 'servants' ? 'active' : ''}">إدارة الخدام</button>
             <button data-tab="attendance" class="${activeTab === 'attendance' ? 'active' : ''}">الحضور</button>
-            <button data-tab="assignments" class="${activeTab === 'assignments' ? 'active' : ''}">📝 الواجبات</button>
             <button data-tab="notes" class="${activeTab === 'notes' ? 'active' : ''}">📔 ملاحظات الافتقاد</button>
-            <button data-tab="reports" class="${activeTab === 'reports' ? 'active' : ''}">🖨️ التقارير والطباعة</button>
-            <button data-tab="backup" class="${activeTab === 'backup' ? 'active' : ''}">النسخ الاحتياطي</button>
-            <button data-tab="settings" class="${activeTab === 'settings' ? 'active' : ''}">إعدادات الترم</button>
+            <button data-tab="reports" class="${activeTab === 'reports' ? 'active' : ''}">🖨️ التقارير</button>
+            <button data-tab="settings" class="${activeTab === 'settings' ? 'active' : ''}">الإعدادات</button>
         </div>
-
         <div class="tab-content">${renderAdminTabContent(activeTab, students, servants)}</div>
     `;
 }
@@ -3144,10 +2897,8 @@ function renderAdminTabContent(tab, students, servants) {
         case 'students': return renderAdminStudents(students);
         case 'servants': return renderAdminServants(servants);
         case 'attendance': return renderAdminAttendance(students);
-        case 'assignments': return renderAdminAssignments();
         case 'notes': return renderAdminNotes();
         case 'reports': return renderAdminReports();
-        case 'backup': return renderAdminBackup();
         case 'settings': return renderAdminSettings();
         default: return renderAdminStudents(students);
     }
@@ -3155,16 +2906,9 @@ function renderAdminTabContent(tab, students, servants) {
 
 function renderAdminStudents(students) {
     const classFilter = State.activeTab['admin_students_class'] || 'all';
-    const stageFilter = State.activeTab['admin_students_stage'] || 'all';
-    
     let filtered = students;
-    if (classFilter !== 'all') {
-        filtered = filtered.filter(s => s.classGroup === classFilter);
-    }
-    if (stageFilter !== 'all') {
-        filtered = filtered.filter(s => s.stage === stageFilter);
-    }
-    
+    if (classFilter !== 'all') filtered = filtered.filter(s => s.classGroup === classFilter);
+
     const stats = {
         total: filtered.length,
         males: filtered.filter(s => s.gender === 'ذكر').length,
@@ -3174,127 +2918,61 @@ function renderAdminStudents(students) {
         notOrdained: filtered.filter(s => s.deaconRank === 'لم يتم الرسامة').length,
         notRequired: filtered.filter(s => s.deaconRank === 'غير مطلوب').length
     };
-    
+
     return `
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="icon">👥</div>
-                <div class="num">${stats.total}</div>
-                <div class="lbl">إجمالي الدارسين</div>
-            </div>
-            <div class="stat-card" style="border-top-color:#1976d2;">
-                <div class="icon">👦</div>
-                <div class="num">${stats.males}</div>
-                <div class="lbl">ذكور</div>
-            </div>
-            <div class="stat-card" style="border-top-color:#c2185b;">
-                <div class="icon">👧</div>
-                <div class="num">${stats.females}</div>
-                <div class="lbl">إناث</div>
-            </div>
-            <div class="stat-card" style="border-top-color:#7b1fa2;">
-                <div class="icon">⛪</div>
-                <div class="num">${stats.absaltus}</div>
-                <div class="lbl">أبصالطس</div>
-            </div>
-            <div class="stat-card" style="border-top-color:#7b1fa2;">
-                <div class="icon">⛪</div>
-                <div class="num">${stats.aghnostos}</div>
-                <div class="lbl">أغنسطس</div>
-            </div>
-            <div class="stat-card" style="border-top-color:#9e9e9e;">
-                <div class="icon">📋</div>
-                <div class="num">${stats.notOrdained}</div>
-                <div class="lbl">غير مرسومين</div>
-            </div>
-            ${stats.notRequired > 0 ? `
-                <div class="stat-card" style="border-top-color:#9e9e9e;">
-                    <div class="icon">➖</div>
-                    <div class="num">${stats.notRequired}</div>
-                    <div class="lbl">غير مطلوب</div>
-                </div>
-            ` : ''}
+            <div class="stat-card"><div class="icon">👥</div><div class="num">${stats.total}</div><div class="lbl">الإجمالي</div></div>
+            <div class="stat-card" style="border-top-color:#1976d2;"><div class="icon">👦</div><div class="num">${stats.males}</div><div class="lbl">ذكور</div></div>
+            <div class="stat-card" style="border-top-color:#c2185b;"><div class="icon">👧</div><div class="num">${stats.females}</div><div class="lbl">إناث</div></div>
+            <div class="stat-card" style="border-top-color:#7b1fa2;"><div class="icon">⛪</div><div class="num">${stats.absaltus}</div><div class="lbl">أبصالطس</div></div>
+            <div class="stat-card" style="border-top-color:#7b1fa2;"><div class="icon">⛪</div><div class="num">${stats.aghnostos}</div><div class="lbl">أغنسطس</div></div>
+            <div class="stat-card" style="border-top-color:#9e9e9e;"><div class="icon">📋</div><div class="num">${stats.notOrdained}</div><div class="lbl">غير مرسومين</div></div>
+            ${stats.notRequired > 0 ? `<div class="stat-card"><div class="icon">➖</div><div class="num">${stats.notRequired}</div><div class="lbl">غير مطلوب</div></div>` : ''}
         </div>
-        
+
         <div class="card mb-2">
             <div class="flex-between">
-                <div class="card-title"><span class="icon">🔎</span> تصفية الدارسين</div>
-                <button class="btn btn-outline btn-sm" 
-                    onclick="State.activeTab['admin_students_class']='all';State.activeTab['admin_students_stage']='all';renderApp()">
-                    🔄 إعادة تعيين
-                </button>
+                <div class="card-title">🔎 تصفية</div>
+                <button class="btn btn-outline btn-sm" onclick="State.activeTab['admin_students_class']='all';renderApp()">🔄 إعادة تعيين</button>
             </div>
             <div class="gold-line"></div>
-            <div class="grid-2">
-                <div class="form-group">
-                    <label>📚 الفصل داخل المركز</label>
-                    <select onchange="State.activeTab['admin_students_class']=this.value;renderApp()">
-                        <option value="all" ${classFilter === 'all' ? 'selected' : ''}>جميع الفصول</option>
-                        ${Helpers.getClassGroups().map(g =>
-                            `<option value="${g}" ${classFilter === g ? 'selected' : ''}>${g}</option>`
-                        ).join('')}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>🎓 المرحلة الدراسية</label>
-                    <select onchange="State.activeTab['admin_students_stage']=this.value;renderApp()">
-                        <option value="all" ${stageFilter === 'all' ? 'selected' : ''}>جميع المراحل</option>
-                        ${Helpers.getStages().map(s =>
-                            `<option value="${s}" ${stageFilter === s ? 'selected' : ''}>${s}</option>`
-                        ).join('')}
-                    </select>
-                </div>
+            <div class="form-group">
+                <label>الفصل</label>
+                <select onchange="State.activeTab['admin_students_class']=this.value;renderApp()">
+                    <option value="all" ${classFilter === 'all' ? 'selected' : ''}>جميع الفصول</option>
+                    ${Helpers.getClassGroups().map(g => `<option value="${g}" ${classFilter === g ? 'selected' : ''}>${g}</option>`).join('')}
+                </select>
             </div>
         </div>
-        
+
         <div class="card">
             <div class="flex-between mb-2">
-                <div class="card-title">
-                    <span class="icon">👥</span> 
-                    إدارة الدارسين (${filtered.length}${filtered.length !== students.length ? ` من ${students.length}` : ''})
-                </div>
-                <button class="btn btn-gold btn-sm" onclick="openAddStudentModal()">+ إضافة دارس</button>
+                <div class="card-title">👥 الدارسين (${filtered.length})</div>
+                <button class="btn btn-gold btn-sm" onclick="openAddStudentModal()">+ إضافة</button>
             </div>
             <div class="gold-line"></div>
-            ${filtered.length === 0 ? `
-                <div class="empty-state"><span class="icon">👥</span>لا يوجد دارسين مطابقين للفلتر</div>
-            ` : `
-                <div class="table-wrap">
-                    <table>
-                        <thead>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الرتبة</th><th>إجراءات</th></tr></thead>
+                    <tbody>
+                        ${filtered.map((s, i) => `
                             <tr>
-                                <th>#</th>
-                                <th>الاسم</th>
-                                <th>الكود</th>
-                                <th>النوع</th>
-                                <th>المرحلة</th>
-                                <th>الفصل</th>
-                                <th>الرتبة</th>
-                                <th>الهاتف</th>
-                                <th>إجراءات</th>
+                                <td>${i + 1}</td>
+                                <td>${s.name}</td>
+                                <td><code>${s.id}</code></td>
+                                <td>${s.gender === 'ذكر' ? '👦' : '👧'}</td>
+                                <td>${s.stage}</td>
+                                <td>${s.classGroup}</td>
+                                <td>${s.deaconRank || '—'}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" onclick="openEditStudentModal('${s.id}')">تعديل</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteStudentConfirm('${s.id}')">حذف</button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            ${filtered.map((s, i) => `
-                                <tr>
-                                    <td>${i + 1}</td>
-                                    <td>${s.name}</td>
-                                    <td><code style="background:var(--cream);padding:2px 8px;border-radius:4px;">${s.id}</code></td>
-                                    <td>${s.gender === 'ذكر' ? '👦 ذكر' : '👧 أنثى'}</td>
-                                    <td>${s.stage}</td>
-                                    <td>${s.classGroup}</td>
-                                    <td>${s.deaconRank || '—'}</td>
-                                    <td>${s.phone1 || '—'}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline" onclick="openEditStudentModal('${s.id}')">تعديل</button>
-                                        <button class="btn btn-sm btn-danger" onclick="deleteStudentConfirm('${s.id}')">حذف</button>
-                                    </td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `}
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
         </div>
     `;
 }
@@ -3303,49 +2981,41 @@ function renderAdminServants(servants) {
     return `
         <div class="card">
             <div class="flex-between mb-2">
-                <div class="card-title"><span class="icon">👨‍🏫</span> إدارة الخدام (${servants.length})</div>
+                <div class="card-title">👨‍🏫 الخدام (${servants.length})</div>
                 <button class="btn btn-gold btn-sm" onclick="openAddServantModal()">+ إضافة خادم</button>
             </div>
             <div class="gold-line"></div>
-            ${servants.length === 0 ? '<div class="empty-state"><span class="icon">👨‍🏫</span>لا يوجد خدام</div>' : `
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>الاسم</th>
-                                <th>الكود</th>
-                                <th>الهاتف</th>
-                                <th>الفصل</th>
-                                <th>المواد</th>
-                                <th>الأدوار الإدارية</th>
-                                <th>إجراءات</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${servants.map((s, i) => {
-                                const subjects = Helpers.getServantSubjects(s);
-                                const roles = Helpers.getServantAdminRoles(s);
-                                return `
-                                    <tr>
-                                        <td>${i + 1}</td>
-                                        <td>${s.name}</td>
-                                        <td><code style="background:var(--cream);padding:2px 8px;border-radius:4px;font-weight:bold;">${s.code}</code></td>
-                                        <td>${s.phone ? `<a href="tel:${s.phone}" style="color:var(--wine);">${s.phone}</a>` : '—'}</td>
-                                        <td>${s.classGroup}</td>
-                                        <td style="font-size:0.8rem;">${subjects.length > 0 ? subjects.map(sub => Helpers.getSubjectLabel(sub)).join('<br>') : '—'}</td>
-                                        <td style="font-size:0.8rem;">${roles.length > 0 ? roles.map(r => Helpers.getServantAdminRoleLabel(r)).join('<br>') : '—'}</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline" onclick="openEditServantModal('${s.id}')">تعديل</button>
-                                            <button class="btn btn-sm btn-danger" onclick="deleteServantConfirm('${s.id}')">حذف</button>
-                                        </td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `}
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>الهاتف</th><th>الفصل</th><th>المواد</th><th>الأدوار</th><th>إجراءات</th></tr></thead>
+                    <tbody>
+                        ${servants.map((s, i) => {
+                            const subjects = Helpers.getServantSubjects(s);
+                            const roles = Helpers.getServantAdminRoles(s);
+                            return `
+                                <tr>
+                                    <td>${i + 1}</td>
+                                    <td>${s.name}</td>
+                                    <td><code>${s.code}</code></td>
+                                    <td>${s.phone || '—'}</td>
+                                    <td>${s.classGroup}</td>
+                                    <td style="font-size:0.78rem;">${subjects.length > 0 ? subjects.map(x => Helpers.getSubjectLabel(x)).join('<br>') : '—'}</td>
+                                    <td style="font-size:0.78rem;">
+                                        ${roles.length > 0 ? roles.map(r => {
+                                            const role = Helpers.getServantAdminRoles().find(x => x.value === r);
+                                            return role ? `<span class="badge" style="background:${role.color};color:white;font-size:0.7rem;">${role.label}</span>` : '';
+                                        }).join('<br>') : '—'}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline" onclick="openEditServantModal('${s.id}')">تعديل</button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteServantConfirm('${s.id}')">حذف</button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
         </div>
     `;
 }
@@ -3353,242 +3023,69 @@ function renderAdminServants(servants) {
 function renderAdminAttendance(students) {
     const currentWeek = AppData.settings.currentWeek || 1;
     const classFilter = State.activeTab['admin_attendance_class'] || 'all';
-    
-    const classStats = classFilter !== 'all' 
-        ? Helpers.getAttendanceStats(classFilter, currentWeek) 
-        : Helpers.getAttendanceStats('all', currentWeek);
-    
+    const classStats = Helpers.getAttendanceStats(classFilter, currentWeek);
+
     let filteredStudents = students;
-    if (classFilter !== 'all') {
-        filteredStudents = students.filter(s => s.classGroup === classFilter);
-    }
-    
+    if (classFilter !== 'all') filteredStudents = students.filter(s => s.classGroup === classFilter);
+
     const attendance = AppData.attendance.filter(a => a.type !== 'visitation');
     const weekDate = Helpers.getWeekDate(currentWeek);
-    
+
     return `
         <div class="stats-grid">
-            <div class="stat-card" style="border-top-color: #1976d2;">
-                <div class="icon">👥</div>
-                <div class="num">${classStats.studentsCount}</div>
-                <div class="lbl">إجمالي الدارسين</div>
-            </div>
-            <div class="stat-card" style="border-top-color: var(--success);">
-                <div class="icon">✅</div>
-                <div class="num">${classStats.present}</div>
-                <div class="lbl">حضور الأسبوع ${currentWeek}</div>
-            </div>
-            <div class="stat-card" style="border-top-color: var(--danger);">
-                <div class="icon">❌</div>
-                <div class="num">${classStats.absent}</div>
-                <div class="lbl">غياب الأسبوع ${currentWeek}</div>
-            </div>
-            <div class="stat-card" style="border-top-color: var(--wine);">
-                <div class="icon">📊</div>
-                <div class="num">${classStats.percentage}%</div>
-                <div class="lbl">نسبة الحضور</div>
-            </div>
+            <div class="stat-card"><div class="icon">👥</div><div class="num">${classStats.studentsCount}</div><div class="lbl">الدارسين</div></div>
+            <div class="stat-card"><div class="icon">✅</div><div class="num">${classStats.present}</div><div class="lbl">حضور</div></div>
+            <div class="stat-card"><div class="icon">❌</div><div class="num">${classStats.absent}</div><div class="lbl">غياب</div></div>
+            <div class="stat-card"><div class="icon">📊</div><div class="num">${classStats.percentage}%</div><div class="lbl">النسبة</div></div>
         </div>
-        
+
         <div class="card mb-2">
-            <div class="flex-between">
-                <div class="card-title">
-                    <span class="icon">📅</span> 
-                    الأسبوع ${currentWeek} - ${weekDate}
-                </div>
-                <button class="btn btn-print btn-sm" 
-                    onclick="printClassAttendanceReport('${classFilter === 'all' ? 'الكل' : classFilter}', ${currentWeek})">
-                    🖨️ طباعة كشف الأسبوع
-                </button>
-            </div>
+            <div class="card-title">📅 الأسبوع ${currentWeek} - ${weekDate}</div>
             <div class="gold-line"></div>
-            
             <div class="grid-2">
                 <div class="form-group">
-                    <label>📚 الفصل</label>
+                    <label>الفصل</label>
                     <select onchange="State.activeTab['admin_attendance_class']=this.value;renderApp()">
                         <option value="all" ${classFilter === 'all' ? 'selected' : ''}>جميع الفصول</option>
-                        ${Helpers.getClassGroups().map(g =>
-                            `<option value="${g}" ${classFilter === g ? 'selected' : ''}>${g}</option>`
-                        ).join('')}
+                        ${Helpers.getClassGroups().map(g => `<option value="${g}" ${classFilter === g ? 'selected' : ''}>${g}</option>`).join('')}
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>📅 الأسبوع</label>
-                    <select id="adminWeekSelect" onchange="changeAdminWeek(this.value)">
-                        ${Array.from({ length: AppData.settings.totalWeeks || 15 }, (_, i) => i + 1).map(w => {
+                    <label>الأسبوع</label>
+                    <select onchange="changeAdminWeek(this.value)">
+                        ${Array.from({length: AppData.settings.totalWeeks || 15}, (_, i) => i + 1).map(w => {
                             const wDate = Helpers.getWeekDateShort(w);
-                            return `<option value="${w}" ${w === currentWeek ? 'selected' : ''}>
-                                الأسبوع ${w} - ${wDate}
-                            </option>`;
+                            return `<option value="${w}" ${w === currentWeek ? 'selected' : ''}>الأسبوع ${w} - ${wDate}</option>`;
                         }).join('')}
                     </select>
                 </div>
             </div>
         </div>
-        
-        <div class="card">
-            <div class="card-title">
-                <span class="icon">📋</span> 
-                قائمة الحضور - الأسبوع ${currentWeek} (${filteredStudents.length} دارس)
-            </div>
-            <div class="gold-line"></div>
-            
-            ${filteredStudents.length === 0 ? `
-                <div class="empty-state"><span class="icon">👥</span>لا يوجد دارسين</div>
-            ` : `
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>اسم الطالب</th>
-                                <th>الفصل</th>
-                                <th>المرحلة</th>
-                                <th>حاضر</th>
-                                <th>غائب</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${filteredStudents.map((s, i) => {
-                                const record = attendance.find(a => 
-                                    a.studentId === s.id && a.week === currentWeek
-                                );
-                                const isPresent = record && record.status === 'present';
-                                const isAbsent = record && record.status === 'absent';
-                                return `<tr>
-                                    <td>${i + 1}</td>
-                                    <td>${s.name}</td>
-                                    <td>${s.classGroup}</td>
-                                    <td>${s.stage}</td>
-                                    <td style="text-align:center;">
-                                        <input type="radio" name="att_${s.id}" ${isPresent ? 'checked' : ''}
-                                            onchange="adminSetAttendance('${s.id}', ${currentWeek}, 'present')"
-                                            style="accent-color:var(--success);cursor:pointer;transform:scale(1.3);">
-                                    </td>
-                                    <td style="text-align:center;">
-                                        <input type="radio" name="att_${s.id}" ${isAbsent ? 'checked' : ''}
-                                            onchange="adminSetAttendance('${s.id}', ${currentWeek}, 'absent')"
-                                            style="accent-color:var(--danger);cursor:pointer;transform:scale(1.3);">
-                                    </td>
-                                </tr>`;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `}
-        </div>
-    `;
-}
-
-function renderAdminAssignments() {
-    const assignments = AppData.assignments.slice().sort((a, b) => {
-        const da = a.submittedAt?.toDate ? a.submittedAt.toDate() : new Date(a.submittedAt);
-        const db_ = b.submittedAt?.toDate ? b.submittedAt.toDate() : new Date(b.submittedAt);
-        return db_ - da;
-    });
-
-    const subjects = Helpers.getSubjects();
-    const subjectFilter = State.activeTab['admin_assign_filter'] || 'all';
-    const statusFilter = State.activeTab['admin_assign_status'] || 'all';
-
-    let filtered = assignments;
-    if (subjectFilter !== 'all') filtered = filtered.filter(a => a.subject === subjectFilter);
-    if (statusFilter !== 'all') filtered = filtered.filter(a => a.status === statusFilter);
-
-    const stats = {
-        total: assignments.length,
-        pending: assignments.filter(a => a.status === 'pending').length,
-        evaluated: assignments.filter(a => a.status === 'evaluated').length,
-        bySubject: {}
-    };
-    subjects.forEach(s => {
-        stats.bySubject[s.value] = assignments.filter(a => a.subject === s.value).length;
-    });
-
-    return `
-        <div class="stats-grid">
-            <div class="stat-card"><div class="icon">📝</div><div class="num">${stats.total}</div><div class="lbl">إجمالي الواجبات</div></div>
-            <div class="stat-card"><div class="icon">⏳</div><div class="num">${stats.pending}</div><div class="lbl">قيد الانتظار</div></div>
-            <div class="stat-card"><div class="icon">✅</div><div class="num">${stats.evaluated}</div><div class="lbl">تم التقييم</div></div>
-        </div>
-
-        <div class="stats-grid">
-            ${subjects.map(s => `
-                <div class="stat-card" style="border-top-color: var(--wine);">
-                    <div class="icon">${s.icon}</div>
-                    <div class="num">${stats.bySubject[s.value]}</div>
-                    <div class="lbl">${s.label}</div>
-                </div>
-            `).join('')}
-        </div>
-
-        <div class="card mb-2">
-            <div class="flex-between">
-                <div class="card-title"><span class="icon">🔎</span> تصفية الواجبات</div>
-                <button class="btn btn-outline btn-sm" onclick="State.activeTab['admin_assign_filter']='all';State.activeTab['admin_assign_status']='all';renderApp()">🔄 إعادة تعيين</button>
-            </div>
-            <div class="gold-line"></div>
-            <div class="grid-2">
-                <div class="form-group">
-                    <label>📚 المادة</label>
-                    <select onchange="State.activeTab['admin_assign_filter']=this.value;renderApp()">
-                        <option value="all" ${subjectFilter === 'all' ? 'selected' : ''}>جميع المواد</option>
-                        ${subjects.map(s =>
-                            `<option value="${s.value}" ${subjectFilter === s.value ? 'selected' : ''}>${s.icon} ${s.label}</option>`
-                        ).join('')}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>📊 الحالة</label>
-                    <select onchange="State.activeTab['admin_assign_status']=this.value;renderApp()">
-                        <option value="all" ${statusFilter === 'all' ? 'selected' : ''}>جميع الحالات</option>
-                        <option value="pending" ${statusFilter === 'pending' ? 'selected' : ''}>⏳ قيد الانتظار</option>
-                        <option value="evaluated" ${statusFilter === 'evaluated' ? 'selected' : ''}>✅ تم التقييم</option>
-                    </select>
-                </div>
-            </div>
-        </div>
 
         <div class="card">
-            <div class="card-title"><span class="icon">📝</span> الواجبات (${filtered.length})</div>
-            <div class="gold-line"></div>
-            ${filtered.length === 0 ? '<div class="empty-state"><span class="icon">📭</span>لا توجد واجبات</div>' : `
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>الطالب</th>
-                                <th>الفصل</th>
-                                <th>المادة</th>
-                                <th>النوع</th>
-                                <th>الحالة</th>
-                                <th>الدرجة</th>
-                                <th>التاريخ</th>
-                                <th>إجراء</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${filtered.slice(0, 100).map(a => {
-                                const student = AppData.students.find(s => s.id === a.studentId);
-                                return `<tr>
-                                    <td>${student ? student.name : a.studentId}</td>
-                                    <td>${student ? student.classGroup : '—'}</td>
-                                    <td style="font-size:0.82rem;">${Helpers.getSubjectLabel(a.subject)}</td>
-                                    <td>${a.type === 'text' ? '📄' : a.type === 'image' ? '🖼️' : '🎤'}</td>
-                                    <td>${a.status === 'evaluated' ? Helpers.badge('تم', 'success') :
-                                          a.status === 'pending' ? Helpers.badge('معلق', 'warning') :
-                                          Helpers.badge('لم يتم', 'danger')}</td>
-                                    <td>${a.score !== null ? a.score + '/10' : '—'}</td>
-                                    <td>${Helpers.formatDate(a.submittedAt)}</td>
-                                    <td><button class="btn btn-gold btn-sm" onclick="openEvaluateModal('${a.id}')">تقييم</button></td>
-                                </tr>`;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-                ${filtered.length > 100 ? `<p class="text-muted text-center mt-2">يتم عرض 100 واجب فقط. استخدم الفلاتر لتضييق النتائج.</p>` : ''}
-            `}
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>#</th><th>الطالب</th><th>الفصل</th><th>حاضر</th><th>غائب</th></tr></thead>
+                    <tbody>
+                        ${filteredStudents.map((s, i) => {
+                            const record = attendance.find(a => a.studentId === s.id && a.week === currentWeek);
+                            const isPresent = record && record.status === 'present';
+                            const isAbsent = record && record.status === 'absent';
+                            return `<tr>
+                                <td>${i + 1}</td>
+                                <td>${s.name}</td>
+                                <td>${s.classGroup}</td>
+                                <td><input type="radio" name="att_${s.id}" ${isPresent ? 'checked' : ''}
+                                    onchange="adminSetAttendance('${s.id}', ${currentWeek}, 'present')"
+                                    style="accent-color:var(--success);transform:scale(1.3);"></td>
+                                <td><input type="radio" name="att_${s.id}" ${isAbsent ? 'checked' : ''}
+                                    onchange="adminSetAttendance('${s.id}', ${currentWeek}, 'absent')"
+                                    style="accent-color:var(--danger);transform:scale(1.3);"></td>
+                            </tr>`;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
         </div>
     `;
 }
@@ -3600,91 +3097,43 @@ function renderAdminNotes() {
         return db_ - da;
     });
 
-    const currentWeek = AppData.settings.currentWeek || 1;
-    const weekFilter = State.activeTab['admin_notes_week'] || 'all';
-    const categoryFilter = State.activeTab['admin_notes_category'] || 'all';
     const classFilter = State.activeTab['admin_notes_class'] || 'all';
-
     let filtered = notes;
-    if (weekFilter !== 'all') filtered = filtered.filter(n => n.week === parseInt(weekFilter));
-    if (categoryFilter !== 'all') filtered = filtered.filter(n => n.category === categoryFilter);
     if (classFilter !== 'all') filtered = filtered.filter(n => n.classGroup === classFilter);
 
-    const urgentCount = notes.filter(n => n.category === 'urgent').length;
-    const thisWeekCount = notes.filter(n => n.week === currentWeek).length;
-
     return `
-        <div class="stats-grid">
-            <div class="stat-card"><div class="icon">📔</div><div class="num">${notes.length}</div><div class="lbl">إجمالي الملاحظات</div></div>
-            <div class="stat-card"><div class="icon">📅</div><div class="num">${thisWeekCount}</div><div class="lbl">ملاحظات الأسبوع الحالي</div></div>
-            <div class="stat-card"><div class="icon">🚨</div><div class="num">${urgentCount}</div><div class="lbl">ملاحظات عاجلة</div></div>
-        </div>
-
         <div class="card mb-2">
             <div class="flex-between">
-                <div class="card-title"><span class="icon">🔎</span> تصفية الملاحظات</div>
-                <div class="flex gap-1">
-                    <button class="btn btn-outline btn-sm" onclick="resetAdminNotesFilters()">🔄 إعادة تعيين</button>
-                    <button class="btn btn-print btn-sm" onclick="printAllVisitationReports()">🖨️ طباعة شاملة</button>
-                </div>
+                <div class="card-title">📔 ملاحظات الافتقاد (${filtered.length})</div>
+                <button class="btn btn-print btn-sm" onclick="printAllVisitationReports()">🖨️ طباعة</button>
             </div>
             <div class="gold-line"></div>
-            <div class="grid-3">
-                <div class="form-group">
-                    <label>📚 الفصل</label>
-                    <select id="notesClassFilter" onchange="filterAdminNotes('class', this.value)">
-                        <option value="all" ${classFilter === 'all' ? 'selected' : ''}>جميع الفصول</option>
-                        ${Helpers.getClassGroups().map(g =>
-                            `<option value="${g}" ${classFilter === g ? 'selected' : ''}>${g}</option>`
-                        ).join('')}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>📅 الأسبوع</label>
-                    <select id="notesWeekFilter" onchange="filterAdminNotes('week', this.value)">
-                        <option value="all" ${weekFilter === 'all' ? 'selected' : ''}>جميع الأسابيع</option>
-                        ${Array.from({ length: AppData.settings.totalWeeks || 15 }, (_, i) => i + 1).map(w =>
-                            `<option value="${w}" ${weekFilter == w ? 'selected' : ''}>الأسبوع ${w}</option>`
-                        ).join('')}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>🏷️ التصنيف</label>
-                    <select id="notesCategoryFilter" onchange="filterAdminNotes('category', this.value)">
-                        <option value="all" ${categoryFilter === 'all' ? 'selected' : ''}>جميع التصنيفات</option>
-                        ${Helpers.getNoteCategories().map(c =>
-                            `<option value="${c.value}" ${categoryFilter === c.value ? 'selected' : ''}>${c.label}</option>`
-                        ).join('')}
-                    </select>
-                </div>
+            <div class="form-group">
+                <label>الفصل</label>
+                <select onchange="State.activeTab['admin_notes_class']=this.value;renderApp()">
+                    <option value="all" ${classFilter === 'all' ? 'selected' : ''}>جميع الفصول</option>
+                    ${Helpers.getClassGroups().map(g => `<option value="${g}" ${classFilter === g ? 'selected' : ''}>${g}</option>`).join('')}
+                </select>
             </div>
         </div>
-
         <div class="card">
-            <div class="card-title"><span class="icon">📔</span> قائمة الملاحظات (${filtered.length})</div>
-            <div class="gold-line"></div>
-            ${filtered.length === 0 ? '<div class="empty-state"><span class="icon">📝</span>لا توجد ملاحظات مطابقة</div>' : `
+            ${filtered.length === 0 ? '<div class="empty-state">لا توجد ملاحظات</div>' : `
                 ${filtered.map(n => {
-                    const student = AppData.students.find(s => s.id === n.studentId);
+                    const st = AppData.students.find(s => s.id === n.studentId);
                     return `
-                        <div class="note-card" style="${n.category === 'urgent' ? 'border-right-color: var(--danger); background: #fdecea;' : ''}">
+                        <div class="note-card" style="${n.category === 'urgent' ? 'background:#fdecea;border-right-color:var(--danger);' : ''}">
                             <div class="note-header">
-                                <div>
-                                    <strong>${student ? student.name : n.studentId}</strong>
-                                    ${student ? `<span class="text-muted" style="font-size:0.78rem;"> (${student.stage} - فصل ${student.class})</span>` : ''}
-                                </div>
+                                <strong>${st ? st.name : n.studentId}</strong>
                                 <div class="flex gap-1">
-                                    ${n.classGroup ? Helpers.badge(`📚 ${n.classGroup}`, 'success') : ''}
-                                    ${Helpers.badge(`📅 الأسبوع ${n.week}`, 'info')}
+                                    ${Helpers.badge(`الأسبوع ${n.week}`, 'info')}
                                     ${Helpers.badge(Helpers.getCategoryLabel(n.category), n.category === 'urgent' ? 'danger' : 'info')}
                                 </div>
                             </div>
                             <div class="note-body">${Helpers.escapeHtml(n.text)}</div>
                             <div class="note-footer">
-                                <span>👨‍🏫 ${n.servantName || 'خادم'} ${n.classGroup ? `(${n.classGroup})` : ''}</span>
+                                <span>👨‍🏫 ${n.servantName || 'خادم'}</span>
                                 <div class="flex gap-1">
-                                    <span>📅 ${Helpers.formatDateTime(n.createdAt)}</span>
-                                    <button class="btn btn-sm btn-outline" onclick="printStudentVisitationReport('${n.studentId}')" title="طباعة">🖨️</button>
+                                    <span>${Helpers.formatDateTime(n.createdAt)}</span>
                                     <button class="btn btn-sm btn-danger" onclick="deleteNoteConfirm('${n.id}')">🗑️</button>
                                 </div>
                             </div>
@@ -3699,98 +3148,51 @@ function renderAdminNotes() {
 function renderAdminReports() {
     const classGroups = Helpers.getClassGroups();
     const totalWeeks = AppData.settings.totalWeeks || 15;
-    const subjects = Helpers.getSubjects();
 
     return `
         <div class="card mb-2">
-            <div class="card-title"><span class="icon">🖨️</span> طباعة قوائم الفصول</div>
+            <div class="card-title">🖨️ قوائم الفصول</div>
             <div class="gold-line"></div>
             <div class="print-actions">
                 <button class="btn btn-print" onclick="printClassList('الكل')">🖨️ كل الفصول</button>
-                ${classGroups.map(cg => `
-                    <button class="btn btn-print btn-sm" onclick="printClassList('${cg}')">📋 ${cg}</button>
-                `).join('')}
+                ${classGroups.map(cg => `<button class="btn btn-print btn-sm" onclick="printClassList('${cg}')">${cg}</button>`).join('')}
             </div>
         </div>
-
         <div class="card mb-2">
-            <div class="card-title"><span class="icon">📊</span> طباعة كشوف الحضور والغياب</div>
+            <div class="card-title">📊 كشوف الحضور</div>
             <div class="gold-line"></div>
-            <h4 style="color:var(--navy);margin:12px 0 8px;">كشوف شاملة (كل الأسابيع):</h4>
             <div class="print-actions">
-                <button class="btn btn-print" onclick="printClassAttendanceReport('الكل', null)">🖨️ شامل - كل الفصول</button>
-                ${classGroups.map(cg => `
-                    <button class="btn btn-print btn-sm" onclick="printClassAttendanceReport('${cg}', null)">📋 ${cg}</button>
-                `).join('')}
+                <button class="btn btn-print" onclick="printClassAttendanceReport('الكل', null)">🖨️ شامل</button>
+                ${classGroups.map(cg => `<button class="btn btn-print btn-sm" onclick="printClassAttendanceReport('${cg}', null)">${cg}</button>`).join('')}
             </div>
-
-            <h4 style="color:var(--navy);margin:20px 0 8px;">كشوف أسبوعية:</h4>
-            <div class="form-group" style="max-width:400px;">
+            <div class="form-group mt-2" style="max-width:300px;">
                 <label>اختر الأسبوع</label>
                 <select id="printWeekSelect">
-                    ${Array.from({ length: totalWeeks }, (_, i) => i + 1).map(w => {
+                    ${Array.from({length: totalWeeks}, (_, i) => i + 1).map(w => {
                         const wDate = Helpers.getWeekDateShort(w);
                         return `<option value="${w}">الأسبوع ${w} - ${wDate}</option>`;
                     }).join('')}
                 </select>
             </div>
             <div class="print-actions">
-                <button class="btn btn-print" onclick="printWeekReportAll()">🖨️ كشف الأسبوع (كل الفصول)</button>
-                ${classGroups.map(cg => `
-                    <button class="btn btn-print btn-sm" onclick="printWeekReport('${cg}')">📋 ${cg}</button>
-                `).join('')}
+                <button class="btn btn-print" onclick="printWeekReportAll()">🖨️ كشف الأسبوع (الكل)</button>
+                ${classGroups.map(cg => `<button class="btn btn-print btn-sm" onclick="printWeekReport('${cg}')">${cg}</button>`).join('')}
             </div>
         </div>
-
         <div class="card mb-2">
-            <div class="card-title"><span class="icon">📝</span> طباعة كشوف التقييمات</div>
+            <div class="card-title">📝 كشوف التقييمات</div>
             <div class="gold-line"></div>
-
-            <h4 style="color:var(--navy);margin:12px 0 8px;">🖨️ كل المواد:</h4>
             <div class="print-actions">
                 <button class="btn btn-print" onclick="printClassGradesReport('الكل', 'all')">🖨️ كل الفصول</button>
-                ${classGroups.map(cg => `
-                    <button class="btn btn-print btn-sm" onclick="printClassGradesReport('${cg}', 'all')">📊 ${cg}</button>
-                `).join('')}
+                ${classGroups.map(cg => `<button class="btn btn-print btn-sm" onclick="printClassGradesReport('${cg}', 'all')">${cg}</button>`).join('')}
             </div>
-
-            <h4 style="color:var(--navy);margin:20px 0 8px;">📚 حسب المادة:</h4>
-            ${subjects.map(sub => `
-                <div style="margin-bottom:14px;">
-                    <div class="flex-between" style="margin-bottom:6px;">
-                        <strong>${sub.icon} ${sub.label}</strong>
-                    </div>
-                    <div class="print-actions" style="margin-bottom:0;">
-                        <button class="btn btn-print btn-sm" onclick="printClassGradesReport('الكل', '${sub.value}')">📋 كل الفصول</button>
-                        ${classGroups.map(cg => `
-                            <button class="btn btn-print btn-sm" onclick="printClassGradesReport('${cg}', '${sub.value}')">${cg}</button>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('')}
         </div>
-
-        <div class="card mb-2">
-            <div class="card-title"><span class="icon">📔</span> طباعة تقارير الافتقاد</div>
+        <div class="card">
+            <div class="card-title">📔 تقارير الافتقاد</div>
             <div class="gold-line"></div>
             <div class="print-actions">
-                <button class="btn btn-print" onclick="printAllVisitationReports()">🖨️ تقارير شاملة لكل الدارسين</button>
-                ${classGroups.map(cg => `
-                    <button class="btn btn-print btn-sm" onclick="printClassNotesReport('${cg}')">📔 ${cg}</button>
-                `).join('')}
-            </div>
-        </div>
-    `;
-}
-
-function renderAdminBackup() {
-    return `
-        <div class="card">
-            <div class="card-title"><span class="icon">💾</span> النسخ الاحتياطي</div>
-            <div class="gold-line"></div>
-            <p class="text-muted mb-2">تصدير جميع البيانات (Firestore) كملف JSON.</p>
-            <div class="flex gap-2">
-                <button class="btn btn-primary" onclick="exportData()">📤 تصدير JSON</button>
+                <button class="btn btn-print" onclick="printAllVisitationReports()">🖨️ شاملة</button>
+                ${classGroups.map(cg => `<button class="btn btn-print btn-sm" onclick="printClassNotesReport('${cg}')">${cg}</button>`).join('')}
             </div>
         </div>
     `;
@@ -3800,15 +3202,15 @@ function renderAdminSettings() {
     const settings = AppData.settings;
     return `
         <div class="card">
-            <div class="card-title"><span class="icon">⚙️</span> إعدادات الترم</div>
+            <div class="card-title">⚙️ إعدادات الترم</div>
             <div class="gold-line"></div>
             <div class="grid-2">
                 <div class="form-group">
-                    <label>تاريخ بداية الترم</label>
+                    <label>بداية الترم</label>
                     <input type="date" id="settingsStart" value="${settings.termStart || ''}">
                 </div>
                 <div class="form-group">
-                    <label>تاريخ نهاية الترم</label>
+                    <label>نهاية الترم</label>
                     <input type="date" id="settingsEnd" value="${settings.termEnd || ''}">
                 </div>
                 <div class="form-group">
@@ -3820,7 +3222,7 @@ function renderAdminSettings() {
                     <input type="number" id="settingsCurrentWeek" value="${settings.currentWeek || 1}" min="1" max="30">
                 </div>
             </div>
-            <button class="btn btn-primary mt-2" onclick="saveSettings()">💾 حفظ الإعدادات</button>
+            <button class="btn btn-primary mt-2" onclick="saveSettings()">💾 حفظ</button>
         </div>
     `;
 }
@@ -3837,27 +3239,27 @@ async function handleLogin(role) {
         showLoading('جارٍ التحقق...');
         if (role === 'student') {
             const code = (document.getElementById('studentCode').value || '').trim().toUpperCase();
-            if (!code) { hideLoading(); showLoginError('الرجاء إدخال كود الدارس'); return; }
+            if (!code) { hideLoading(); showLoginError('أدخل الكود'); return; }
             const student = AppData.students.find(s => s.id === code);
             if (student) {
                 State.setUser({ type: 'student', data: student });
                 State.setPage('dashboard');
-                showToast('✅ مرحباً بك');
-            } else showLoginError('كود الدارس غير صحيح');
+                showToast('✅ مرحباً');
+            } else showLoginError('كود غير صحيح');
         } else if (role === 'servant') {
             const code = (document.getElementById('servantCode').value || '').trim().toUpperCase();
             const password = (document.getElementById('servantPassword').value || '').trim();
-            if (!code || !password) { hideLoading(); showLoginError('الرجاء إدخال الكود وكلمة المرور'); return; }
+            if (!code || !password) { hideLoading(); showLoginError('أدخل البيانات'); return; }
             const servant = AppData.servants.find(s => s.code === code && s.password === password);
             if (servant) {
                 State.setUser({ type: 'servant', data: servant });
                 State.setPage('dashboard');
-                showToast('✅ مرحباً بك');
-            } else showLoginError('بيانات الدخول غير صحيحة');
+                showToast('✅ مرحباً');
+            } else showLoginError('بيانات غير صحيحة');
         } else if (role === 'admin') {
             const username = (document.getElementById('adminUsername').value || '').trim();
             const password = (document.getElementById('adminPassword').value || '').trim();
-            if (!username || !password) { hideLoading(); showLoginError('الرجاء إدخال البيانات'); return; }
+            if (!username || !password) { hideLoading(); showLoginError('أدخل البيانات'); return; }
             let admins = await DB.getAdmins();
             if (admins.length === 0) {
                 admins = [{ id: 'admin1', username: 'admin', password: 'admin123', name: 'أمين الخدمة العام' }];
@@ -3867,12 +3269,12 @@ async function handleLogin(role) {
             if (admin) {
                 State.setUser({ type: 'admin', data: admin });
                 State.setPage('dashboard');
-                showToast('✅ مرحباً بك');
-            } else showLoginError('اسم المستخدم أو كلمة المرور غير صحيحة');
+                showToast('✅ مرحباً');
+            } else showLoginError('بيانات غير صحيحة');
         }
     } catch (e) {
         console.error(e);
-        showLoginError('حدث خطأ، حاول مرة أخرى');
+        showLoginError('حدث خطأ');
     } finally { hideLoading(); }
 }
 function showLoginError(msg) {
@@ -3901,7 +3303,7 @@ async function saveBulkAttendance(week) {
         });
     });
     try {
-        showLoading('جارٍ حفظ الحضور...');
+        showLoading('جارٍ الحفظ...');
         await DB.saveAttendanceBulk(records);
         records.forEach(r => {
             const idx = AppData.attendance.findIndex(a =>
@@ -3909,16 +3311,16 @@ async function saveBulkAttendance(week) {
             if (idx !== -1) AppData.attendance[idx] = { ...AppData.attendance[idx], ...r };
             else AppData.attendance.push(r);
         });
-        showToast('✅ تم حفظ الحضور');
+        showToast('✅ تم الحفظ');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحفظ', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
 async function saveVisitation(week) {
     const checkboxes = document.querySelectorAll('.visitation-check');
     try {
-        showLoading('جارٍ حفظ الافتقاد...');
+        showLoading('جارٍ الحفظ...');
         for (const cb of checkboxes) {
             const studentId = cb.dataset.student;
             if (cb.checked) {
@@ -3935,9 +3337,9 @@ async function saveVisitation(week) {
                 if (idx !== -1) AppData.attendance.splice(idx, 1);
             }
         }
-        showToast('✅ تم حفظ الافتقاد');
+        showToast('✅ تم الحفظ');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحفظ', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
@@ -3948,8 +3350,7 @@ async function adminSetAttendance(studentId, week, status) {
             a.studentId === studentId && a.week === week && a.type === 'attendance');
         if (idx !== -1) AppData.attendance[idx].status = status;
         else AppData.attendance.push({ studentId, week, status, type: 'attendance' });
-        showToast(`✅ ${status === 'present' ? 'حاضر' : 'غائب'}`);
-    } catch (e) { showToast('❌ فشل التسجيل', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
 }
 
 async function changeAdminWeek(week) {
@@ -3962,9 +3363,11 @@ function openVisitationNotesModal(studentId, studentName, week) {
     const notes = AppData.visitationNotes.filter(n => n.studentId === studentId && n.week === week);
     const servantName = State.currentUser?.data?.name || 'خادم';
     const classGroup = State.currentUser?.data?.classGroup || '';
+    const canAdd = State.currentUser?.type === 'servant' ?
+        Helpers.canAddVisitationNotes(State.currentUser.data) : true;
 
     showModal(`
-        <h3>📔 ملاحظات الافتقاد - ${studentName}</h3>
+        <h3>📔 ملاحظات - ${studentName}</h3>
         <p class="text-muted mb-2">الأسبوع ${week}</p>
 
         ${notes.length > 0 ? `
@@ -3973,135 +3376,122 @@ function openVisitationNotesModal(studentId, studentName, week) {
                     <div class="note-card">
                         <div class="note-header">
                             ${Helpers.badge(Helpers.getCategoryLabel(n.category), 'info')}
-                            <span class="text-muted" style="font-size:0.78rem;">${Helpers.formatDateTime(n.createdAt)}</span>
+                            <span class="text-muted">${Helpers.formatDateTime(n.createdAt)}</span>
                         </div>
                         <div class="note-body">${Helpers.escapeHtml(n.text)}</div>
                     </div>
                 `).join('')}
             </div>
-            <hr style="margin: 16px 0; border: none; border-top: 1px solid var(--gray-light);">
         ` : ''}
 
-        <h4 style="color: var(--navy); margin-bottom: 10px;">➕ إضافة ملاحظة جديدة</h4>
-        <div class="form-group">
-            <label>التصنيف</label>
-            <select id="noteCategory">
-                ${Helpers.getNoteCategories().map(c => `<option value="${c.value}">${c.label}</option>`).join('')}
-            </select>
-        </div>
-        <div class="form-group">
-            <label>الملاحظة</label>
-            <textarea id="noteText" placeholder="اكتب ملاحظتك هنا..." rows="4"></textarea>
-        </div>
-        <div class="modal-actions">
-            <button class="btn btn-gold" onclick="saveVisitationNote('${studentId}', ${week}, '${servantName.replace(/'/g, "\\'")}', '${classGroup.replace(/'/g, "\\'")}')">
-                💾 حفظ الملاحظة
-            </button>
-            <button class="btn btn-outline" onclick="closeModal()">إغلاق</button>
-        </div>
+        ${canAdd ? `
+            <hr style="margin: 16px 0;">
+            <h4>➕ إضافة ملاحظة</h4>
+            <div class="form-group">
+                <label>التصنيف</label>
+                <select id="noteCategory">
+                    ${Helpers.getNoteCategories().map(c => `<option value="${c.value}">${c.label}</option>`).join('')}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>الملاحظة</label>
+                <textarea id="noteText" rows="4"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-gold" onclick="saveVisitationNote('${studentId}', ${week}, '${servantName.replace(/'/g, "\\'")}', '${classGroup.replace(/'/g, "\\'")}')">
+                    💾 حفظ
+                </button>
+                <button class="btn btn-outline" onclick="closeModal()">إغلاق</button>
+            </div>
+        ` : `
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeModal()">إغلاق</button>
+            </div>
+        `}
     `);
 }
 
 async function saveVisitationNote(studentId, week, servantName, classGroup) {
     const category = document.getElementById('noteCategory').value;
     const text = document.getElementById('noteText').value.trim();
-    if (!text) { showToast('الرجاء كتابة الملاحظة', 'error'); return; }
+    if (!text) { showToast('اكتب الملاحظة', 'error'); return; }
     try {
         showLoading('جارٍ الحفظ...');
         const saved = await DB.addVisitationNote({
-            studentId, week, category, text,
-            servantName, classGroup
+            studentId, week, category, text, servantName, classGroup
         });
         AppData.visitationNotes.push(saved);
         closeModal();
-        showToast('✅ تم حفظ الملاحظة');
+        showToast('✅ تم الحفظ');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحفظ', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
 async function deleteNoteConfirm(noteId) {
-    if (!confirm('هل أنت متأكد من حذف هذه الملاحظة؟')) return;
+    if (!confirm('حذف الملاحظة؟')) return;
     try {
-        showLoading('جارٍ الحذف...');
         await DB.deleteVisitationNote(noteId);
         AppData.visitationNotes = AppData.visitationNotes.filter(n => n.id !== noteId);
         showToast('🗑️ تم الحذف');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحذف', 'error'); }
-    finally { hideLoading(); }
-}
-
-function filterAdminNotes(type, value) {
-    State.activeTab['admin_notes_' + type] = value;
-    renderApp();
-}
-
-function resetAdminNotesFilters() {
-    State.activeTab['admin_notes_class'] = 'all';
-    State.activeTab['admin_notes_week'] = 'all';
-    State.activeTab['admin_notes_category'] = 'all';
-    renderApp();
+    } catch (e) { showToast('❌ فشل', 'error'); }
 }
 
 async function changeServantPassword(servantId) {
     const current = document.getElementById('currentPassword').value.trim();
     const newPass = document.getElementById('newPassword').value.trim();
-    const confirm = document.getElementById('confirmPassword').value.trim();
+    const confirmPass = document.getElementById('confirmPassword').value.trim();
     const servant = AppData.servants.find(s => s.id === servantId);
     if (!servant) return;
 
     if (current !== servant.password) { showToast('❌ كلمة المرور الحالية غير صحيحة', 'error'); return; }
-    if (!newPass || newPass.length < 4) { showToast('⚠️ كلمة المرور يجب أن تكون 4 أحرف على الأقل', 'error'); return; }
-    if (newPass !== confirm) { showToast('⚠️ كلمتا المرور غير متطابقتين', 'error'); return; }
-    if (newPass === current) { showToast('⚠️ كلمة المرور الجديدة مطابقة للحالية', 'error'); return; }
+    if (!newPass || newPass.length < 4) { showToast('⚠️ 4 أحرف على الأقل', 'error'); return; }
+    if (newPass !== confirmPass) { showToast('⚠️ غير متطابقتين', 'error'); return; }
 
     try {
-        showLoading('جارٍ التحديث...');
+        showLoading('جارٍ الحفظ...');
         await DB.updateServant(servantId, { password: newPass });
         servant.password = newPass;
         if (State.currentUser && State.currentUser.type === 'servant') {
             State.currentUser.data.password = newPass;
             DB.setSession(State.currentUser);
         }
-        showToast('✅ تم تغيير كلمة المرور');
+        showToast('✅ تم التغيير');
         renderApp();
-    } catch (e) { showToast('❌ فشل التحديث', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
 function openAddAssignmentModal(studentId) {
     if (!Helpers.isSubmissionAllowed()) {
-        showToast('⚠️ الإرسال متاح فقط من الجمعة إلى الثلاثاء', 'error');
+        showToast('⚠️ الإرسال من الجمعة إلى الثلاثاء', 'error');
         return;
     }
     showModal(`
-        <h3>📝 إضافة واجب جديد</h3>
+        <h3>📝 إضافة واجب</h3>
         <div class="form-group">
             <label>📚 المادة *</label>
             <select id="assignSubject">
-                <option value="">-- اختر المادة --</option>
-                ${Helpers.getSubjects().map(s =>
-                    `<option value="${s.value}">${s.icon} ${s.label}</option>`
-                ).join('')}
+                <option value="">-- اختر --</option>
+                ${Helpers.getSubjects().map(s => `<option value="${s.value}">${s.icon} ${s.label}</option>`).join('')}
             </select>
         </div>
         <div class="form-group">
-            <label>نوع الواجب</label>
+            <label>النوع</label>
             <select id="assignType" onchange="toggleAssignFileInput()">
                 <option value="text">📄 نص</option>
                 <option value="image">🖼️ صورة</option>
-                <option value="audio">🎤 تسجيل صوتي</option>
+                <option value="audio">🎤 تسجيل</option>
             </select>
         </div>
         <div class="form-group">
-            <label>المحتوى (نصي)</label>
-            <textarea id="assignContent" placeholder="اكتب محتوى الواجب هنا..."></textarea>
+            <label>المحتوى</label>
+            <textarea id="assignContent"></textarea>
         </div>
         <div class="form-group" id="assignFileGroup" style="display:none;">
-            <label>الملف (صورة أو صوت)</label>
-            <input type="file" id="assignFile" accept="image/*,audio/*">
-            <div class="hint">سيتم الرفع إلى Firebase Storage</div>
+            <label>الملف</label>
+            <input type="file" id="assignFile">
         </div>
         <div id="uploadProgress" class="hidden mt-2">
             <div class="progress-bar"><div class="fill" id="uploadFill" style="width:0%"></div></div>
@@ -4129,12 +3519,11 @@ async function saveAssignment(studentId) {
     const subject = document.getElementById('assignSubject').value;
     const type = document.getElementById('assignType').value;
     const content = document.getElementById('assignContent').value.trim();
-    const fileInput = document.getElementById('assignFile');
-    const file = fileInput.files[0];
+    const file = document.getElementById('assignFile').files[0];
 
-    if (!subject) { showToast('⚠️ الرجاء اختيار المادة', 'error'); return; }
-    if (!content && !file && type === 'text') { showToast('الرجاء كتابة محتوى', 'error'); return; }
-    if ((type === 'image' || type === 'audio') && !file) { showToast('الرجاء اختيار ملف', 'error'); return; }
+    if (!subject) { showToast('اختر المادة', 'error'); return; }
+    if (!content && !file && type === 'text') { showToast('اكتب المحتوى', 'error'); return; }
+    if ((type === 'image' || type === 'audio') && !file) { showToast('اختر ملف', 'error'); return; }
 
     try {
         let fileUrl = '';
@@ -4144,12 +3533,12 @@ async function saveAssignment(studentId) {
             const path = StorageManager.assignmentPath(studentId, ext);
             const result = await StorageManager.uploadFile(file, path, (progress) => {
                 document.getElementById('uploadFill').style.width = progress + '%';
-                document.getElementById('uploadStatus').textContent = `جارٍ الرفع... ${Math.round(progress)}%`;
+                document.getElementById('uploadStatus').textContent = `رفع... ${Math.round(progress)}%`;
             });
             fileUrl = result.url;
         }
 
-        showLoading('جارٍ حفظ الواجب...');
+        showLoading('جارٍ الحفظ...');
         const saved = await DB.addAssignment({
             studentId, subject, type,
             content: content || '',
@@ -4158,11 +3547,11 @@ async function saveAssignment(studentId) {
         });
         AppData.assignments.push(saved);
         closeModal();
-        showToast('✅ تم إرسال الواجب');
+        showToast('✅ تم الإرسال');
         renderApp();
     } catch (e) {
         console.error(e);
-        showToast('❌ فشل الإرسال', 'error');
+        showToast('❌ فشل', 'error');
     } finally { hideLoading(); }
 }
 
@@ -4171,20 +3560,13 @@ function openEvaluateModal(assignmentId) {
     if (!a) return;
     const student = AppData.students.find(s => s.id === a.studentId);
     showModal(`
-        <h3>📝 تقييم واجب - ${student ? student.name : a.studentId}</h3>
-        <div class="info-msg">
-            <strong>المادة:</strong> ${Helpers.getSubjectLabel(a.subject)}
-        </div>
+        <h3>📝 تقييم - ${student ? student.name : a.studentId}</h3>
+        <div class="info-msg"><strong>المادة:</strong> ${Helpers.getSubjectLabel(a.subject)}</div>
         <div class="form-group">
             <label>المحتوى</label>
             <textarea disabled>${a.content || '—'}</textarea>
         </div>
-        ${a.fileUrl ? `
-            <div class="form-group">
-                <label>المرفق</label>
-                <a href="${a.fileUrl}" target="_blank" class="btn btn-outline btn-sm">📎 فتح المرفق</a>
-            </div>
-        ` : ''}
+        ${a.fileUrl ? `<div class="form-group"><label>المرفق</label><a href="${a.fileUrl}" target="_blank" class="btn btn-outline btn-sm">📎 فتح</a></div>` : ''}
         <div class="form-group">
             <label>الدرجة (0-10)</label>
             <input type="number" id="evalScore" min="0" max="10" value="${a.score !== null ? a.score : ''}">
@@ -4203,32 +3585,35 @@ function openEvaluateModal(assignmentId) {
 async function saveEvaluation(assignmentId) {
     const score = parseInt(document.getElementById('evalScore').value);
     const notes = document.getElementById('evalNotes').value;
-    if (isNaN(score) || score < 0 || score > 10) { showToast('أدخل درجة بين 0 و 10', 'error'); return; }
+    if (isNaN(score) || score < 0 || score > 10) { showToast('0-10', 'error'); return; }
     try {
         showLoading('جارٍ الحفظ...');
         await DB.updateAssignment(assignmentId, { score, notes, status: 'evaluated' });
         const idx = AppData.assignments.findIndex(a => a.id === assignmentId);
         if (idx !== -1) Object.assign(AppData.assignments[idx], { score, notes, status: 'evaluated' });
         closeModal();
-        showToast('✅ تم حفظ التقييم');
+        showToast('✅ تم');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحفظ', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
+// ============================================================
+// Students Management
+// ============================================================
 function updateDeaconOptions(prefix) {
     const gender = document.getElementById(`${prefix}StudentGender`).value;
     const select = document.getElementById(`${prefix}StudentDeacon`);
     const currentValue = select.value;
-    
+
     select.innerHTML = `
         <option value="">-- اختر --</option>
         <option value="أبصالطس">أبصالطس</option>
         <option value="أغنسطس">أغنسطس</option>
         <option value="لم يتم الرسامة">لم يتم الرسامة</option>
-        ${gender === 'أنثى' ? '<option value="غير مطلوب">غير مطلوب (للإناث)</option>' : ''}
+        ${gender === 'أنثى' ? '<option value="غير مطلوب">غير مطلوب</option>' : ''}
     `;
-    
+
     if (currentValue && (currentValue !== 'غير مطلوب' || gender === 'أنثى')) {
         select.value = currentValue;
     }
@@ -4236,11 +3621,8 @@ function updateDeaconOptions(prefix) {
 
 function openAddStudentModal() {
     showModal(`
-        <h3>👤 إضافة دارس جديد</h3>
-        <div class="form-group">
-            <label>اسم الدارس بالكامل *</label>
-            <input type="text" id="addStudentName" placeholder="الاسم الرباعي">
-        </div>
+        <h3>👤 إضافة دارس</h3>
+        <div class="form-group"><label>الاسم *</label><input type="text" id="addStudentName"></div>
         <div class="grid-2">
             <div class="form-group">
                 <label>النوع *</label>
@@ -4249,10 +3631,7 @@ function openAddStudentModal() {
                     <option value="أنثى">أنثى</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label>تاريخ الميلاد</label>
-                <input type="date" id="addStudentBirth">
-            </div>
+            <div class="form-group"><label>الميلاد</label><input type="date" id="addStudentBirth"></div>
         </div>
         <div class="grid-2">
             <div class="form-group">
@@ -4262,7 +3641,7 @@ function openAddStudentModal() {
                 </select>
             </div>
             <div class="form-group">
-                <label>الفصل داخل المركز</label>
+                <label>الفصل</label>
                 <select id="addStudentClassGroup">
                     ${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}
                 </select>
@@ -4285,34 +3664,13 @@ function openAddStudentModal() {
                 </select>
             </div>
         </div>
-        <div class="form-group">
-            <label>رقم هاتف 1 *</label>
-            <input type="tel" id="addStudentPhone1" placeholder="01xxxxxxxxx">
-        </div>
-        <div class="form-group">
-            <label>رقم هاتف 2</label>
-            <input type="tel" id="addStudentPhone2" placeholder="اختياري">
-        </div>
-        <div class="form-group">
-            <label>العنوان</label>
-            <input type="text" id="addStudentAddress" placeholder="المحافظة - المنطقة">
-        </div>
-        <div class="form-group">
-            <label>📷 الصورة الشخصية</label>
-            <input type="file" id="addStudentPhoto" accept="image/*">
-        </div>
-        <div class="form-group">
-            <label>📄 صورة الاستمارة</label>
-            <input type="file" id="addStudentFormPhoto" accept="image/*">
-        </div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="addStudentForm">
-            <label for="addStudentForm">تم استلام الاستمارة</label>
-        </div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="addStudentPaid">
-            <label for="addStudentPaid">تم دفع قيمة الاستمارة</label>
-        </div>
+        <div class="form-group"><label>هاتف 1 *</label><input type="tel" id="addStudentPhone1"></div>
+        <div class="form-group"><label>هاتف 2</label><input type="tel" id="addStudentPhone2"></div>
+        <div class="form-group"><label>العنوان</label><input type="text" id="addStudentAddress"></div>
+        <div class="form-group"><label>📷 الصورة الشخصية</label><input type="file" id="addStudentPhoto" accept="image/*"></div>
+        <div class="form-group"><label>📄 الاستمارة</label><input type="file" id="addStudentFormPhoto" accept="image/*"></div>
+        <div class="checkbox-group"><input type="checkbox" id="addStudentForm"><label>تم استلام الاستمارة</label></div>
+        <div class="checkbox-group"><input type="checkbox" id="addStudentPaid"><label>تم الدفع</label></div>
         <div id="studentUploadProgress" class="hidden mt-2">
             <div class="progress-bar"><div class="fill" id="studentUploadFill" style="width:0%"></div></div>
             <p class="text-muted mt-1" id="studentUploadStatus">جارٍ الرفع...</p>
@@ -4327,16 +3685,14 @@ function openAddStudentModal() {
 async function saveNewStudent() {
     const name = document.getElementById('addStudentName').value.trim();
     const phone1 = document.getElementById('addStudentPhone1').value.trim();
-    if (!name) { showToast('الرجاء إدخال الاسم', 'error'); return; }
-    if (!phone1) { showToast('الرجاء إدخال الهاتف', 'error'); return; }
+    if (!name) { showToast('أدخل الاسم', 'error'); return; }
+    if (!phone1) { showToast('أدخل الهاتف', 'error'); return; }
 
     try {
-        showLoading('جارٍ توليد الكود...');
+        showLoading('جارٍ التوليد...');
         const code = await DB.generateStudentCode();
 
-        let personalPhotoUrl = '', personalPhotoPath = '';
-        let formPhotoUrl = '', formPhotoPath = '';
-
+        let personalPhotoUrl = '', formPhotoUrl = '';
         const photoFile = document.getElementById('addStudentPhoto').files[0];
         const formFile = document.getElementById('addStudentFormPhoto').files[0];
 
@@ -4347,22 +3703,20 @@ async function saveNewStudent() {
                 const path = StorageManager.studentPhotoPath(code, ext);
                 const res = await StorageManager.uploadFile(photoFile, path, (p) => {
                     document.getElementById('studentUploadFill').style.width = p + '%';
-                    document.getElementById('studentUploadStatus').textContent = `رفع الصورة الشخصية... ${Math.round(p)}%`;
                 });
-                personalPhotoUrl = res.url; personalPhotoPath = res.path;
+                personalPhotoUrl = res.url;
             }
             if (formFile) {
                 const ext = formFile.name.split('.').pop();
                 const path = StorageManager.studentFormPath(code, ext);
                 const res = await StorageManager.uploadFile(formFile, path, (p) => {
                     document.getElementById('studentUploadFill').style.width = p + '%';
-                    document.getElementById('studentUploadStatus').textContent = `رفع الاستمارة... ${Math.round(p)}%`;
                 });
-                formPhotoUrl = res.url; formPhotoPath = res.path;
+                formPhotoUrl = res.url;
             }
         }
 
-        showLoading('جارٍ حفظ الدارس...');
+        showLoading('جارٍ الحفظ...');
         const student = {
             id: code, name, type: 'جديد',
             gender: document.getElementById('addStudentGender').value,
@@ -4376,17 +3730,16 @@ async function saveNewStudent() {
             deaconRank: document.getElementById('addStudentDeacon').value,
             formReceived: document.getElementById('addStudentForm').checked,
             formPaid: document.getElementById('addStudentPaid').checked,
-            personalPhotoUrl, personalPhotoPath,
-            formPhotoUrl, formPhotoPath
+            personalPhotoUrl, formPhotoUrl
         };
         await DB.addStudent(student);
         AppData.students.push(student);
         closeModal();
-        showToast(`✅ تم إضافة الدارس - الكود: ${code}`);
+        showToast(`✅ الكود: ${code}`);
         renderApp();
     } catch (e) {
         console.error(e);
-        showToast('❌ فشل الحفظ', 'error');
+        showToast('❌ فشل', 'error');
     } finally { hideLoading(); }
 }
 
@@ -4396,8 +3749,8 @@ function openEditStudentModal(id) {
     const ranks = Helpers.getDeaconRanks(s.gender);
     showModal(`
         <h3>✏️ تعديل بيانات الدارس</h3>
-        <div class="form-group"><label>كود الدارس</label><input type="text" value="${s.id}" disabled></div>
-        <div class="form-group"><label>اسم الدارس</label><input type="text" id="editStudentName" value="${s.name}"></div>
+        <div class="form-group"><label>الكود</label><input type="text" value="${s.id}" disabled></div>
+        <div class="form-group"><label>الاسم</label><input type="text" id="editStudentName" value="${s.name}"></div>
         <div class="grid-2">
             <div class="form-group">
                 <label>المرحلة</label>
@@ -4420,25 +3773,17 @@ function openEditStudentModal(id) {
                 </select>
             </div>
             <div class="form-group">
-                <label>رتبة الشماسية</label>
+                <label>الرتبة</label>
                 <select id="editStudentDeacon">
                     ${ranks.map(r => `<option value="${r}" ${r === s.deaconRank ? 'selected' : ''}>${r}</option>`).join('')}
                 </select>
             </div>
         </div>
-        <div class="form-group"><label>رقم هاتف 1</label><input type="tel" id="editStudentPhone1" value="${s.phone1 || ''}"></div>
-        <div class="form-group"><label>رقم هاتف 2</label><input type="tel" id="editStudentPhone2" value="${s.phone2 || ''}"></div>
+        <div class="form-group"><label>هاتف 1</label><input type="tel" id="editStudentPhone1" value="${s.phone1 || ''}"></div>
+        <div class="form-group"><label>هاتف 2</label><input type="tel" id="editStudentPhone2" value="${s.phone2 || ''}"></div>
         <div class="form-group"><label>العنوان</label><input type="text" id="editStudentAddress" value="${s.address || ''}"></div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="editStudentForm" ${s.formReceived ? 'checked' : ''}>
-            <label for="editStudentForm">تم استلام الاستمارة</label>
-        </div>
-        <div class="checkbox-group">
-            <input type="checkbox" id="editStudentPaid" ${s.formPaid ? 'checked' : ''}>
-            <label for="editStudentPaid">تم دفع قيمة الاستمارة</label>
-        </div>
-        ${s.personalPhotoUrl ? `<p><strong>الصورة الحالية:</strong></p><img src="${s.personalPhotoUrl}" class="file-preview">` : ''}
-        ${s.formPhotoUrl ? `<p class="mt-2"><strong>صورة الاستمارة:</strong></p><img src="${s.formPhotoUrl}" class="file-preview">` : ''}
+        <div class="checkbox-group"><input type="checkbox" id="editStudentForm" ${s.formReceived ? 'checked' : ''}><label>تم الاستلام</label></div>
+        <div class="checkbox-group"><input type="checkbox" id="editStudentPaid" ${s.formPaid ? 'checked' : ''}><label>تم الدفع</label></div>
         <div class="modal-actions">
             <button class="btn btn-gold" onclick="updateStudentData('${s.id}')">💾 حفظ</button>
             <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
@@ -4459,29 +3804,27 @@ async function updateStudentData(id) {
         formReceived: document.getElementById('editStudentForm').checked,
         formPaid: document.getElementById('editStudentPaid').checked
     };
-    if (!updates.name) { showToast('الرجاء إدخال الاسم', 'error'); return; }
+    if (!updates.name) { showToast('أدخل الاسم', 'error'); return; }
     try {
         showLoading('جارٍ الحفظ...');
         await DB.updateStudent(id, updates);
         const idx = AppData.students.findIndex(s => s.id === id);
         if (idx !== -1) Object.assign(AppData.students[idx], updates);
         closeModal();
-        showToast('✅ تم التحديث');
+        showToast('✅ تم');
         renderApp();
-    } catch (e) { showToast('❌ فشل التحديث', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
 async function deleteStudentConfirm(id) {
-    if (!confirm('هل أنت متأكد من حذف هذا الدارس؟')) return;
+    if (!confirm('حذف الدارس؟')) return;
     try {
-        showLoading('جارٍ الحذف...');
         await DB.deleteStudent(id);
         AppData.students = AppData.students.filter(s => s.id !== id);
-        showToast('🗑️ تم الحذف');
+        showToast('🗑️ تم');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحذف', 'error'); }
-    finally { hideLoading(); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
 }
 
 // ============================================================
@@ -4491,15 +3834,15 @@ function openAddServantModal() {
     const newCode = Helpers.generateServantCode();
     showModal(`
         <h3>👨‍🏫 إضافة خادم جديد</h3>
-        
+
         <div class="form-group">
             <label>اسم الخادم *</label>
             <input type="text" id="addServantName" placeholder="الاسم الكامل">
         </div>
-        
+
         <div class="grid-2">
             <div class="form-group">
-                <label>كود الخادم (تلقائي) *</label>
+                <label>كود الخادم *</label>
                 <input type="text" id="addServantCode" value="${newCode}" readonly
                     style="background:#f0f0f0;font-weight:bold;letter-spacing:1px;color:var(--wine);">
             </div>
@@ -4508,50 +3851,55 @@ function openAddServantModal() {
                 <input type="tel" id="addServantPhone" placeholder="01xxxxxxxxx">
             </div>
         </div>
-        
+
         <div class="form-group">
             <label>كلمة المرور *</label>
-            <input type="text" id="addServantPassword" placeholder="كلمة المرور" value="1234">
-            <div class="hint">يمكن للخادم تغييرها لاحقاً</div>
+            <input type="text" id="addServantPassword" value="1234">
         </div>
-        
+
         <div class="form-group">
             <label>🏫 الفصل المسؤول عنه *</label>
             <select id="addServantClassGroup">
-                <option value="">-- اختر الفصل --</option>
-                <option value="الكل">جميع الفصول (خادم كنترول)</option>
+                <option value="">-- اختر --</option>
+                <option value="الكل">جميع الفصول</option>
                 ${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}
             </select>
         </div>
-        
+
         <div class="form-group">
             <label>📚 مواد التخصص (اختر مادة أو أكثر)</label>
-            <div style="padding:10px;border:1.5px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;">
+            <div style="padding:12px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;">
                 ${Helpers.getSubjects().map(s => `
-                    <label style="display:block;margin-bottom:8px;">
-                        <input type="checkbox" class="add-servant-subject" value="${s.value}" 
-                            style="margin-left:8px;accent-color:var(--wine);">
-                        ${s.icon} ${s.label}
+                    <label style="display:flex;align-items:center;gap:10px;margin-bottom:10px;cursor:pointer;font-size:0.95rem;">
+                        <input type="checkbox" class="add-servant-subject" value="${s.value}"
+                            style="width:18px;height:18px;accent-color:var(--wine);">
+                        <span>${s.icon} <strong>${s.label}</strong></span>
                     </label>
                 `).join('')}
-                <div class="hint">اتركها فارغة لو الخادم إداري فقط</div>
+                <div class="hint" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--gray-light);">
+                    💡 اتركها فارغة لو الخادم إداري فقط
+                </div>
             </div>
         </div>
-        
+
         <div class="form-group">
             <label>⚙️ الدور الإداري (اختر دوراً أو أكثر)</label>
-            <div style="padding:10px;border:1.5px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;">
+            <div style="padding:12px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;max-height:450px;overflow-y:auto;">
                 ${Helpers.getServantAdminRoles().map(r => `
-                    <label style="display:block;margin-bottom:8px;">
-                        <input type="checkbox" class="add-servant-admin-role" value="${r.value}" 
-                            style="margin-left:8px;accent-color:var(--wine);">
-                        ${r.label}
+                    <label class="role-option" style="border-right-color:${r.color};">
+                        <input type="checkbox" class="add-servant-admin-role" value="${r.value}">
+                        <div>
+                            <div class="role-title" style="color:${r.color};">${r.label}</div>
+                            <div class="role-desc">${r.description}</div>
+                        </div>
                     </label>
                 `).join('')}
-                <div class="hint">اتركها فارغة لو الخادم مدرس مادة فقط</div>
+                <div class="hint" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--gray-light);">
+                    💡 اتركها فارغة لو الخادم مدرس مادة فقط
+                </div>
             </div>
         </div>
-        
+
         <div class="modal-actions">
             <button class="btn btn-gold" onclick="saveNewServant()">💾 حفظ</button>
             <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
@@ -4566,37 +3914,32 @@ async function saveNewServant() {
     const password = document.getElementById('addServantPassword').value.trim();
     const classGroup = document.getElementById('addServantClassGroup').value;
 
-    if (!name) { showToast('أدخل اسم الخادم', 'error'); return; }
-    if (!phone) { showToast('أدخل رقم الهاتف', 'error'); return; }
+    if (!name) { showToast('أدخل الاسم', 'error'); return; }
+    if (!phone) { showToast('أدخل الهاتف', 'error'); return; }
     if (!password) { showToast('أدخل كلمة المرور', 'error'); return; }
-    if (!classGroup) { showToast('اختر الفصل المسؤول عنه', 'error'); return; }
+    if (!classGroup) { showToast('اختر الفصل', 'error'); return; }
 
     const subjects = [];
-    document.querySelectorAll('.add-servant-subject:checked').forEach(cb => {
-        subjects.push(cb.value);
-    });
-    
+    document.querySelectorAll('.add-servant-subject:checked').forEach(cb => subjects.push(cb.value));
+
     const adminRoles = [];
-    document.querySelectorAll('.add-servant-admin-role:checked').forEach(cb => {
-        adminRoles.push(cb.value);
-    });
-    
+    document.querySelectorAll('.add-servant-admin-role:checked').forEach(cb => adminRoles.push(cb.value));
+
     if (subjects.length === 0 && adminRoles.length === 0) {
-        showToast('⚠️ اختر مادة تخصص أو دور إداري على الأقل', 'error');
+        showToast('⚠️ اختر مادة أو دور إداري', 'error');
         return;
     }
 
     const exists = AppData.servants.find(s => s.code === code);
     if (exists) {
-        showToast('⚠️ الكود مستخدم، جارٍ توليد كود جديد...', 'error');
+        showToast('⚠️ الكود مستخدم', 'error');
         document.getElementById('addServantCode').value = Helpers.generateServantCode();
         return;
     }
 
     const servant = {
         id: 'SRV' + Date.now(),
-        name, code, phone, password,
-        classGroup,
+        name, code, phone, password, classGroup,
         subjectSpecialty: subjects,
         adminRole: adminRoles,
         role: subjects.length > 0 ? `subject_${subjects[0]}` : adminRoles[0] || 'assistant'
@@ -4607,90 +3950,79 @@ async function saveNewServant() {
         await DB.addServant(servant);
         AppData.servants.push(servant);
         closeModal();
-        showToast(`✅ تم إضافة الخادم - كود: ${code}`);
+        showToast(`✅ الكود: ${code}`);
         renderApp();
-    } catch (e) { 
+    } catch (e) {
         console.error(e);
-        showToast('❌ فشل الحفظ', 'error'); 
-    }
-    finally { hideLoading(); }
+        showToast('❌ فشل', 'error');
+    } finally { hideLoading(); }
 }
 
 function openEditServantModal(id) {
     const s = AppData.servants.find(x => x.id === id);
     if (!s) return;
-    
-    const subjects = Array.isArray(s.subjectSpecialty) ? s.subjectSpecialty : 
+
+    const subjects = Array.isArray(s.subjectSpecialty) ? s.subjectSpecialty :
                      (s.subjectSpecialty ? [s.subjectSpecialty] : []);
-    const adminRoles = Array.isArray(s.adminRole) ? s.adminRole : 
+    const adminRoles = Array.isArray(s.adminRole) ? s.adminRole :
                        (s.adminRole ? [s.adminRole] : []);
 
     showModal(`
         <h3>✏️ تعديل بيانات الخادم</h3>
-        
-        <div class="form-group">
-            <label>اسم الخادم</label>
-            <input type="text" id="editServantName" value="${s.name}">
-        </div>
-        
+
+        <div class="form-group"><label>الاسم</label><input type="text" id="editServantName" value="${s.name}"></div>
+
         <div class="grid-2">
-            <div class="form-group">
-                <label>كود الخادم</label>
-                <input type="text" id="editServantCode" value="${s.code}" style="text-transform:uppercase;">
-            </div>
-            <div class="form-group">
-                <label>رقم الهاتف</label>
-                <input type="tel" id="editServantPhone" value="${s.phone || ''}">
-            </div>
+            <div class="form-group"><label>الكود</label><input type="text" id="editServantCode" value="${s.code}"></div>
+            <div class="form-group"><label>الهاتف</label><input type="tel" id="editServantPhone" value="${s.phone || ''}"></div>
         </div>
-        
+
         <div class="form-group">
             <label>🔑 كلمة المرور</label>
             <div class="flex gap-1">
-                <input type="text" id="editServantPassword" value="${s.password}" 
-                    style="flex:1;font-weight:bold;color:var(--wine);">
+                <input type="text" id="editServantPassword" value="${s.password}" style="flex:1;font-weight:bold;color:var(--wine);">
                 <button class="btn btn-gold btn-sm" onclick="regeneratePassword()">🔄</button>
             </div>
         </div>
-        
+
         <div class="form-group">
             <label>🏫 الفصل</label>
             <select id="editServantClassGroup">
                 <option value="الكل" ${s.classGroup === 'الكل' ? 'selected' : ''}>الكل</option>
-                ${Helpers.getClassGroups().map(g => 
-                    `<option value="${g}" ${g === s.classGroup ? 'selected' : ''}>${g}</option>`
-                ).join('')}
+                ${Helpers.getClassGroups().map(g => `<option value="${g}" ${g === s.classGroup ? 'selected' : ''}>${g}</option>`).join('')}
             </select>
         </div>
-        
+
         <div class="form-group">
             <label>📚 مواد التخصص</label>
-            <div style="padding:10px;border:1.5px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;">
+            <div style="padding:12px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;">
                 ${Helpers.getSubjects().map(sub => `
-                    <label style="display:block;margin-bottom:8px;">
-                        <input type="checkbox" class="edit-servant-subject" value="${sub.value}" 
+                    <label style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                        <input type="checkbox" class="edit-servant-subject" value="${sub.value}"
                             ${subjects.includes(sub.value) ? 'checked' : ''}
-                            style="margin-left:8px;accent-color:var(--wine);">
-                        ${sub.icon} ${sub.label}
+                            style="width:18px;height:18px;accent-color:var(--wine);">
+                        <span>${sub.icon} <strong>${sub.label}</strong></span>
                     </label>
                 `).join('')}
             </div>
         </div>
-        
+
         <div class="form-group">
             <label>⚙️ الأدوار الإدارية</label>
-            <div style="padding:10px;border:1.5px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;">
+            <div style="padding:12px;border:2px solid var(--gray-light);border-radius:var(--radius-sm);background:#fcfaf7;max-height:450px;overflow-y:auto;">
                 ${Helpers.getServantAdminRoles().map(r => `
-                    <label style="display:block;margin-bottom:8px;">
-                        <input type="checkbox" class="edit-servant-admin-role" value="${r.value}" 
-                            ${adminRoles.includes(r.value) ? 'checked' : ''}
-                            style="margin-left:8px;accent-color:var(--wine);">
-                        ${r.label}
+                    <label class="role-option" style="border-right-color:${r.color};">
+                        <input type="checkbox" class="edit-servant-admin-role" value="${r.value}"
+                            ${adminRoles.includes(r.value) ? 'checked' : ''}>
+                        <div>
+                            <div class="role-title" style="color:${r.color};">${r.label}</div>
+                            <div class="role-desc">${r.description}</div>
+                        </div>
                     </label>
                 `).join('')}
             </div>
         </div>
-        
+
         <div class="modal-actions">
             <button class="btn btn-gold" onclick="updateServantData('${s.id}')">💾 حفظ</button>
             <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
@@ -4701,25 +4033,21 @@ function openEditServantModal(id) {
 function regeneratePassword() {
     const newPass = Math.floor(1000 + Math.random() * 9000).toString();
     document.getElementById('editServantPassword').value = newPass;
-    showToast(`🔑 كلمة المرور الجديدة: ${newPass}`);
+    showToast(`🔑 كلمة المرور: ${newPass}`);
 }
 
 async function updateServantData(id) {
     const subjects = [];
-    document.querySelectorAll('.edit-servant-subject:checked').forEach(cb => {
-        subjects.push(cb.value);
-    });
-    
+    document.querySelectorAll('.edit-servant-subject:checked').forEach(cb => subjects.push(cb.value));
+
     const adminRoles = [];
-    document.querySelectorAll('.edit-servant-admin-role:checked').forEach(cb => {
-        adminRoles.push(cb.value);
-    });
-    
+    document.querySelectorAll('.edit-servant-admin-role:checked').forEach(cb => adminRoles.push(cb.value));
+
     if (subjects.length === 0 && adminRoles.length === 0) {
-        showToast('⚠️ اختر مادة تخصص أو دور إداري على الأقل', 'error');
+        showToast('⚠️ اختر مادة أو دور إداري', 'error');
         return;
     }
-    
+
     const updates = {
         name: document.getElementById('editServantName').value.trim(),
         code: document.getElementById('editServantCode').value.trim().toUpperCase(),
@@ -4730,7 +4058,7 @@ async function updateServantData(id) {
         adminRole: adminRoles,
         role: subjects.length > 0 ? `subject_${subjects[0]}` : adminRoles[0] || 'assistant'
     };
-    
+
     if (!updates.name) { showToast('أدخل الاسم', 'error'); return; }
     if (!updates.phone) { showToast('أدخل الهاتف', 'error'); return; }
     if (!updates.password) { showToast('أدخل كلمة المرور', 'error'); return; }
@@ -4741,43 +4069,20 @@ async function updateServantData(id) {
         const idx = AppData.servants.findIndex(s => s.id === id);
         if (idx !== -1) Object.assign(AppData.servants[idx], updates);
         closeModal();
-        showToast('✅ تم التحديث');
+        showToast('✅ تم');
         renderApp();
-    } catch (e) { showToast('❌ فشل التحديث', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
 async function deleteServantConfirm(id) {
-    if (!confirm('هل أنت متأكد من حذف هذا الخادم؟')) return;
+    if (!confirm('حذف الخادم؟')) return;
     try {
-        showLoading('جارٍ الحذف...');
         await DB.deleteServant(id);
         AppData.servants = AppData.servants.filter(s => s.id !== id);
-        showToast('🗑️ تم الحذف');
+        showToast('🗑️ تم');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحذف', 'error'); }
-    finally { hideLoading(); }
-}
-
-function exportData() {
-    const data = {
-        students: AppData.students,
-        servants: AppData.servants,
-        attendance: AppData.attendance,
-        assignments: AppData.assignments,
-        visitationNotes: AppData.visitationNotes,
-        settings: AppData.settings,
-        exportedAt: new Date().toISOString(),
-        exportedBy: AuthManager.currentUid
-    };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `habib_backup_${new Date().toISOString().slice(0,10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast('📤 تم التصدير');
+    } catch (e) { showToast('❌ فشل', 'error'); }
 }
 
 async function saveSettings() {
@@ -4791,9 +4096,9 @@ async function saveSettings() {
         showLoading('جارٍ الحفظ...');
         await DB.setSettings(settings);
         AppData.settings = settings;
-        showToast('✅ تم حفظ الإعدادات');
+        showToast('✅ تم');
         renderApp();
-    } catch (e) { showToast('❌ فشل الحفظ', 'error'); }
+    } catch (e) { showToast('❌ فشل', 'error'); }
     finally { hideLoading(); }
 }
 
@@ -4811,17 +4116,16 @@ function renderApp() {
         navLogin.classList.add('hidden');
         navDash.classList.remove('hidden');
         navLogout.classList.remove('hidden');
-        if (user.type === 'student') {
-            navDash.textContent = '👨‍🎓 لوحتي';
-        } else if (user.type === 'servant') {
-            const isSupervisor = Helpers.isClassSupervisor(user.data);
-            const isTeacher = Helpers.isSubjectTeacher(user.data);
-            if (isSupervisor) navDash.textContent = '👨‍🏫 مسؤول فصل';
-            else if (isTeacher) navDash.textContent = '👨‍🏫 لوحة الخادم';
+        if (user.type === 'student') navDash.textContent = '👨‍🎓 لوحتي';
+        else if (user.type === 'servant') {
+            const roles = Helpers.getServantAdminRoles(user.data);
+            if (Helpers.isSuperAdmin(user.data)) navDash.textContent = '👑 لوحة المسؤول';
+            else if (Helpers.isMainControl(user.data)) navDash.textContent = '🎛️ لوحة الكنترول';
+            else if (Helpers.isAdminControl(user.data)) navDash.textContent = '⚙️ لوحة الإداري';
+            else if (Helpers.isClassSupervisor(user.data)) navDash.textContent = '👨‍🏫 مسؤول فصل';
+            else if (Helpers.isSubjectTeacherRole(user.data)) navDash.textContent = '📚 مسؤول مادة';
             else navDash.textContent = '👨‍🏫 لوحة الخادم';
-        } else {
-            navDash.textContent = '👨‍💼 لوحة التحكم';
-        }
+        } else navDash.textContent = '👨‍💼 لوحة التحكم';
     } else {
         navLogin.classList.remove('hidden');
         navDash.classList.add('hidden');
@@ -4893,11 +4197,9 @@ async function init() {
     });
 
     await AppData.loadAll();
-
     NotificationManager.init();
-
     renderApp();
-    showToast('✅ تم الاتصال بـ Firebase');
+    showToast('✅ تم الاتصال');
 }
 
 document.addEventListener('DOMContentLoaded', init);
@@ -4933,9 +4235,6 @@ window.changeServantPassword = changeServantPassword;
 window.openVisitationNotesModal = openVisitationNotesModal;
 window.saveVisitationNote = saveVisitationNote;
 window.deleteNoteConfirm = deleteNoteConfirm;
-window.filterAdminNotes = filterAdminNotes;
-window.resetAdminNotesFilters = resetAdminNotesFilters;
-window.exportData = exportData;
 window.saveSettings = saveSettings;
 window.closeModal = closeModal;
 window.showToast = showToast;
@@ -4949,7 +4248,6 @@ window.printClassGradesReport = printClassGradesReport;
 window.printClassNotesReport = printClassNotesReport;
 window.printWeekReportAll = printWeekReportAll;
 window.printWeekReport = printWeekReport;
-window.openPrintWindow = openPrintWindow;
 
 // Notifications
 window.NotificationManager = NotificationManager;
